@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+
 const config:Config ={
      content: [
       "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,11 +16,8 @@ const config:Config ={
           silver:"#7A7A7A"
 
         },
-        backgraund:{
-          bg1: '#FFE5E5',
-          bg2: '#F5FFFE',
-          bg3: '#FFFFFF',
-        }
+        
+       
       },
       
     },

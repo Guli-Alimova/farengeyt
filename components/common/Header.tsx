@@ -1,36 +1,53 @@
 import React from 'react'
 import Link from 'next/link'
 
-
 const navLinks = [
-    { href: '/', label: 'Bosh sahifa' },
-    { href: '/about', label: 'Biz haqimizda' },
-    { href: '/books', label: 'Kitoblar' },
-    { href: '/podcast', label:'Podkastlar'},
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Aloqa' },
-  ];
-  
-const Header = () => {
+  { href: '/', label: 'Bosh sahifa' },
+  { href: '/about', label: 'Biz haqimizda' },
+  { href: '/books', label: 'Kitoblar' },
+  { href: '/podcast', label: 'Podkastlar' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Aloqa' },
+];
 
+const Header = () => {
   return (
-    <div>
-      <div className="container">
-        <div className="flex items-center">
-          <div className='w-[86px] max-w-full mr-[260px]'>
-            <img src="/images/Farengeyt_Press_LOGO_small.png" alt="farengeyt" />
+    <header className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap items-center justify-between py-4">
+          
+          {/* Logo */}
+          <div className="w-[86px] max-w-full">
+            <Link href="/">
+              <img
+                src="/images/Farengeyt_Press_LOGO_small.png"
+                alt="farengeyt"
+                className="h-auto w-full"
+              />
+            </Link>
           </div>
-          <ul className="flex  gap-[42px] text-lg font-normal leading-5 tracking-wide text-black inter">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
+
+          {/* Navigation */}
+          <nav className="w-full lg:w-auto mt-4 lg:mt-0">
+            <ul className="flex flex-wrap justify-center lg:justify-end gap-6 text-lg font-medium text-primary font-inter">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors duration-300 hover:text-blue-600"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+
         </div>
       </div>
-    </div>
-  )
-}
+    </header>
+  );
+};
 
-export default Header
+export default Header;

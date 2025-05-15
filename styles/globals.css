@@ -1,17 +1,29 @@
 @import "tailwindcss/preflight";
 @tailwind utilities;
+@import "tailwindcss";
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-  --primary: #2242B4;
+  --primary: #29479E;
   --secondary: #ED553B;
   --black:#111111;
   --silver:#7A7A7A;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --font-inter: var(--font-inter);
+  --color-primary:#29479E; 
+  --color-secondary:#ED553B;
+  --color-silver:#7A7A7A;
+  --color-black:#111111;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #2242B4;
+    --primary: #29479E;
     --secondary: #ED553B;
     --silver:#7A7A7A;
     --black:#111111;
@@ -24,7 +36,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 .container{
-  max-width: 1316px;
+  max-width: 1140px;
   width:100%;
   padding-left:15px;
   padding-right:15px;

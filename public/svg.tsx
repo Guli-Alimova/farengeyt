@@ -32,4 +32,16 @@ export const Right = () =>(
 </svg>
 
 )
+export const LeftOrange = () => (
+    <svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.09039 0L0.613281 5.56723L6.09039 11.1345L7.23634 9.94296L3.74713 6.39581H20.0986V4.73865H3.74632L7.23634 1.1915L6.09039 0Z" fill="#ED553B"/>
+</svg>
+
+)
+export const RightOrange = () =>(
+    <svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.6225 0.790039L20.0996 6.35727L14.6225 11.9245L13.4766 10.733L16.9658 7.18584H0.614317V5.52869H16.9666L13.4766 1.98154L14.6225 0.790039Z" fill="#ED553B"/>
+</svg>
+
+)
 
