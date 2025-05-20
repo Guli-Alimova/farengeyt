@@ -4,13 +4,13 @@ const creater = [
     {
       name: 'Sardor SALIM ',
       image: '/authors/1.jpg',
-      description:"“ tarjimon  Yoshlar uchun 1000 kitob” tashabbusida qator kitoblarni tarjima qilgan. ",
+      description:"tarjimon  “ Yoshlar uchun 1000 kitob” tashabbusida qator kitoblarni tarjima qilgan. ",
       work:"MPA (Manchester University)"
     },
     {
       name: ' Xurshid YULDOSHEV ',
       image: '/authors/2.jpg',
-      description:"“ muharrir  Yoshlar uchun 1000 kitob”, “Asaxiy Books” loyihalar doirasida 100ga yaqin kitob nashr etilishiga rahbarlik qilgan. ",
+      description:" muharrir “  Yoshlar uchun 1000 kitob”, “Asaxiy Books” loyihalar doirasida 100ga yaqin kitob nashr etilishiga rahbarlik qilgan. ",
       work:"Falsafa bo‘yicha magistr (MU) "
     
     },

@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap items-center justify-between py-4">
+        <div className="flex  items-center justify-between py-4">
           
           {/* Logo */}
           <div className="w-[86px] max-w-full">
@@ -29,7 +29,7 @@ const Header = () => {
 
           {/* Navigation */}
           <nav className="w-full lg:w-auto mt-4 lg:mt-0">
-            <ul className="flex flex-wrap justify-center lg:justify-end gap-6 text-lg font-medium text-primary font-inter">
+            <ul className="flex  justify-between items-center lg:justify-end gap-6 text-lg font-medium text-primary font-inter">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link

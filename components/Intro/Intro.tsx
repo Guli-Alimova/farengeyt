@@ -3,7 +3,7 @@ import React from "react";
 
 const Intro = () => {
   return (
-    <div className="relative bg-[#d0e1e7] overflow-hidden">
+    <div className=" relative bg-[#d0e1e7] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between pt-[100px]  relative z-10">
           {/* Text Section */}
@@ -19,9 +19,9 @@ const Intro = () => {
           </div>
 
           {/* Image Section */}
-          <div className="mt-10 lg:mt-0 relative">
+          <div className="pt-10 lg:pt-50 relative">
             <img
-              src="/images/hero-girl.png"
+              src="/images/hero-book.png"
               alt="hero girl"
               className="w-[300px] md:w-[400px] lg:w-[500px] xl:w-[589px] z-50"
             />
