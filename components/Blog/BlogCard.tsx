@@ -10,7 +10,7 @@ interface BlogCardProps {
   export default function BlogCard({ title, date, author, image, category = "Activities" }: BlogCardProps) {
     return (
       <div className="bg-white rounded-xl shadow-md overflow-hidden w-full max-w-sm">
-        <div className="pt-5 px-5 relative">
+        <div className="pt-5 px-5 relative ">
           <img src={image} alt={title} className="w-full h-52 object-cover" />
           <span className="absolute top-8 left-8 bg-secondary text-white text-xs font-medium px-2 py-1 rounded">
             {category}

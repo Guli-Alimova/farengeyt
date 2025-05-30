@@ -19,6 +19,6 @@ var Header = function () {
                         react_1["default"].createElement("img", { src: "/images/Farengeyt_Press_LOGO_small.png", alt: "farengeyt", className: "h-auto w-full" }))),
                 react_1["default"].createElement("nav", { className: "w-full lg:w-auto mt-4 lg:mt-0" },
                     react_1["default"].createElement("ul", { className: "flex  justify-between items-center lg:justify-end gap-6 text-lg font-medium text-primary font-inter" }, navLinks.map(function (link) { return (react_1["default"].createElement("li", { key: link.href },
-                        react_1["default"].createElement(link_1["default"], { href: link.href, className: "transition-colors duration-300 hover:text-blue-600" }, link.label))); })))))));
+                        react_1["default"].createElement(link_1["default"], { href: link.href, className: "transition-colors duration-300 hover:text-secondary" }, link.label))); })))))));
 };
 exports["default"] = Header;

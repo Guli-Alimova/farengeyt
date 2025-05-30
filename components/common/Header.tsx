@@ -34,7 +34,7 @@ const Header = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="transition-colors duration-300 hover:text-blue-600"
+                    className="transition-colors duration-300 hover:text-secondary"
                   >
                     {link.label}
                   </Link>

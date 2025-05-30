@@ -38,7 +38,7 @@ const creater = [
   ];
 const Created = () => {
   return (
-    <section className="py-12 px-4 text-center bg-gray-50">
+    <section className="py-12  text-center bg-blue-100">
       <h2 className="text-3xl font-bold text-primary">Asoschilar</h2>
       <p className="text-gray-500 mt-2"></p>
       <p className="text-gray-400 mb-8"></p>

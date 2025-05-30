@@ -26,7 +26,7 @@ const blogs = [
 
 export default function LatestBlog() {
   return (
-    <section className="bg-blue-100 py-14 px-4 text-center">
+    <section className=" py-14  text-center">
         <div className="container">
              <h2 className="text-3xl font-bold text-primary">Our Latest Blog</h2>
       <p className="text-gray-600 mt-2">Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>

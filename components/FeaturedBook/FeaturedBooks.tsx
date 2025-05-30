@@ -1,5 +1,13 @@
-// components/FeaturedBooks.tsx
+
+'use client';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay } from "swiper/modules";
 import FeaturedBookCard from './FeaturedBookCard';
+
 
 const books = [
   {
@@ -48,7 +56,7 @@ const books = [
 
 export default function FeaturedBooks() {
   return (
-    <section className="px-6 py-10">
+    <section className="py-20">
       <div className="container">
            <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">Featured Books</h2>
@@ -57,14 +65,33 @@ export default function FeaturedBooks() {
         </button>
       </div>
       <div className="flex flex-wrap gap-6">
+      <Swiper
+      modules={[Pagination, Autoplay]}
+      autoplay={{
+        delay: 5000, // har 5 soniyada avtomatik o'tadi
+        disableOnInteraction: false, // foydalanuvchi interactiondan keyin ham davom etadi
+      }}
+      loop={true} // qayta aylanish
+        spaceBetween={3}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        breakpoints={{
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
+        }}
+      >
         {books.map((item, index) => (
-          <FeaturedBookCard key={index} 
+           <SwiperSlide  key={index} >
+          <FeaturedBookCard
           image={item.image}
           title={item.title}
           category={item.category}
           subtitle={item.subtitle}
+         
           />
+          </SwiperSlide>
         ))}
+     </Swiper>
       </div> 
       </div>
   

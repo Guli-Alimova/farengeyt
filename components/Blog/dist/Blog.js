@@ -34,7 +34,7 @@ var blogs = [
     },
 ];
 function LatestBlog() {
-    return (react_1["default"].createElement("section", { className: "bg-blue-100 py-14 px-4 text-center" },
+    return (react_1["default"].createElement("section", { className: " py-14  text-center" },
         react_1["default"].createElement("div", { className: "container" },
             react_1["default"].createElement("h2", { className: "text-3xl font-bold text-primary" }, "Our Latest Blog"),
             react_1["default"].createElement("p", { className: "text-gray-600 mt-2" }, "Interdum et malesuada fames ac ante ipsum primis in faucibus."),

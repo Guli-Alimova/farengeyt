@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Email, Facebook, Instagram, Twitter } from '@/public/svg'
+import { Email, FacebookBlue, InstagramBlue, TwitterBlue } from '@/public/svg'
 
 const navLinks = [
   { href: '/', label: 'Bosh sahifa' },
@@ -12,7 +12,7 @@ const navLinks = [
 ];
 export default function Footer() {
   return (
-    <footer className="bg-white text-primary py-12 px-6">
+    <footer className="bg-[#012e4a] text-primary py-[28px] px-6">
       <div className="container">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
@@ -29,9 +29,9 @@ export default function Footer() {
           </div>
        
           <div className="flex gap-3 mt-4">
-          <Link href="/"><Facebook /></Link>
-            <Link href="/"><Instagram /></Link>
-            <Link href="/"><Twitter /></Link>
+          <Link href="/" className='px-[8px] py-[5px] border-1 border-primary items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><FacebookBlue /></Link>
+            <Link href="/" className='px-[8px] py-[5px] border-1 border-primary items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><InstagramBlue /></Link>
+            <Link href="/" className='px-[8px] py-[5px] border-1 border-primary items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><TwitterBlue /></Link>
           </div>
         </div>
 
@@ -41,12 +41,11 @@ export default function Footer() {
           <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
           <ul className="space-y-2 text-sm  ">
               {navLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>
                   <Link
                     href={link.href}
-                    className="transition-colors duration-300 hover:text-blue-600"
                   >
-                    »{link.label}
+                    » {link.label}
                   </Link>
                 </li>
               ))}
@@ -58,32 +57,29 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-4">Categories</h3>
           <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
           <ul className="space-y-2 text-sm">
-            <li>» Novel Books</li>
-            <li>» Poetry Books</li>
-            <li>» Political Books</li>
-            <li>» History Books</li>
+            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» Bolalar adabiyoti</li>
+            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» O`quv kitoblar</li>
+            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» Ilmiy-ommabop kitoblar</li>
+            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» Badiiy adabiyot </li>
           </ul>
         </div>
 
         {/* Newsletter */}
-        <div>
+        <div className='relative'>
           <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
           <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
-          <p className="text-sm mb-4">
-            Sign up to searing weekly newsletter to get the latest updates.
-          </p>
+        
           <form className="flex">
             <input
               type="email"
               placeholder="Enter Email Address"
-              className="px-4 py-2 rounded-l-md w-full text-black"
+              className="px-4 py-2 rounded-l-md w-full text-silver active:border-primary border-1 border-primary"
             />
-            <button type="submit" className="bg-teal-600 px-4 py-2 rounded-r-md">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10l9 4 9-4-9-4-9 4z" />
-              </svg>
+            <button type="submit" className="bg-[#29479E] text-white px-4 py-2 rounded-r-md">
+        Send
             </button>
           </form>
+          <img src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x'/>
         </div>
       </div> 
       </div>

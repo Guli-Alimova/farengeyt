@@ -33,7 +33,7 @@ var podcasts = [
     },
 ];
 function PodCast() {
-    return (React.createElement("section", { className: "py-14 px-4 text-center" },
+    return (React.createElement("section", { className: " bg-blue-100 py-14 text-center" },
         React.createElement("div", { className: "container" },
             React.createElement("h2", { className: "text-3xl font-bold text-primary mb-6" }, "Explore Podcasts"),
             React.createElement("div", { className: "flex justify-between gap-4" }, podcasts.map(function (podcast, index) { return (React.createElement(PodCastCard_1["default"], __assign({ key: index }, podcast))); })))));

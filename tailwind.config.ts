@@ -16,7 +16,15 @@ const config:Config ={
           silver:"#7A7A7A"
 
         },
-        
+        keyframes: {
+          'float-x': {
+            '0%, 100%': { transform: 'translateX(0px)' },
+            '50%': { transform: 'translateX(20px)' },
+          },
+        },
+        animation: {
+          'float-x': 'float-x 4s ease-in-out infinite',
+        },
        
       },
       

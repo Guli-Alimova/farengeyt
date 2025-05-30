@@ -35,7 +35,7 @@ var creater = [
     },
 ];
 var Created = function () {
-    return (react_1["default"].createElement("section", { className: "py-12 px-4 text-center bg-gray-50" },
+    return (react_1["default"].createElement("section", { className: "py-12  text-center bg-blue-100" },
         react_1["default"].createElement("h2", { className: "text-3xl font-bold text-primary" }, "Asoschilar"),
         react_1["default"].createElement("p", { className: "text-gray-500 mt-2" }),
         react_1["default"].createElement("p", { className: "text-gray-400 mb-8" }),
