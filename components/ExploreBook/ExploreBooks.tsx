@@ -1,13 +1,13 @@
 'use client';
 import React from 'react'
 import ExploreBooksCard from './ExploreBooksCard'
-import { LeftOrange,RightOrange } from '@/public/svg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay } from "swiper/modules";
+import Link from 'next/link';
 
 const categories = [
   {
@@ -41,19 +41,7 @@ const ExploreBooks = () => {
         </h2>
       </div>
 
-      {/* Arrows */}
-      {/* <div className="absolute top-[50%] left-4 transform -translate-y-1/2 z-10">
-        <div className="bg-[#29479E] text-white p-2 w-[27px] h-[27px] rounded-full cursor-pointer">
-          <LeftOrange/>
-        </div>
-      </div>
-      <div className="absolute top-[50%] right-4 transform -translate-y-1/2 z-10">
-        <div className="bg-[#29479E] text-white w-[27px] p-2 rounded-full cursor-pointer">
-          <RightOrange />
-        </div>
-      </div> */}
 
-      {/* Cards */}
       <div className="flex gap-10 justify-center flex-wrap md:flex-nowrap mt-10">
       <Swiper
       modules={[Navigation, Autoplay]}
@@ -76,7 +64,9 @@ const ExploreBooks = () => {
             index={index + 1}
             image={item.image}
             title={item.title}
-          />
+           
+         />
+        
           </SwiperSlide>
         ))}
          </Swiper>

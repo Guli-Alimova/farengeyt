@@ -1,5 +1,8 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import Burger from '../../components/Burger'
+import {Close} from "../../public/svg"
 
 const navLinks = [
   { href: '/', label: 'Bosh sahifa' },
@@ -8,46 +11,58 @@ const navLinks = [
   { href: '/podcast', label: 'Podkastlar' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Aloqa' },
-];
+]
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="container mx-auto px-4">
-        <div className="flex  items-center justify-between py-4">
-          
-          {/* Logo */}
-          <div className="w-[86px] max-w-full">
-            <Link href="/">
-              <img
-                src="/images/Farengeyt_Press_LOGO_small.png"
-                alt="farengeyt"
-                className="h-auto w-full"
-              />
-            </Link>
-          </div>
+      <div className="container mx-auto px-4 flex items-center justify-between py-4">
+        {/* Logo */}
+        <Link href="/" className="w-[86px] max-w-full">
+          <img
+            src="/images/Farengeyt_Press_LOGO_small.png"
+            alt="farengeyt"
+            className="h-auto w-full"
+          />
+        </Link>
 
-          {/* Navigation */}
-          <nav className="w-full lg:w-auto mt-4 lg:mt-0">
-            <ul className="flex  justify-between items-center lg:justify-end gap-6 text-lg font-medium text-primary font-inter">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition-colors duration-300 hover:text-secondary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          
+        {/* Desktop Navigation */}
+        <nav className="hidden md:block">
+          <ul className="flex gap-6 text-lg font-medium text-primary font-inter">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="transition-colors duration-300 hover:text-secondary"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        </div>
+        {/* Burger icon */}
+        <button
+          className="md:hidden text-2xl font-bold"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Open Menu"
+        >
+         {isMenuOpen ? <Close/> : "☰"}
+        </button>
       </div>
-    </header>
-  );
-};
 
-export default Header;
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-primary">
+          <Burger onClose={() => setIsMenuOpen(false)} />
+        </div>
+      )}
+    </header>
+  )
+}
+
+export default Header
+

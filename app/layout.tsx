@@ -4,6 +4,8 @@ import "../styles/globals.css"
 import Navbar from "@/components/Navbar";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import Burger from "@/components/Burger"
+
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter}`}>
         <Navbar/>
-         <Header />    
+         <Header />   
          {children} 
          <Footer />      
       </body>

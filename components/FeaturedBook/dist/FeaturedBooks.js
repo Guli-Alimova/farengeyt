@@ -56,16 +56,16 @@ function FeaturedBooks() {
     return (React.createElement("section", { className: "py-20" },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: "flex justify-between items-center mb-6" },
-                React.createElement("h2", { className: "text-3xl font-bold" }, "Featured Books"),
-                React.createElement("button", { className: "border border-gray-300 px-4 py-2 rounded-full text-gray-600 hover:bg-gray-100" }, "Explore More \u2192")),
+                React.createElement("h2", { className: "text-3xl font-bold" }, "Featured Books")),
             React.createElement("div", { className: "flex flex-wrap gap-6" },
                 React.createElement(react_1.Swiper, { modules: [modules_1.Pagination, modules_2.Autoplay], autoplay: {
                         delay: 5000,
                         disableOnInteraction: false
                     }, loop: true, spaceBetween: 3, slidesPerView: 1, pagination: { clickable: true }, breakpoints: {
+                        576: { slidesPerView: 2 },
                         768: { slidesPerView: 2 },
                         1024: { slidesPerView: 4 }
                     } }, books.map(function (item, index) { return (React.createElement(react_1.SwiperSlide, { key: index },
-                    React.createElement(FeaturedBookCard_1["default"], { image: item.image, title: item.title, category: item.category, subtitle: item.subtitle }))); }))))));
+                    React.createElement(FeaturedBookCard_1["default"], { key: item.id, id: item.id, image: item.image, title: item.title, category: item.category, subtitle: item.subtitle }))); }))))));
 }
 exports["default"] = FeaturedBooks;

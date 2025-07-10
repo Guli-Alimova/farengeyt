@@ -60,9 +60,6 @@ export default function FeaturedBooks() {
       <div className="container">
            <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">Featured Books</h2>
-        <button className="border border-gray-300 px-4 py-2 rounded-full text-gray-600 hover:bg-gray-100">
-          Explore More →
-        </button>
       </div>
       <div className="flex flex-wrap gap-6">
       <Swiper
@@ -76,18 +73,23 @@ export default function FeaturedBooks() {
         slidesPerView={1}
         pagination={{ clickable: true }}
         breakpoints={{
+          576:{slidesPerView: 2},
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 4 },
+          
         }}
+       
       >
         {books.map((item, index) => (
            <SwiperSlide  key={index} >
           <FeaturedBookCard
+          key={item.id}
+          id={item.id}   
           image={item.image}
           title={item.title}
           category={item.category}
           subtitle={item.subtitle}
-         
+          
           />
           </SwiperSlide>
         ))}

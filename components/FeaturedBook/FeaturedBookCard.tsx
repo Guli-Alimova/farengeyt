@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import React from 'react'
 type FeaturedBookCardProps = {
+  id:number;
   image: string;
   title: string;
   category: string;
@@ -8,6 +10,7 @@ type FeaturedBookCardProps = {
 
 }
 const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
+  id,
   image,
   title,
   category,
@@ -15,7 +18,7 @@ const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
 
 }) => {
   return (
-    <div className="w-full max-w-[200px] flex flex-col gap-2">
+    <div   className="w-full max-w-[200px] flex flex-col gap-2">
       <div className="relative">
         <img src={image} alt={title} className="rounded-lg" />
       </div>
@@ -26,9 +29,9 @@ const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
         <span>{subtitle}</span>
       </div>
     
-      <button className="bg-sky-100 hover:bg-sky-200 text-primary font-semibold py-2 mt-1 rounded flex items-center justify-center gap-2">
+      <Link href={`/books/${id}`} key={id} className="bg-sky-100 hover:bg-sky-200 text-primary font-semibold py-2 mt-1 rounded flex items-center justify-center gap-2">
         Read More
-      </button>
+      </Link>
     </div>
   );
 }

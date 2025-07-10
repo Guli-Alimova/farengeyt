@@ -4,7 +4,7 @@ import { Email, Facebook, Instagram, Twitter } from '@/public/svg'
 
 const Navbar = () => {
   return (
-    <div className="bg-[#29479E] text-white text-sm py-3 font-inter">
+    <div className="bg-[#29479E] text-white text-sm py-3 font-inter hidden md:flex">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-3 lg:gap-0">
 

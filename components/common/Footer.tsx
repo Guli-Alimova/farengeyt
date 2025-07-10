@@ -1,6 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
-import { Email, FacebookBlue, InstagramBlue, TwitterBlue } from '@/public/svg'
+import { Email, Facebook, Instagram, Twitter } from '@/public/svg'
+
+
+const categories = [
+  'Barchasi',
+  'Bolalar adabiyoti',
+  "O'quv kitoblar",
+  'Ilmiy-ommabop kitoblar',
+  'Badiiy adabiyot',
+];
 
 const navLinks = [
   { href: '/', label: 'Bosh sahifa' },
@@ -12,7 +21,7 @@ const navLinks = [
 ];
 export default function Footer() {
   return (
-    <footer className="bg-[#012e4a] text-primary py-[28px] px-6">
+    <footer className="bg-[#012e4a] text-white py-[28px] px-6">
       <div className="container">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
@@ -29,9 +38,9 @@ export default function Footer() {
           </div>
        
           <div className="flex gap-3 mt-4">
-          <Link href="/" className='px-[8px] py-[5px] border-1 border-primary items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><FacebookBlue /></Link>
-            <Link href="/" className='px-[8px] py-[5px] border-1 border-primary items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><InstagramBlue /></Link>
-            <Link href="/" className='px-[8px] py-[5px] border-1 border-primary items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><TwitterBlue /></Link>
+          <Link href="/" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Facebook /></Link>
+            <Link href="/" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><Instagram /></Link>
+            <Link href="/" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Twitter/></Link>
           </div>
         </div>
 
@@ -39,7 +48,7 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-4">Customers Support</h3>
           <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
-          <ul className="space-y-2 text-sm  ">
+          <ul className="space-y-2 text-sm  text-white">
               {navLinks.map((link) => (
                 <li key={link.href} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>
                   <Link
@@ -52,20 +61,23 @@ export default function Footer() {
             </ul>
         </div>
 
-        {/* Categories */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Categories</h3>
-          <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
-          <ul className="space-y-2 text-sm">
-            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» Bolalar adabiyoti</li>
-            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» O`quv kitoblar</li>
-            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» Ilmiy-ommabop kitoblar</li>
-            <li className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>» Badiiy adabiyot </li>
-          </ul>
-        </div>
+      <div>
+      <h3 className="text-lg font-semibold mb-4">Categories</h3>
+      <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
+        <ul className="space-y-2 text-white text-sm">
+        {categories.map((category) => (
+          <li key={category} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>
+            <Link href={`/books?category=${encodeURIComponent(category)}`}>
+            »  {category}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      </div>
+
 
         {/* Newsletter */}
-        <div className='relative'>
+        <div className='relative text-white'>
           <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
           <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
         
@@ -73,7 +85,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter Email Address"
-              className="px-4 py-2 rounded-l-md w-full text-silver active:border-primary border-1 border-primary"
+              className="px-4 py-2 rounded-l-md w-full text-white active:border-primary border-1 border-primary"
             />
             <button type="submit" className="bg-[#29479E] text-white px-4 py-2 rounded-r-md">
         Send
