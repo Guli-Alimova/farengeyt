@@ -4,7 +4,7 @@ import "@/styles/globals.css"
 import Navbar from "@/components/Navbar";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-import Burger from "@/components/Burger"
+
 
 
 const inter = Inter({

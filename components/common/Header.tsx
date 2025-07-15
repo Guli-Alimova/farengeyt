@@ -14,6 +14,8 @@ const navLinks = [
   { href: '/contact', label: 'Aloqa' },
 ]
 
+
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 

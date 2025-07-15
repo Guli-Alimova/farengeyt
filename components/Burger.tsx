@@ -1,6 +1,5 @@
 "use client";
 
-
 type MobileMenuProps = {
   onClose: () => void;
 };
@@ -8,7 +7,15 @@ type MobileMenuProps = {
 export default function MobileMenu({ onClose }: MobileMenuProps) {
   return (
     <div className="md:hidden top-0 left-0 w-full h-screen bg-[#cde3e8] p-4 shadow-xl transition translate-x-0">
-  
+      
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="text-blue-900 text-xl font-bold mb-4"
+      >
+        ✖ Close
+      </button>
+
       {/* Menu Links */}
       <nav className="flex flex-col space-y-3 mb-8 ">
         {["Home", "Shop", "Pages", "Blog", "Contact"].map((item) => (
