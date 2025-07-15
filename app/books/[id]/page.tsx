@@ -1,5 +1,5 @@
 // app/books/[id]/page.tsx
-import books from "../../data/book.json"
+import books from "@/app/data/book.json"
 
   export default function BookDetails({ params }: { params: { id: string } }) {
     const book = books.find((b) => String(b.id) === params.id);

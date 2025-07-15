@@ -2,7 +2,7 @@
 exports.__esModule = true;
 exports.metadata = void 0;
 var google_1 = require("next/font/google");
-require("../styles/globals.css");
+require("@/styles/globals.css");
 var Navbar_1 = require("@/components/Navbar");
 var Header_1 = require("@/components/common/Header");
 var Footer_1 = require("@/components/common/Footer");

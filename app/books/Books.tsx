@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import BookCard from './BookCard';
 import { useSearchParams } from 'next/navigation';
-import books from "../data/book.json"
+import books from "@/app/data/book.json"
 
 
 const categories = [

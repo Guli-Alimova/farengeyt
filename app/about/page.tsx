@@ -1,7 +1,9 @@
 import React from 'react'
 import Created from '@/components/Created/Created'
-import AboutUS from './AboutUS'
-import AboutIntro from './AboutIntro'
+import AboutUS from '@/app/about/AboutUS'
+import AboutIntro from '@/app/about/AboutIntro'
+
+
 
 
 const AboutUs = () => {

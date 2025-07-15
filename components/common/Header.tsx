@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Burger from '../../components/Burger'
-import {Close} from "../../public/svg"
+import Burger from '../Burger'
+import {Close} from "@/public/svg"
 
 const navLinks = [
   { href: '/', label: 'Bosh sahifa' },

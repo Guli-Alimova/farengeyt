@@ -1,6 +1,6 @@
 import React from 'react'
-import BlogIntro from "../blog/BlogIntro"
-import BlogContent from './BlogContent'
+import BlogIntro from "@/app/blog/BlogIntro"
+import BlogContent from '@/app/blog/BlogContent'
 
 const page = () => {
   return (

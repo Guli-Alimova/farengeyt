@@ -3,8 +3,8 @@
 exports.__esModule = true;
 var react_1 = require("react");
 var link_1 = require("next/link");
-var Burger_1 = require("../../components/Burger");
-var svg_1 = require("../../public/svg");
+var Burger_1 = require("../Burger");
+var svg_1 = require("@/public/svg");
 var navLinks = [
     { href: '/', label: 'Bosh sahifa' },
     { href: '/about', label: 'Biz haqimizda' },

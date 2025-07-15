@@ -5,7 +5,7 @@ var react_1 = require("react");
 var fa_1 = require("react-icons/fa");
 var BookCard_1 = require("./BookCard");
 var navigation_1 = require("next/navigation");
-var book_json_1 = require("../data/book.json");
+var book_json_1 = require("@/app/data/book.json");
 var categories = [
     'Barchasi',
     'Bolalar adabiyoti',
