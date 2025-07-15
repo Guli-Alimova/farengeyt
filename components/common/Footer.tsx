@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import {  Facebook, Instagram, Twitter } from '@/public/svg'
+import Image from 'next/image';
 
 
 const categories = [
@@ -29,7 +30,7 @@ export default function Footer() {
         <div>
         <div className="w-[86px] max-w-full">
             <Link href="/">
-              <img
+              <Image
                 src="/images/Farengeyt_Press_LOGO_small.png"
                 alt="farengeyt"
                 className="h-auto w-full"
@@ -91,7 +92,7 @@ export default function Footer() {
         Send
             </button>
           </form>
-          <img src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x'/>
+          <Image src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x'/>
         </div>
       </div> 
       </div>

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Burger from '../Burger'
 import {Close} from "@/public/svg"
+import Image from 'next/image'
 
 const navLinks = [
   { href: '/', label: 'Bosh sahifa' },
@@ -21,7 +22,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between py-4">
         {/* Logo */}
         <Link href="/" className="w-[86px] max-w-full">
-          <img
+          <Image
             src="/images/Farengeyt_Press_LOGO_small.png"
             alt="farengeyt"
             className="h-auto w-full"

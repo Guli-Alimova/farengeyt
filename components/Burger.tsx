@@ -1,5 +1,5 @@
 "use client";
-import { Close } from "../public/svg";
+
 
 type MobileMenuProps = {
   onClose: () => void;

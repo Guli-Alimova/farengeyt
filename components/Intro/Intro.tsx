@@ -31,32 +31,32 @@ const Intro = () => {
       </div>
 
       {/* Decorations */}
-      <img
+      <Image
         src="/images/bg-shape.png"
         alt="shape"
         className="hidden lg:inline absolute top-0 left-[488px] lg:w-[750px] w-[200px] z-10"
       />
-      <img
+      <Image
         src="/images/frame-2.png"
         alt="frame"
         className="hidden lg:inline absolute top-0 left-[36%] w-[254px]  animate-float-x"
       />
-      <img
+      <Image
         src="/images/frame-shape.png"
         alt="shape"
         className="hidden lg:inline absolute bottom-[28%] right-[24%] w-[185px] animate-float-x"
       />
-      <img
+      <Image
         src="/images/xstar.png"
         alt="star"
         className="absolute top-[31%] right-[38%] w-[55px] animate-rotate-half "
       />
-      <img
+      <Image
         src="/images/book.png"
         alt=""
         className="absolute bottom-[1%] left-[-1%] w-[216px] rotate-[-10deg]"
       />
-      <img
+      <Image
         src="/images/frame-2.png"
         alt=""
         className="hidden lg:inline absolute bottom-[0%] right-[42%] w-[254px] opacity-70 animate-float-y"

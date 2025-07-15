@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Email, Facebook, Instagram, Twitter } from '@/public/svg'
+import {  Facebook, Instagram, Twitter } from '@/public/svg'
 
 const Navbar = () => {
   return (

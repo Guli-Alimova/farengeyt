@@ -19,7 +19,7 @@ const categories = [
 export default function Books() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState(categories[0]);
-  const [sorting, setSorting] = useState('default');
+ 
 
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category'); // URL'dan o'qish
