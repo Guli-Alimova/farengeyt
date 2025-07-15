@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 type Category = {
   id: number
@@ -42,7 +43,7 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({
           </Link>
         ) : (
           <div className="relative z-10 flex flex-col items-center">
-            <img
+            <Image
               src={image}
               alt={title}
               className="w-[90px] h-[120px] object-cover rounded"

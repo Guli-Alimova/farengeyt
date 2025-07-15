@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react'
+import Image from 'next/image';
 type FeaturedBookCardProps = {
   id:number;
   image: string;
@@ -20,7 +21,7 @@ const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
   return (
     <div   className="w-full max-w-[200px] flex flex-col gap-2">
       <div className="relative">
-        <img src={image} alt={title} className="rounded-lg" />
+        <Image src={image} alt={title} className="rounded-lg" />
       </div>
       <p className="text-xs text-secondary">{category}</p>
       <h3 className="font-semibold text-primary leading-tight">{title}</h3>

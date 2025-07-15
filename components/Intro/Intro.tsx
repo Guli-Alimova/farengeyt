@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 const Intro = () => {
   return (
@@ -20,7 +21,7 @@ const Intro = () => {
 
           {/* Image Section */}
           <div className=" pt-10 lg:pt-70 top-[80px] relative ">
-            <img
+            <Image
               src="/images/hero-book.png"
               alt="hero girl"
               className="w-[300px] hidden lg:inline md:w-[400px] lg:w-[500px] xl:w-[589px] z-50 animate-float-x"

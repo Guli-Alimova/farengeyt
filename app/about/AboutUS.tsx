@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const AboutUS = () => {
   return (
@@ -6,7 +7,7 @@ const AboutUS = () => {
     <div className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
 {/* Chap rasm qismi */}
 <div className="relative">
-<img
+<Image
   src="/images/09.jpg"
   alt="Reading book"
   className="w-full rounded-lg"

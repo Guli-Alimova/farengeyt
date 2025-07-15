@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function ContactMain() {
     return (
       <main className="min-h-screen p-6">
@@ -18,7 +19,7 @@ export default function ContactMain() {
               <p className="text-lg font-semibold">4517 Washington ave.</p>
             </div>
             <div className="mt-4">
-              <img
+              <Image
                 src="/images/10.jpg" // public papkaga rasm joylashtiring
                 alt="Contact"
                 className="rounded-lg"

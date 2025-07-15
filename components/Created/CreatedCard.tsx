@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 
 type CreatedCardProps = {
     name: string;
@@ -11,8 +12,8 @@ type CreatedCardProps = {
     return (
       <div className="bg-white rounded-xl shadow p-4 text-center w-60 flex flex-col items-center gap-4">
         <div className="relative">
-          <img src="/images/shape-img.png" alt="shape" />
-          <img
+          <Image src="/images/shape-img.png" alt="shape" />
+          <Image
             src={image}
             alt={name}
             className="w-24 h-24 rounded-full object-cover mx-auto border-1 border-white shadow absolute top-3 left-6"
