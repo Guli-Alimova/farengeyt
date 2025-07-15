@@ -2,6 +2,13 @@
 import books from "@/app/data/book.json";
 import Image from "next/image";
 
+interface Book {
+  id: string | number;
+  title: string;
+  description?: string;
+  image: string;
+}
+
 type PageProps = {
   params: {
     id: string;
@@ -9,7 +16,9 @@ type PageProps = {
 };
 
 export default async function BookDetails({ params }: PageProps) {
-  const book = books.find((b) => String(b.id) === params.id);
+  const book: Book | undefined = books.find(
+    (b) => String(b.id) === params.id
+  );
 
   if (!book) {
     return <div className="p-10 text-red-500">Kitob topilmadi</div>;
