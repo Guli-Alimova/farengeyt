@@ -21,7 +21,7 @@ const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
   return (
     <div   className="w-full max-w-[200px] flex flex-col gap-2">
       <div className="relative">
-        <Image src={image} alt={title} className="rounded-lg" />
+        <Image src={image} alt={title} className="rounded-lg" width={148} height={213} />
       </div>
       <p className="text-xs text-secondary">{category}</p>
       <h3 className="font-semibold text-primary leading-tight">{title}</h3>

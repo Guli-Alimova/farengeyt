@@ -28,6 +28,8 @@ const Header = () => {
             src="/images/Farengeyt_Press_LOGO_small.png"
             alt="farengeyt"
             className="h-auto w-full"
+            width={300}
+            height={300}
           />
         </Link>
 

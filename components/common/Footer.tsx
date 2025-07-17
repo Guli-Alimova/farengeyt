@@ -34,6 +34,8 @@ export default function Footer() {
                 src="/images/Farengeyt_Press_LOGO_small.png"
                 alt="farengeyt"
                 className="h-auto w-full"
+                height={300}
+                width={300}
               />
             </Link>
           </div>
@@ -92,7 +94,7 @@ export default function Footer() {
         Send
             </button>
           </form>
-          <Image src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x'/>
+          <Image src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x' width={300} height={300}/>
         </div>
       </div> 
       </div>

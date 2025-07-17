@@ -35,6 +35,8 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({
                 src={image}
                 alt={title}
                 className="w-[90px] h-[120px] object-cover rounded"
+                width={90}
+                height={120}
               />
               <div className="absolute -top-8 right-[-36px] bg-[#29479E] text-secondary text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center">
                 {index < 10 ? `0${index}` : index}
@@ -47,6 +49,8 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({
               src={image}
               alt={title}
               className="w-[90px] h-[120px] object-cover rounded"
+              width={90}
+              height={120}
             />
             <div className="absolute -top-8 right-[-36px] bg-[#29479E] text-secondary text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center">
               {index < 10 ? `0${index}` : index}

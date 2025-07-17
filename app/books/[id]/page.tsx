@@ -1,11 +1,28 @@
+import { Metadata } from "next";
 import books from "@/app/data/book.json";
 import Image from "next/image";
 
-export default async function BookDetails({
-  params,
-}: {
-  params: { id: string };
-}) {
+// Static params
+export async function generateStaticParams() {
+  return books.map((book) => ({
+    id: String(book.id),
+  }));
+}
+
+// Metadata
+export const metadata: Metadata = {
+  title: "Book Details",
+};
+
+// ✅ To‘g‘rilangan tip
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+// Component
+export default async function BookDetails({ params }: Props) {
   const book = books.find((b) => String(b.id) === params.id);
 
   if (!book) {
@@ -13,25 +30,22 @@ export default async function BookDetails({
   }
 
   return (
-    <>
-      <div className="container">
-        <div className="flex justify-between items-center gap-4 p-6">
-          <Image
-            src={book.image}
-            alt={book.title}
-            className="w-full h-96 object-cover rounded"
-            width={500}
-            height={500}
-          />
-          <div>
-            <h1 className="text-3xl font-bold mt-6">{book.title}</h1>
-            <p className="mt-4 text-gray-700">
-              {book.description || "Bu kitob haqida hozircha ma'lumot yo'q."}
-            </p>
-          </div>
+    <div className="container">
+      <div className="flex justify-between items-center gap-4 p-6">
+        <Image
+          src={book.image}
+          alt={book.title}
+          className="w-full h-96 object-cover rounded"
+          width={500}
+          height={500}
+        />
+        <div>
+          <h1 className="text-3xl font-bold mt-6">{book.title}</h1>
+          <p className="mt-4 text-gray-700">
+            {book.description || "Bu kitob haqida hozircha ma'lumot yo'q."}
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
-
