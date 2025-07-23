@@ -11,6 +11,8 @@ const AboutUS = () => {
   src="/images/09.jpg"
   alt="Reading book"
   className="w-full rounded-lg"
+  width={300}
+  height={300}
 />
 <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
   <svg

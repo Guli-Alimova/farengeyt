@@ -9,8 +9,9 @@ const ContactIntro = () => {
           <Image
             src="/images/book.png"
             alt="Colorful books"
-            fill
             className="object-contain w-[246px]"
+            width={300}
+            height={300}
             />
         </div>
 
@@ -24,8 +25,9 @@ const ContactIntro = () => {
           <Image
             src="/images/book2.png"
             alt="Stacked books"
-            fill
             className="object-contain w-[246px]"
+            width={300}
+            height={300}
           />
         </div>
       </div>

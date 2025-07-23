@@ -9,9 +9,10 @@ import books from "@/app/data/book.json"
 const categories = [
   'Barchasi',
   'Bolalar adabiyoti',
-  "O'quv kitoblar",
-  'Ilmiy-ommabop kitoblar',
   'Badiiy adabiyot',
+  "O'quv kitoblari",
+  'Ilmiy-ommabop kitoblar',
+  
 ];
 
 
@@ -86,6 +87,8 @@ export default function Books() {
               id={book.id}
               image={book.image}
               title={book.title}
+              subtitle={book.subtitle}
+              description={book.description}
             />
           ))}
         </div>

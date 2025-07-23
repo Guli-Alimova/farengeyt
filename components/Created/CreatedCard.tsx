@@ -12,11 +12,13 @@ type CreatedCardProps = {
     return (
       <div className="bg-white rounded-xl shadow p-4 text-center w-60 flex flex-col items-center gap-4">
         <div className="relative">
-          <Image src="/images/shape-img.png" alt="shape" />
+          <Image src="/images/shape-img.png" alt="shape" width={50} height={50}/>
           <Image
             src={image}
             alt={name}
             className="w-24 h-24 rounded-full object-cover mx-auto border-1 border-white shadow absolute top-3 left-6"
+            width={24}
+            height={24}
           />
          
         </div>

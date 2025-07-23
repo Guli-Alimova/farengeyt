@@ -12,6 +12,8 @@ const BlogContent = () => {
           alt="Article image"
           fill
           className="object-cover"
+          width={300}
+          height={300}
         />
       </div>
 

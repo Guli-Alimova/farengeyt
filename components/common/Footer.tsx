@@ -41,9 +41,9 @@ export default function Footer() {
           </div>
        
           <div className="flex gap-3 mt-4">
-          <Link href="/" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Facebook /></Link>
-            <Link href="/" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><Instagram /></Link>
-            <Link href="/" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Twitter/></Link>
+          <Link href="https://facebook.com/FarengeytPress" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Facebook /></Link>
+            <Link href="https://instagram.com/farengeyt_press" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><Instagram /></Link>
+            <Link href="https://x.com/FarengeytPress" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Twitter/></Link>
           </div>
         </div>
 

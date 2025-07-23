@@ -23,6 +23,8 @@ export default function ContactMain() {
                 src="/images/10.jpg" // public papkaga rasm joylashtiring
                 alt="Contact"
                 className="rounded-lg"
+                width={300}
+                height={300}
               />
             </div>
           </div>

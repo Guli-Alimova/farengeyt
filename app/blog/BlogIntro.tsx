@@ -27,6 +27,8 @@ const BlogIntro = () => {
                alt="Stacked books"
                fill
                className="object-contain w-[246px]"
+               width={300}
+               height={300}
              />
            </div>
       </div>

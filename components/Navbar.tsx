@@ -30,9 +30,9 @@ const Navbar = () => {
 
           {/* O‘ng tomon – Ijtimoiy tarmoqlar va foydalanuvchi */}
           <div className="flex items-center gap-6">
-            <Link href="/"><Facebook /></Link>
-            <Link href="/"><Instagram /></Link>
-            <Link href="/"><Twitter /></Link>
+            <Link href="https://facebook.com/FarengeytPress"><Facebook /></Link>
+            <Link href="https://instagram.com/farengeyt_press"><Instagram /></Link>
+            <Link href="https://x.com/FarengeytPress"><Twitter /></Link>
           </div>
 
         </div>
