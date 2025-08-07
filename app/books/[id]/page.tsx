@@ -12,13 +12,14 @@ export async function generateStaticParams() {
 export const metadata: Metadata = {
   title: "Book Details",
 };
+
 type BookDetailsPageProps = {
   params: {
     id: string;
   };
 };
 
-export default function BookDetails({ params }:BookDetailsPageProps) {
+export default async function BookDetails({ params }: BookDetailsPageProps) {
   const book = books.find((b) => String(b.id) === params.id);
 
   if (!book) {
@@ -45,7 +46,7 @@ export default function BookDetails({ params }:BookDetailsPageProps) {
 
           {/* Karusel (asosiy + 4 rasm) */}
           <div className="flex gap-5 mb-6">
-            {[book.image, ...book.gallery || []].map((img, i) => (
+            {[book.image, ...(book.gallery || [])].map((img, i) => (
               <Image
                 key={i}
                 src={img}
@@ -59,7 +60,6 @@ export default function BookDetails({ params }:BookDetailsPageProps) {
 
           {/* Ma'lumotlar qatori */}
           <div className="border p-4 rounded-lg shadow-sm grid grid-cols-2 gap-2 text-sm">
-
             <p><span className="font-semibold">Total page:</span> {book.totalPage || "N/A"}</p>
             <p><span className="font-semibold">Publish Year:</span> {book.publishYear || "N/A"}</p>
             <p><span className="font-semibold">Category:</span> {book.category || "N/A"}</p>
