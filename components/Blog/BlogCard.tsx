@@ -1,33 +1,38 @@
-import React from 'react'
-import Image from 'next/image';
-interface BlogCardProps {
-    title: string;
-    date: string;
-    author: string;
-    image: string;
-    category?: string;
-  }
-  
-  export default function BlogCard({ title, date, author, image, category = "Activities" }: BlogCardProps) {
-    return (
-      <div className="bg-white rounded-xl shadow-md overflow-hidden w-full max-w-sm">
-        <div className="pt-5 px-5 relative ">
-          <Image src={image} alt={title} className="w-full h-52 object-cover" height={52}  width={100}/>
-          <span className="absolute top-8 left-8 bg-secondary text-white text-xs font-medium px-2 py-1 rounded">
-            {category}
-          </span>
-        </div>
-        <div className="p-4">
-          <div className="flex items-center text-sm text-silver gap-4 mb-2">
-            <span className="flex items-center gap-1"><i className="ri-calendar-line"></i> {date}</span>
-            <span className="flex items-center gap-1"><i className="ri-user-line"></i> By {author}</span>
-          </div>
-          <h3 className="font-semibold text-md text-primary">{title}</h3>
-          <a href="#" className="text-cyan-800 text-sm font-medium mt-3 inline-flex items-center gap-1">
-            Read More <span>&rarr;</span>
-          </a>
-        </div>
+// components/InstagramCard.tsx
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+interface PostProps {
+  image: string;
+  title: string;
+  date: string;
+  author: string;
+  content:string;
+  url: string;
+}
+
+const BlogCard = ({
+  image,
+  title,
+  date,
+  author,
+  content,
+  url,
+}: PostProps) => {
+  return (
+    <div className="rounded-xl overflow-hidden shadow-md">
+      <Link href={url} target="_blank">
+        <Image src={image} alt={title} width={400} height={300} />
+      </Link>
+      <div className="p-4">
+        <div className="text-sm text-gray-400"> {date}</div>
+        <h3 className="text-lg font-bold">{title}</h3>
+        <p className="text-sm text-gray-600">{content}</p>
+        <div className="text-xs text-gray-500 mt-2">by {author}</div>
       </div>
-    );
-  }
-  
+    </div>
+  );
+};
+
+export default BlogCard;

@@ -1,44 +1,54 @@
-import React from 'react'
+// pages/blog.tsx
 
-import BlogCard from './BlogCard';
-
-const blogs = [
+import BlogCard from "./BlogCard";
+// posts.ts
+const posts = [
   {
-    title: 'Montes Suspendisse Massa Curae Malesuada',
-    date: 'Feb 10, 2024',
-    author: 'Admin',
-    image: '/images/09.jpg',
+    "id":1,
+    "title": "Hujayraning kashf etilishi",
+    "date": "2025-07-05",
+    "author": "@farengeyt_press",
+    "content": "Robert Huk mikroskop orqali hujayralarni ko‘rib chiqqan ilk olimlardan biri bo‘lgan. U o‘z kashfiyotini 1665-yilda e’lon qilgan.",
+    "image": "/images/post1.png",
+    "url":"https://www.instagram.com/p/DLuS_qcxiAB/?img_index=1"
   },
   {
-    title: 'Playful Picks Paradise: Kids’ Essentials With Dash.',
-    date: 'Mar 20, 2024',
-    author: 'Admin',
-    image: '/images/10.jpg',
+    "id":2,
+    "title": "Moliiyaviy savodxonlik uchun hamkorlik",
+    "date": "2025-06-20",
+    "author": "@farengeyt_press",
+    "content": "Anorbank va Usborne bolalar uchun moliyaviy savodxonlik darsliklarini taqdim etmoqda. Bu hamkorlik yangi bosqichga chiqmoqda.",
+    "image": "/images/post2.png",
+    "url":"https://www.instagram.com/p/DLHDQ9_IjyD/?img_index=1",
   },
   {
-    title: 'Tiny Emporium: Playful Picks For Kids’ Delightful Days.',
-    date: 'Jun 14, 2024',
-    author: 'Admin',
-    image: '/images/11.jpg',
-  },
+    "id":3,
+    "title": "Behalovat avlod",
+    "date": "2025-05-19",
+    "author": "@farengeyt_press",
+    "content": "Jonatan Hait bolalarning ruhiy holati va texnologiyalarning ularning hayotiga ta’siri haqida yozadi.",
+    "image": "/images/post3.png",
+    "url":"https://www.instagram.com/p/DJ0rEbUoZse/"
+  }
+]
 
-];
-
-export default function LatestBlog() {
+export default function Blog() {
   return (
-    <section className=" py-14  text-center">
-        <div className="container">
-             <h2 className="text-3xl font-bold text-primary">Our Latest Blog</h2>
-      <p className="text-gray-600 mt-2">Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-      <p className="text-silver mb-10">Donec at nulla nulla. Duis posuere ex lacus</p>
+    <section id="blog" className="py-20">
+      <div className="container">
+        <div className="text-center">
+        <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">
+          <h3>Blogs</h3>
+        </h2>
+      </div>
+       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {posts.map((post) => (
+        <BlogCard key={post.id} {...post} />
+      ))}
+    </div>
+      </div>
 
-      <div className="flex  justify-between gap-3">
-        {blogs.map((blog, index) => (
-          <BlogCard key={index} {...blog} />
-        ))}
-      </div>    
-        </div>
- 
     </section>
+   
   );
 }

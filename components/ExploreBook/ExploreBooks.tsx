@@ -18,17 +18,17 @@ const categories = [
   {
     id: 2,
     image: '/images/02.png',
-    title: 'O`quv kitoblar',
+    title: 'Badiiy adabiyot',
   },
   {
     id: 3,
     image: '/images/04.png',
-    title: 'Ilmiy-ommabop kitoblar',
+    title: "O'quv kitoblari",
   },
   {
     id: 4,
     image: '/images/05.png',
-    title: ' Badiiy adabiyot',
+    title: 'Ilmiy-ommabop kitoblar',
   },
 
 ]
@@ -64,6 +64,7 @@ const ExploreBooks = () => {
             index={index + 1}
             image={item.image}
             title={item.title}
+            category={item}
            
          />
         

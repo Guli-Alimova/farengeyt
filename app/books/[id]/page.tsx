@@ -14,13 +14,16 @@ export const metadata: Metadata = {
 };
 
 type BookDetailsPageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 export default async function BookDetails({ params }: BookDetailsPageProps) {
-  const book = books.find((b) => String(b.id) === params.id);
+  // Next.js 15 da params Promise bo'lib keladi
+  const { id } = await params;
+  
+  const book = books.find((b) => String(b.id) === id);
 
   if (!book) {
     return <div className="p-10 text-red-500">Kitob topilmadi</div>;
@@ -37,6 +40,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
             width={300}
             height={400}
             className="rounded shadow-md object-contain"
+            priority
           />
         </div>
 
@@ -48,9 +52,9 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
           <div className="flex gap-5 mb-6">
             {[book.image, ...(book.gallery || [])].map((img, i) => (
               <Image
-                key={i}
+                key={`gallery-${i}`}
                 src={img}
-                alt={`Gallery image ${i}`}
+                alt={`Gallery image ${i + 1}`}
                 width={60}
                 height={80}
                 className="border rounded hover:scale-105 transition"
@@ -60,12 +64,30 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
 
           {/* Ma'lumotlar qatori */}
           <div className="border p-4 rounded-lg shadow-sm grid grid-cols-2 gap-2 text-sm">
-            <p><span className="font-semibold">Total page:</span> {book.totalPage || "N/A"}</p>
-            <p><span className="font-semibold">Publish Year:</span> {book.publishYear || "N/A"}</p>
-            <p><span className="font-semibold">Category:</span> {book.category || "N/A"}</p>
-            <p><span className="font-semibold">Format:</span> {book.format || "N/A"}</p>
-            <p><span className="font-semibold">Language:</span> {book.language || "N/A"}</p>
-            <p><span className="font-semibold">Country:</span> {book.country || "N/A"}</p>
+            <p>
+              <span className="font-semibold">Total page:</span>{" "}
+              {book.totalPage || "N/A"}
+            </p>
+            <p>
+              <span className="font-semibold">Publish Year:</span>{" "}
+              {book.publishYear || "N/A"}
+            </p>
+            <p>
+              <span className="font-semibold">Category:</span>{" "}
+              {book.category || "N/A"}
+            </p>
+            <p>
+              <span className="font-semibold">Format:</span>{" "}
+              {book.format || "N/A"}
+            </p>
+            <p>
+              <span className="font-semibold">Language:</span>{" "}
+              {book.language || "N/A"}
+            </p>
+            <p>
+              <span className="font-semibold">Country:</span>{" "}
+              {book.country || "N/A"}
+            </p>
           </div>
 
           {/* Tavsif */}
@@ -76,13 +98,20 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
       </div>
 
       {/* Footer: Available on */}
-      <div className="mt-10 text-sm">
-        <p className="mb-2 font-semibold">Hamkorlarimiz:</p>
-        <div className="flex items-center gap-6">
-          <Image src="/logos/customerio.png" alt="Customerio" width={90} height={20} />
-          <Image src="/logos/amazon.png" alt="Amazon" width={90} height={20} />
+      {book.hamkor && (
+        <div className="mt-10 text-sm">
+          <p className="mb-2 font-semibold">Hamkorlarimiz:</p>
+          <div className="flex items-center gap-6">
+            <Image 
+              src={book.hamkor} 
+              alt="Partner" 
+              width={90} 
+              height={20}
+              className="object-contain"
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

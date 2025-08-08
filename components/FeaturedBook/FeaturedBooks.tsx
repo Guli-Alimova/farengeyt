@@ -78,7 +78,7 @@ export default function FeaturedBooks() {
           1024: { slidesPerView: 4 },
           
         }}
-       
+        className="!pb-20"
       >
         {books.map((item, index) => (
            <SwiperSlide  key={index} >
