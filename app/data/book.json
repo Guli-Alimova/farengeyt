@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "/images/Pul.jpg",
+    "image": "/images/PUL.jpg",
     "title": "Pul",
     "category": "O'quv kitoblar",
     "subtitle": "Boshlang'ich saboqlar",
@@ -11,7 +11,7 @@
     "format": "Qattiq qoplamli",
     "language": "O'zbek tili",
     "country": "O'zbekiston",
-    "gallery": ["/books/book.png"],
+    "gallery": ["/books/PUL.jpg"],
     "hamkor": "/images/Anorbank_mini.png"
   },
   {

@@ -12,7 +12,7 @@ import FeaturedBookCard from './FeaturedBookCard';
 const books = [
   {
     id: 1,
-    image: '/images/Pul.jpg',
+    image: '/images/PUL.jpg',
     title: 'Pul',
     category:"O'quv kitoblar",
     subtitle:"Boshlang'ich saboqlar"
