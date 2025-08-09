@@ -1,18 +1,10 @@
-import React from 'react'
-import Books from './Books'
+import { Suspense } from "react";
+import BooksContent from "./BooksContent";
 
-
-const page = () => {
+export default function Page() {
   return (
-
-    <div className="flex">
-      <div className="container">
-     <Books/>    
-      </div>
-    
-   </div>
-
-  )
+    <Suspense fallback={<div className="p-8">Yuklanmoqda...</div>}>
+      <BooksContent />
+    </Suspense>
+  );
 }
-
-export default page
