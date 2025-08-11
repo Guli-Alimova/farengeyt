@@ -13,7 +13,7 @@ const categories = [
   {
     id: 1,
     image: '/images/01.png',
-    title: 'Bolalar adabiyot',
+    title: 'Bolalar adabiyoti',
   },
   {
     id: 2,

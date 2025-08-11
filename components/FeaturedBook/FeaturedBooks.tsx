@@ -14,42 +14,42 @@ const books = [
     id: 1,
     image: '/images/PUL.jpg',
     title: 'Pul',
-    category:"O'quv kitoblar",
+    category:"O'quv kitoblari",
     subtitle:"Boshlang'ich saboqlar"
   },
   {
     id: 2,
     image: '/images/BIOLOGIYA.jpg',
     title: 'Biologiya',
-    category:"O'quv kitoblar",
+    category:"O'quv kitoblari",
     subtitle:"Boshlang'ich saboqlar"
   },
   {
     id: 3,
     image: '/images/FIZIKA.jpg',
     title: 'Fizika',
-    category:"O'quv kitoblar",
+    category:"O'quv kitoblari",
     subtitle:"Boshlang'ich saboqlar"
   },
   {
     id: 4,
     image: '/images/IQTISODIYOT.jpg',
     title: 'Iqtisodiyot',
-    category:"O'quv kitoblar",
+    category:"O'quv kitoblari",
     subtitle:"Boshlang'ich saboqlar"
   },
   {
     id: 5,
     image: '/images/KIMYO.jpg',
     title: 'Kimyo',
-    category:"O'quv kitoblar",
+    category:"O'quv kitoblari",
     subtitle:"Boshlang'ich saboqlar"
   },
   {
     id: 6,
     image: '/images/MATEMATIKA.jpg',
     title: 'Matematika',
-    category:"O'quv kitoblar",
+    category:"O'quv kitoblari",
     subtitle:"Boshlang'ich saboqlar"
   },
 ];
@@ -58,7 +58,7 @@ export default function FeaturedBooks() {
   return (
     <section className="py-20">
       <div className="container">
-           <div className="flex justify-between items-center mb-6">
+           <div className=" text-center mb-6">
         <h2 className="text-3xl font-bold">Featured Books</h2>
       </div>
       <div className="flex flex-wrap gap-6">

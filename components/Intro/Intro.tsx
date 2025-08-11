@@ -10,8 +10,8 @@ const Intro = () => {
           {/* Text Section */}
           <div className="text-center lg:text-left max-w-xl">
             <p className="text-secondary text-[20px] italic mb-4">Up To 30% Off</p>
-            <h1 className="text-[32px] sm:text-[56px] lg:text-[74px] leading-[1.2] font-bold md:text-center text-primary mb-8 font-inter w-[735px]">
-              Get Your New Book <br className="hidden md:block" />
+            <h1 className="text-[32px] sm:text-[56px] lg:text-[74px] leading-[1.2] font-bold md:text-center text-primary mb-8 font-inter lg:w-[735px] w-[450px]">
+              Get Your New Book 
               With The Best Price
             </h1>
             <Link href="/about" className="bg-[#ED553B] hover:bg-[#14548a] text-white text-[16px] px-6 py-3 rounded-full shadow-md font-semibold transition duration-300">
@@ -57,14 +57,14 @@ const Intro = () => {
       <Image
         src="/images/xstar.png"
         alt="star"
-        className="absolute top-[31%] right-[38%] w-[55px] animate-rotate-half "
+        className="hidden lg:inline absolute top-[31%] right-[38%] w-[55px] animate-rotate-half "
         width={55}
         height={55}
       />
       <Image
         src="/images/book.png"
         alt=""
-        className="absolute bottom-[1%] left-[-1%] w-[216px] rotate-[-10deg]"
+        className="hidden lg:inline absolute bottom-[1%] left-[-1%] w-[216px] rotate-[-10deg]"
         width={216}
         height={216}
       />
