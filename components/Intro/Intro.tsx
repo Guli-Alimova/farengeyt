@@ -20,11 +20,11 @@ const Intro = () => {
           </div>
 
           {/* Image Section */}
-          <div className=" pt-10 lg:pt-70 top-[80px] relative ">
+          <div className=" pt-10 lg:pt-70 top-[80px] left-[60px] relative ">
             <Image
               src="/images/hero-book.png"
               alt="hero girl"
-              className="w-[300px] hidden lg:inline md:w-[400px] lg:w-[500px] xl:w-[589px] z-50 animate-float-x"
+              className="  w-[300px] hidden lg:inline md:w-[400px] lg:w-[500px] xl:w-[589px] z-50 animate-float-x"
               width={300}
               height={300}
             />

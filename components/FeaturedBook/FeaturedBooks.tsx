@@ -61,7 +61,7 @@ export default function FeaturedBooks() {
            <div className=" text-center mb-6">
         <h2 className="text-3xl font-bold">Featured Books</h2>
       </div>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap ">
       <Swiper
       modules={[Pagination, Autoplay]}
       autoplay={{
@@ -69,7 +69,7 @@ export default function FeaturedBooks() {
         disableOnInteraction: false, // foydalanuvchi interactiondan keyin ham davom etadi
       }}
       loop={true} // qayta aylanish
-        spaceBetween={3}
+        spaceBetween={20}
         slidesPerView={1}
         pagination={{ clickable: true }}
         breakpoints={{
@@ -80,7 +80,7 @@ export default function FeaturedBooks() {
         }}
         className="!pb-20"
       >
-        {books.map((item, index) => (
+        {books?.map((item, index) => (
            <SwiperSlide  key={index} >
           <FeaturedBookCard
           key={item.id}
