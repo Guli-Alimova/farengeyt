@@ -71,6 +71,8 @@ const Intro = () => {
             src="/images/imagesplane.png"
             alt="plane"
             className="plane-anim w-[60px] h-[60px]"
+            width={60}
+            height={60}
           />
         </div>
       </div>

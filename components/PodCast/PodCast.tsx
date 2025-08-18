@@ -27,7 +27,7 @@ export default function PodCast() {
   <div className="container mx-auto px-4">
     <h2 className="text-3xl font-bold text-primary mb-6">Explore Podcasts</h2>
 
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       {podcasts.map((podcast, index) => (
         <PodcastCard key={index} {...podcast} />
       ))}
