@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Burger from '../Burger'
-import {Close} from "@/public/svg"
+import { Close } from "@/public/svg"
 import Image from 'next/image'
 
 const navLinks = [
@@ -13,8 +13,6 @@ const navLinks = [
   { href: '#blog', label: 'Blog' },
   { href: '/contact', label: 'Aloqa' },
 ]
-
-
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -49,20 +47,41 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Burger icon */}
+        {/* Burger icon (faqat ☰ turadi, o‘zgarmaydi) */}
         <button
           className="md:hidden text-2xl font-bold"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setIsMenuOpen(true)}
           aria-label="Open Menu"
         >
-         {isMenuOpen ? <Close/> : "☰"}
+          ☰
         </button>
       </div>
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-primary">
-          <Burger onClose={() => setIsMenuOpen(false)} />
+        <div className="fixed inset-0 z-40">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setIsMenuOpen(false)}
+          />
+
+          {/* Sidebar */}
+          <div className="relative md:hidden bg-[#cde3e8] w-3/4 max-w-xs h-full ml-auto shadow-xl p-4">
+            {/* Close button (X icon ichkarida) */}
+            {/* <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-4 right-4"
+              aria-label="Close Menu"
+            >
+              <Close />
+            </button> */}
+
+            {/* Burger component */}
+            <div>
+              <Burger onClose={() => setIsMenuOpen(false)} />
+            </div>
+          </div>
         </div>
       )}
     </header>

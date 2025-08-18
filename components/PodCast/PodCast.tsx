@@ -23,16 +23,17 @@ const podcasts = [
 
 export default function PodCast() {
   return (
-    <section id="podcast" className=" bg-blue-100 py-14 text-center">
-      <div className="container">
-           <h2 className="text-3xl font-bold text-primary mb-6">Explore Podcasts</h2>
-      <div className="flex justify-between gap-4">
-        {podcasts.map((podcast, index) => (
-          <PodcastCard key={index} {...podcast} />
-        ))}
-      </div> 
-      </div>
-  
-    </section>
+ <section id="podcast" className="bg-blue-100 py-14 text-center">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-primary mb-6">Explore Podcasts</h2>
+
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {podcasts.map((podcast, index) => (
+        <PodcastCard key={index} {...podcast} />
+      ))}
+    </div>
+  </div>
+</section>
+
   );
 }

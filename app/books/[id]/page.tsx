@@ -30,16 +30,16 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
   }
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-10">
       <div className="grid md:grid-cols-2 gap-6">
         {/* Asosiy rasm */}
         <div className="flex justify-center">
           <Image
             src={book.image}
             alt={book.title}
-            width={300}
-            height={400}
-            className="rounded shadow-md object-contain"
+            width={450}
+            height={300}
+            className="rounded shadow-md object-contain w-full"
             priority
           />
         </div>
@@ -55,9 +55,9 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
                 key={`gallery-${i}`}
                 src={img}
                 alt={`Gallery image ${i + 1}`}
-                width={60}
+                width={100}
                 height={80}
-                className="border rounded hover:scale-105 transition"
+                className="border rounded hover:scale-105 transition object-cover"
               />
             ))}
           </div>

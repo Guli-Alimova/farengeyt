@@ -1,12 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import "../../styles/globals.css"
 
 const Intro = () => {
   return (
-    <div className=" relative bg-blue-100 overflow-hidden    pb-20">
+    <div className="relative bg-blue-100 overflow-hidden pb-20">
       <div className="container">
-        <div className="flex flex-col lg:flex-row items-center justify-between pt-[25px]  relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between pt-[25px] relative z-10">
           {/* Text Section */}
           <div className="text-center lg:text-left max-w-xl">
             <p className="text-secondary text-[20px] italic mb-4">Up To 30% Off</p>
@@ -20,11 +21,11 @@ const Intro = () => {
           </div>
 
           {/* Image Section */}
-          <div className=" pt-10 lg:pt-70 top-[80px] left-[60px] relative ">
+          <div className="pt-10 lg:pt-70 top-[80px] left-[60px] relative ">
             <Image
               src="/images/hero-book.png"
               alt="hero girl"
-              className="  w-[300px] hidden lg:inline md:w-[400px] lg:w-[500px] xl:w-[589px] z-50 animate-float-x"
+              className="w-[300px] hidden lg:inline md:w-[400px] lg:w-[500px] xl:w-[589px] z-50 animate-float-x"
               width={300}
               height={300}
             />
@@ -43,40 +44,39 @@ const Intro = () => {
       <Image
         src="/images/frame-2.png"
         alt="frame"
-        className="hidden lg:inline absolute top-0 left-[36%] w-[254px]  animate-float-x"
+        className="hidden lg:inline absolute top-0 left-[36%] w-[254px] animate-float-x"
         width={254}
         height={254}
       />
-      <Image
-        src="/images/frame-shape.png"
-        alt="shape"
-        className="hidden lg:inline absolute bottom-[28%] right-[24%] w-[185px] animate-float-x"
-        width={185}
-        height={185}
-      />
-      <Image
-        src="/images/xstar.png"
-        alt="star"
-        className="hidden lg:inline absolute top-[31%] right-[38%] w-[55px] animate-rotate-half "
-        width={55}
-        height={55}
-      />
-      <Image
-        src="/images/book.png"
-        alt=""
-        className="hidden lg:inline absolute bottom-[1%] left-[-1%] w-[216px] rotate-[-10deg]"
-        width={216}
-        height={216}
-      />
-      <Image
-        src="/images/frame-2.png"
-        alt=""
-        className="hidden lg:inline absolute bottom-[0%] right-[42%] w-[254px] opacity-70 animate-float-y"
-        width={254}
-        height={254}
-      />
+
+      {/* ✈️ Samolyot va trail */}
+      <div className="absolute bottom-[28%] right-[24%] w-[185px] z-50 hidden lg:inline-block">
+        <div className="relative h-[250px] w-[400px] overflow-visible">
+          {/* Trail chiziq */}
+          <svg
+            className="absolute w-[400px] h-[200px]"
+            viewBox="0 0 400 200"
+            fill="none"
+          >
+            <path
+              d="M0 150 Q150 50, 300 100 T400 50"
+              stroke="blue"
+              strokeWidth="2"
+              className="trail-path"
+            />
+          </svg>
+
+          {/* Samolyot */}
+          <img
+            src="/images/imagesplane.png"
+            alt="plane"
+            className="plane-anim w-[60px] h-[60px]"
+          />
+        </div>
+      </div>
     </div>
-  );
-};
+  )
+}
 
 export default Intro;
+

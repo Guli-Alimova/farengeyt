@@ -67,6 +67,7 @@ export default function FeaturedBooks() {
       autoplay={{
         delay: 5000, // har 5 soniyada avtomatik o'tadi
         disableOnInteraction: false, // foydalanuvchi interactiondan keyin ham davom etadi
+         pauseOnMouseEnter: true, 
       }}
       loop={true} // qayta aylanish
         spaceBetween={20}

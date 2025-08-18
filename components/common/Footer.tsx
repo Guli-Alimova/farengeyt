@@ -80,7 +80,7 @@ export default function Footer() {
 
 
         {/* Newsletter */}
-        <div className='relative text-white'>
+        {/* <div className='relative text-white'>
           <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
           <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
         
@@ -95,7 +95,7 @@ export default function Footer() {
             </button>
           </form>
           <Image src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x' width={300} height={300}/>
-        </div>
+        </div> */}
       </div> 
       </div>
      

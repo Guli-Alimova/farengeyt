@@ -48,6 +48,7 @@ const ExploreBooks = () => {
       autoplay={{
         delay: 5000, 
         disableOnInteraction: false, 
+         pauseOnMouseEnter: true, 
       }}
       loop={true} // qayta aylanish
         spaceBetween={3}
