@@ -67,7 +67,7 @@ const Intro = () => {
           </svg>
 
           {/* Samolyot */}
-          <img
+          <Image
             src="/images/imagesplane.png"
             alt="plane"
             className="plane-anim w-[60px] h-[60px]"

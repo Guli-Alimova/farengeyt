@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Burger from '../Burger'
-import { Close } from "@/public/svg"
 import Image from 'next/image'
 
 const navLinks = [
