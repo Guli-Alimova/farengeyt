@@ -8,7 +8,7 @@ export default function ContactMain() {
           {/* LEFT SIDE: Contact Info */}
           <div className="bg-primary text-white rounded-lg p-4 space-y-4 ">
             <div>
-              <h3 className="text-sm">Qo'ng'iroq uchun:</h3>
+              <h3 className="text-sm">Qo`ng`iroq uchun:</h3>
               <p className="text-lg font-semibold"> +99890 999 18 19</p>
             </div>
             <div>
