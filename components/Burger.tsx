@@ -37,7 +37,7 @@ export default function Burger({ onClose }: BurgerProps) {
 
       {/* Navigation links */}
       <nav className="flex-1">
-        <ul className="flex flex-col space-y-5 text-lg font-medium text-blue-900 font-inter">
+        <ul className="flex flex-col gap-3 text-center space-y-5 text-lg font-medium text-blue-900 font-inter">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -52,31 +52,7 @@ export default function Burger({ onClose }: BurgerProps) {
         </ul>
       </nav>
 
-      {/* Contact Info */}
-      <div className="mt-10 border-t border-gray-300 pt-6">
-        <h2 className="text-blue-900 font-bold mb-4">Aloqa</h2>
-        <ul className="space-y-3 text-blue-900 text-sm">
-          <li className="flex items-center gap-2">
-            <i className="fa-regular fa-phone"></i>
-            <a href="tel:+998909991819" className="hover:underline">
-              +99890 999 18 19
-            </a>
-          </li>
-          <li className="flex items-center gap-2">
-            <i className="far fa-envelope"></i>
-            <a
-              href="mailto:info@farengeyt.press"
-              className="hover:underline"
-            >
-              info@farengeyt.press
-            </a>
-          </li>
-          <li className="flex items-center gap-2">
-            <i className="far fa-clock"></i>
-            <span>Sunday - Fri: 9 AM - 6 PM</span>
-          </li>
-        </ul>
-      </div>
+    
     </div>
   );
 }

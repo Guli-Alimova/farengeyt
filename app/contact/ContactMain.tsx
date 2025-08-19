@@ -6,26 +6,26 @@ export default function ContactMain() {
          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
   
           {/* LEFT SIDE: Contact Info */}
-          <div className="bg-primary text-white rounded-lg p-6 space-y-6">
+          <div className="bg-primary text-white rounded-lg p-4 space-y-4 ">
             <div>
-              <h3 className="text-sm">Call Us 7/24</h3>
-              <p className="text-lg font-semibold">+208-555-0112</p>
+              <h3 className="text-sm">Qo'ng'iroq uchun:</h3>
+              <p className="text-lg font-semibold"> +99890 999 18 19</p>
             </div>
             <div>
-              <h3 className="text-sm">Make a Quote</h3>
-              <p className="text-lg font-semibold">example@gmail.com</p>
+              <h3 className="text-sm">Email:</h3>
+              <p className="text-lg font-semibold"> info@farengeyt.press</p>
             </div>
             <div>
-              <h3 className="text-sm">Location</h3>
-              <p className="text-lg font-semibold">4517 Washington ave.</p>
+              <h3 className="text-sm">Manzil:</h3>
+              <p className="text-lg font-semibold">Komolon 134 a</p>
             </div>
-            <div className="mt-4">
+            <div className="mt-8 flex justify-center">
               <Image
-                src="/images/10.jpg" // public papkaga rasm joylashtiring
+                src="/images/Full logo anim.gif" // public papkaga rasm joylashtiring
                 alt="Contact"
                 className="rounded-lg"
-                width={300}
-                height={300}
+                width={250}
+                height={250}
               />
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function ContactMain() {
                 <label className="block mb-1 font-medium text-silver">Write Message*</label>
                 <textarea
                   placeholder="Write Message"
-                  className="w-full border rounded-lg p-3 h-32 focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full border rounded-lg p-3 h-55 focus:outline-none focus:ring-2 focus:ring-primary"
                 ></textarea>
               </div>
   

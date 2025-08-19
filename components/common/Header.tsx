@@ -22,7 +22,7 @@ const Header = () => {
         {/* Logo */}
         <Link href="/" className="w-[86px] max-w-full">
           <Image
-            src="/images/Farengeyt_Press_LOGO_small.png"
+            src="/images/burning cycle.gif"
             alt="farengeyt"
             className="h-auto w-full"
             width={300}
@@ -66,7 +66,7 @@ const Header = () => {
           />
 
           {/* Sidebar */}
-          <div className="relative md:hidden bg-[#cde3e8] w-3/4 max-w-xs h-full ml-auto shadow-xl p-4">
+          <div className="relative md:hidden bg-[#cde3e8] w-3/4 max-w-xs h-full ml-auto shadow-xl">
             {/* Close button (X icon ichkarida) */}
             {/* <button
               onClick={() => setIsMenuOpen(false)}

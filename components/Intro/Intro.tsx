@@ -11,7 +11,7 @@ const Intro = () => {
           {/* Text Section */}
           <div className="text-center lg:text-left max-w-xl">
             <p className="text-secondary text-[20px] italic mb-4">Up To 30% Off</p>
-            <h1 className="text-[32px] sm:text-[56px] lg:text-[74px] leading-[1.2] font-bold md:text-center text-primary mb-8 font-inter lg:w-[735px] w-[450px]">
+            <h1 className="text-[32px] sm:text-[56px] lg:text-[74px] leading-[1.2] font-bold md:text-center text-primary mb-8 font-inter lg:w-[735px] md:w-[450px] w-[300px]">
               Get Your New Book 
               With The Best Price
             </h1>
@@ -49,33 +49,14 @@ const Intro = () => {
         height={254}
       />
 
-      {/* ✈️ Samolyot va trail */}
-      <div className="absolute bottom-[28%] right-[24%] w-[185px] z-50 hidden lg:inline-block">
-        <div className="relative h-[250px] w-[400px] overflow-visible">
-          {/* Trail chiziq */}
-          <svg
-            className="absolute w-[400px] h-[200px]"
-            viewBox="0 0 400 200"
-            fill="none"
-          >
-            <path
-              d="M0 150 Q150 50, 300 100 T400 50"
-              stroke="blue"
-              strokeWidth="2"
-              className="trail-path"
-            />
-          </svg>
-
-          {/* Samolyot */}
-          <Image
-            src="/images/imagesplane.png"
-            alt="plane"
-            className="plane-anim w-[60px] h-[60px]"
-            width={60}
-            height={60}
-          />
-        </div>
-      </div>
+      <Image
+        src="/images/output-onlinegiftools.gif"
+        alt="frame"
+        className="hidden lg:inline absolute top-[70%] left-[-6%] w-[250px] animate-float-x"
+        width={254}
+        height={254}
+      />
+     
     </div>
   )
 }
