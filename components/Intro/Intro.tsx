@@ -55,6 +55,14 @@ const Intro = () => {
         width={254}
         height={254}
       />
+      <Image
+      src="/images/frame-2.png"
+      alt="frame"
+      className="hidden lg:inline absolute bottom-[-3%] left-[-1%] w-[254px] animate-float-y"
+      width={254}
+      height={254}
+      />
+
      
     </div>
   )

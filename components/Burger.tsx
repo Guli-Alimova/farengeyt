@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/books", label: "Kitoblar" },
   { href: "#podcast", label: "Podkastlar" },
   { href: "#blog", label: "Blog" },
-  { href: "/contact", label: "Aloqa" },
+  { href: "/contact", label: "Bog'lanish" },
 ];
 
 type BurgerProps = {
