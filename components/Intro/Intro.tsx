@@ -9,14 +9,13 @@ const Intro = () => {
       <div className="container">
         <div className="flex flex-col lg:flex-row items-center justify-between pt-[25px] relative z-10">
           {/* Text Section */}
-          <div className="text-center lg:text-left max-w-xl">
-            <p className="text-secondary text-[20px] italic mb-4">Up To 30% Off</p>
-            <h1 className="text-[32px] sm:text-[56px] lg:text-[74px] leading-[1.2] font-bold md:text-center text-primary mb-8 font-inter lg:w-[735px] md:w-[450px] w-[300px]">
-              Get Your New Book 
-              With The Best Price
+          <div className=" max-w-xl">
+            <h1 className="text-center lg:text-left text-[32px] sm:text-[56px] lg:text-[64px] leading-[1.2] font-bold md:text-center text-primary font-inter lg:w-[735px] md:w-[450px] w-[300px]">
+             Biz bilan kitob olami yanada yaqin
             </h1>
+              <p className="text-secondary text-[20px] italic mb-12 mt-5 text-center lg:text-left">Ilmiy, badiiy va tarjima asarlar bizning nashriyotimizda</p>
             <Link href="/about" className="bg-[#ED553B] hover:bg-[#14548a] text-white text-[16px] px-6 py-3 rounded-full shadow-md font-semibold transition duration-300">
-              Learn More →
+              Ko`proq bilish →
             </Link>
           </div>
 
@@ -52,7 +51,7 @@ const Intro = () => {
       <Image
         src="/images/output-onlinegiftools.gif"
         alt="frame"
-        className="hidden lg:inline absolute top-[70%] left-[-6%] w-[250px] animate-float-x"
+        className="hidden lg:inline absolute top-[40%] left-[45%] w-[145px] animate-float-x"
         width={254}
         height={254}
       />

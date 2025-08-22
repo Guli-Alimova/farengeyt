@@ -65,27 +65,27 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
           {/* Ma'lumotlar qatori */}
           <div className="border p-4 rounded-lg shadow-sm grid grid-cols-2 gap-2 text-sm">
             <p>
-              <span className="font-semibold">Total page:</span>{" "}
+              <span className="font-semibold">Jami sahifalar:</span>{" "}
               {book.totalPage || "N/A"}
             </p>
             <p>
-              <span className="font-semibold">Publish Year:</span>{" "}
+              <span className="font-semibold">Nashr yili:</span>{" "}
               {book.publishYear || "N/A"}
             </p>
             <p>
-              <span className="font-semibold">Category:</span>{" "}
+              <span className="font-semibold">Janr:</span>{" "}
               {book.category || "N/A"}
             </p>
             <p>
-              <span className="font-semibold">Format:</span>{" "}
+              <span className="font-semibold">Shakli:</span>{" "}
               {book.format || "N/A"}
             </p>
             <p>
-              <span className="font-semibold">Language:</span>{" "}
+              <span className="font-semibold">Tili:</span>{" "}
               {book.language || "N/A"}
             </p>
             <p>
-              <span className="font-semibold">Country:</span>{" "}
+              <span className="font-semibold">Mamlakat:</span>{" "}
               {book.country || "N/A"}
             </p>
           </div>

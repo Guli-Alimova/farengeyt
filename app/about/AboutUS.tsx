@@ -29,22 +29,19 @@ const AboutUS = () => {
 {/* O‘ng matn qismi */}
 <div>
 <h2 className="text-3xl font-bold text-gray-900 mb-4">
-  About The Bookle <br /> Books Store
+  Missiyamiz va maqsadimiz 
 </h2>
 <p className="text-gray-600 mb-4">
-  Nullam convallis ullamcorper nulla. Nam accumsan ac leo quis posuere.
-  Nunc rutrum lorem justo, at blandit mauris ullamcorper tristique.
-  Suspendisse vel ante venenatis, porttitor ligula sed, iaculis metus...
+Farengeyt Press – chindan yangi nashriyot va unga turli sohalarda faoliyat ko‘rsatib kelayotgan, ayni chog‘da, kitob va kitobxonlikka befarq bo‘lmagan faollar va mutaxassislar asos soldi. Mushtarak g‘oyamiz va maqsadimiz ifodasi o‘laroq “Farengeyt Press” nashriyoti nomini tanlashda yozuvchi Rey Bredberining 🔥“Farengeyt bo‘yicha 451 daraja” asaridagi “Ahli kitob” (“Book People”) g‘oyasidan ilhomlandik. Ahli kitob – hayotini kitoblarni avaylash va ilmni odamlarga yetkazishga bag‘ishlagan insonlardir. Biz endilikda kitob, mutolaa va ma’rifatga qilinajak xizmatimizni mustaqil nashriyot sifatida davom ettirishga qaror qildik. Shuningdek, jamoamizda o‘z sohasi yetakchilaridan bo‘lmish art-direktor Orzu A’zam ham faoliyat yuritmoqda.
 </p>
 <p className="text-gray-600 mb-6">
-  Morbi cursus enim in consequat suscipit. Quisque id dui ante. Praesent
-  auctor sed augue eget aliquet...
+  Nashriyotimizning bosh g‘oyasi o‘zbek kitobxoniga progressiv, yangi, dolzarb bilimlarni sifatli va tezkor sur’atlarda taqdim etish orqali ilm sarhadlarini kengaytirishga hissa qo‘shishdan iborat. Bunda biz ham tarjima, ham mahalliy muallif va mutaxassislar asarlarini kitobxonga taqdim etishni rejalashtirmoqdamiz. Bundan tashqari, nashriyotimiz faoliyati doirasida yana qator qo‘shimcha ma’rifiy loyihalarni amalga oshirish ham ko‘zda tutilmoqda.
 </p>
 <a
-  href="#"
+  href="t.me/farengeyt_press"
   className="inline-flex items-center text-secondary font-semibold hover:underline"
 >
-  Overview
+Umumiy ma’lumot
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-4 w-4 ml-1"

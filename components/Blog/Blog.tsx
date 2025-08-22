@@ -38,7 +38,7 @@ export default function Blog() {
       <div className="container">
         <div className="text-center">
         <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">
-          Blogs
+          Yangiliklar
         </h2>
       </div>
        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

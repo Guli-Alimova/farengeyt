@@ -8,7 +8,7 @@ export default function ContactMain() {
           {/* LEFT SIDE: Contact Info */}
           <div className="bg-primary text-white rounded-lg p-4 space-y-4 ">
             <div>
-              <h3 className="text-sm">Qo`ng`iroq uchun:</h3>
+              <h3 className="text-sm">Bizga qo‘ng‘iroq qiling:</h3>
               <p className="text-lg font-semibold"> +99890 999 18 19</p>
             </div>
             <div>
@@ -32,37 +32,38 @@ export default function ContactMain() {
   
           {/* RIGHT SIDE: Contact Form */}
           <div className="md:col-span-2 bg-white">
-            <h2 className="text-2xl font-bold text-primary">Ready To Get Started?</h2>
+            <h2 className="text-2xl font-bold text-primary">Savolingiz bormi? Bizga yozing!</h2>
             <p className="text-silver font-semibold">
-              Nunc tincidunt cursus lectus ac semper. Aenean ullamcorper quis arcu molestie consequat.
-              Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut nec lobortis elit, eu ultrices justo.
-              Fusce auctor erat est, non fringilla nibh tempus quis. Aenean dignissim.
+              Taklif va istaklaringizni bizga yozib yuboring.
+              Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz bo‘yicha savollaringiz bo‘lsa, biz doim javob berishga tayyormiz.
+              Hamkorlik bo‘yicha murojaatlarni ham shu yerda qoldirishingiz mumkin.
+              Sizning fikringiz biz uchun muhim.
             </p>
   
             <form className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-2">
                 <div >
-                  <label className="block mb-1  text-silver font-medium">Your Name*</label>
+                  <label className="block mb-1  text-silver font-medium">Ismingiz*</label>
                   <input
                     type="text"
-                    placeholder="Your Name"
+                    placeholder="Ismingiz"
                     className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium text-silver">Your Email*</label>
+                  <label className="block mb-1 font-medium text-silver">Elektron pochtangiz*</label>
                   <input
                     type="email"
-                    placeholder="Your Email"
+                    placeholder="Elektron pochtangiz"
                     className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
               </div>
   
               <div>
-                <label className="block mb-1 font-medium text-silver">Write Message*</label>
+                <label className="block mb-1 font-medium text-silver">Xabaringizni yozing*</label>
                 <textarea
-                  placeholder="Write Message"
+                  placeholder="Xabaringizni yozing"
                   className="w-full border rounded-lg p-3 h-55 focus:outline-none focus:ring-2 focus:ring-primary"
                 ></textarea>
               </div>
@@ -71,7 +72,7 @@ export default function ContactMain() {
                 type="submit"
                 className="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary flex items-center"
               >
-                Send Message <span className="ml-2">→</span>
+                Xabar Yuborish <span className="ml-2">→</span>
               </button>
             </form>
           </div>

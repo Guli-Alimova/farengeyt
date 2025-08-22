@@ -24,7 +24,7 @@ export default function PodCastCard({ title, subtitle, image, link }: PodCastCar
           href={link}
           className="bg-white text-primary text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-5 py-2 rounded-full inline-flex items-center gap-2 hover:bg-secondary transition"
         >
-          Show Now <span>→</span>
+          Videoni ko`rish <span>→</span>
         </a>
       </div>
     </div>

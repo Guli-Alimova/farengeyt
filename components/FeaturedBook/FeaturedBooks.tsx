@@ -59,7 +59,7 @@ export default function FeaturedBooks() {
     <section className="py-20">
       <div className="container">
            <div className=" text-center mb-6">
-        <h2 className="text-3xl font-bold">Featured Books</h2>
+        <h2 className="text-3xl font-bold">Tanlangan Kitoblar</h2>
       </div>
       <div className="flex flex-wrap ">
       <Swiper

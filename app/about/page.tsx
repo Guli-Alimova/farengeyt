@@ -11,7 +11,7 @@ const AboutUs = () => {
   <div>
     <AboutIntro/>
     <AboutUS/>
-    <Created/>
+    {/* <Created/> */}
   </div>
   )
 }

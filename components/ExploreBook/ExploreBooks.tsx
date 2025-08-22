@@ -37,7 +37,7 @@ const ExploreBooks = () => {
     <section className="relative bg-blue-100 py-16  md:px-12 overflow-hidden">
       <div className="text-center">
         <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">
-          Top Categories Book
+          Kitob janrlari
         </h2>
       </div>
 

@@ -76,7 +76,7 @@ export default function BooksPage() {
     <div className="p-8">
       {/* Search */}
       <div className="mb-6">
-        <h2 className="text-lg font-semibold mb-2 border-b pb-1">Search</h2>
+        <h2 className="text-lg font-semibold mb-2 border-b pb-1">Qidiruv</h2>
         <div className="relative">
           <input
             type="text"
@@ -91,15 +91,15 @@ export default function BooksPage() {
 
       {/* Categories */}
       <div className="mb-6">
-        <h2 className="text-lg font-semibold mb-2 border-b pb-1">Categories</h2>
+        <h2 className="text-lg font-semibold mb-2 border-b pb-1">Janrlar</h2>
         <div className="flex flex-wrap gap-2">
           {categories.map(category => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-3 py-2 rounded transition-colors ${
+              className={`px-3 py-2 rounded cursor-pointer transition-colors ${
                 activeCategory === category
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-secondary text-white'
                   : 'bg-white border hover:bg-gray-50'
               }`}
             >

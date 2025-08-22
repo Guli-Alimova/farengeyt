@@ -31,7 +31,7 @@ const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
       </div>
     
       <Link href={`/books/${id}`} key={id} className="bg-sky-100 hover:bg-sky-200 text-primary font-semibold py-2 mt-1 rounded flex items-center justify-center gap-2">
-        Read More
+        Batafsil o`qish
       </Link>
     </div>
   );

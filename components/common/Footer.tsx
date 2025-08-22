@@ -18,7 +18,7 @@ const navLinks = [
   { href: '/books', label: 'Kitoblar' },
   { href: '#podcast', label: 'Podkastlar' },
   { href: '#blog', label: 'Blog' },
-  { href: '/contact', label: 'Aloqa' },
+  { href: '/contact', label: 'Bog‘lanish' },
 ];
 export default function Footer() {
   return (
@@ -40,7 +40,7 @@ export default function Footer() {
             </Link>
           </div>
        
-          <div className="flex gap-3 mt-4">
+          <div className="flex items-center gap-4 mt-4">
           <Link href="https://facebook.com/FarengeytPress" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Facebook /></Link>
             <Link href="https://instagram.com/farengeyt_press" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><Instagram /></Link>
             <Link href="https://x.com/FarengeytPress" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Twitter/></Link>
@@ -49,8 +49,8 @@ export default function Footer() {
 
         {/* Customer Support */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Customers Support</h3>
-          <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
+          <h3 className="text-lg font-semibold mb-1">Yordam xizmati</h3>
+          <div className="h-[2px] w-8 bg-orange-500 mb-4"></div>
           <ul className="space-y-2 text-sm  text-white">
               {navLinks.map((link) => (
                 <li key={link.href} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>
@@ -65,8 +65,8 @@ export default function Footer() {
         </div>
 
       <div>
-      <h3 className="text-lg font-semibold mb-4">Categories</h3>
-      <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
+      <h3 className="text-lg font-semibold mb-1">Janrlar</h3>
+      <div className="h-[2px] w-8 bg-orange-500 mb-4"></div>
         <ul className="space-y-2 text-white text-sm">
         {categories.map((category) => (
           <li key={category} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>

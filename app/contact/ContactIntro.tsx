@@ -16,9 +16,9 @@ const ContactIntro = () => {
         </div>
 
         <div className="text-center md:text-left mt-8 md:mt-0">
-          <h1 className="text-4xl font-bold text-[#002f4b] mb-4">ALOQA</h1>
+          <h1 className="text-4xl font-bold text-[#002f4b] mb-4 uppercase">Bog‘lanish</h1>
           <div className="text-[#002f4b]">
-            <Link href="/" className="hover:underline">Bosh Sahifa</Link> <span> &gt; </span> <span className="font-semibold">Contact Us</span>
+            <Link href="/" className="hover:underline">Bosh Sahifa</Link> <span> &gt; </span> <span className="font-semibold">Bog‘lanish</span>
           </div>
         </div>
    <div className="relative w-[246px] h-60 md:w-80 md:h-80 lg:inline-block hidden">
