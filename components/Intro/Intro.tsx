@@ -7,10 +7,10 @@ const Intro = () => {
   return (
     <div className="relative bg-blue-100 overflow-hidden pb-20">
       <div className="container">
-        <div className="flex flex-col lg:flex-row items-center justify-between pt-[25px] relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between pt-[25px] relative z-10 text-center lg:text-left">
           {/* Text Section */}
           <div className=" max-w-xl">
-            <h1 className="text-center lg:text-left text-[32px] sm:text-[56px] lg:text-[64px] leading-[1.2] font-bold md:text-center text-primary font-inter lg:w-[735px] md:w-[450px] w-[300px]">
+            <h1 className="text-center lg:text-left text-[32px] sm:text-[56px] lg:text-[64px] leading-[1.2] font-bold md:text-center text-primary font-inter lg:w-[735px]  ">
              Biz bilan kitob olami yanada yaqin
             </h1>
               <p className="text-secondary text-[20px] italic mb-12 mt-5 text-center lg:text-left">Ilmiy, badiiy va tarjima asarlar bizning nashriyotimizda</p>
