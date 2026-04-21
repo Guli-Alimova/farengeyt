@@ -2,43 +2,28 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import Image from 'next/image';
 import Link from 'next/link';
 import books from "@/app/data/book.json";
+import BookCard from "@/app/books/BookCard"; // ✅ tashqi komponent
 
-const categories = ['Barchasi', 'Bolalar adabiyoti', 'Badiiy adabiyot', "O'quv kitoblari", 'Ilmiy-ommabop kitoblar'];
+const categories = [
+  'Barchasi',
+  'Bolalar kitoblari',
+  'Badiiy adabiyot',
+  "O'quv va amaliy qo'llanmalar",
+  'Ilmiy-ommabop kitoblar'
+];
 
-// Memoized BookCard component
-const BookCard = ({ id, image, title, subtitle, description }: {
-  id: number; image: string; title: string; subtitle?: string; description?: string;
-}) => (
-  <Link href={`/books/${id}`} className="block group">
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 group-hover:scale-105">
-      <div className="aspect-[3/4] relative overflow-hidden rounded-t-lg">
-        <Image src={image} alt={title} fill className="object-cover" />
-      </div>
-      <div className="p-4">
-        <h3 className="font-semibold text-lg mb-1 line-clamp-2 group-hover:text-blue-600">
-          {title}
-        </h3>
-        {subtitle && <p className="text-gray-600 text-sm mb-2 line-clamp-1">{subtitle}</p>}
-        {description && <p className="text-gray-500 text-xs line-clamp-2">{description}</p>}
-      </div>
-    </div>
-  </Link>
-);
-
-// Loading skeleton
 const LoadingSkeleton = () => (
   <div className="p-8 animate-pulse">
-    <div className="h-8 bg-gray-200 rounded w-48 mb-6"></div>
+    <div className="h-8 bg-gray-200 rounded w-48 mb-6" />
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {Array.from({length: 8}, (_, i) => (
+      {Array.from({ length: 8 }, (_, i) => (
         <div key={i} className="bg-white rounded-lg shadow-md">
-          <div className="aspect-[3/4] bg-gray-200 rounded-t-lg"></div>
+          <div className="aspect-[3/4] bg-gray-200 rounded-t-lg" />
           <div className="p-4 space-y-2">
-            <div className="h-6 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded w-20"></div>
+            <div className="h-6 bg-gray-200 rounded" />
+            <div className="h-4 bg-gray-200 rounded w-20" />
           </div>
         </div>
       ))}
@@ -53,7 +38,6 @@ export default function BooksPage() {
 
   useEffect(() => {
     setMounted(true);
-    // URL'dan category o'qish
     const params = new URLSearchParams(window.location.search);
     const categoryParam = params.get('category');
     if (categoryParam && categories.includes(categoryParam)) {
@@ -61,8 +45,7 @@ export default function BooksPage() {
     }
   }, []);
 
-  // Memoized filtered books
-  const filteredBooks = useMemo(() => 
+  const filteredBooks = useMemo(() =>
     books.filter(book => {
       const matchesCategory = activeCategory === 'Barchasi' || book.category === activeCategory;
       const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -85,7 +68,7 @@ export default function BooksPage() {
             onChange={e => setSearchTerm(e.target.value)}
             className="w-full border rounded px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+          <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
         </div>
       </div>
 

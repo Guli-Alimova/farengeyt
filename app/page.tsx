@@ -11,7 +11,7 @@ const page = () => {
     <div>
    
     <Intro/>
-     <FeaturedBooks/>
+    <FeaturedBooks/>
     <ExploreBooks/>
     <Blog/>
     <PodCast/>

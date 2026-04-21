@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import books from "@/app/data/book.json";
 import Image from "next/image";
 
-// Static params
 export async function generateStaticParams() {
   return books.map((book) => ({
     id: String(book.id),
@@ -20,47 +19,58 @@ type BookDetailsPageProps = {
 };
 
 export default async function BookDetails({ params }: BookDetailsPageProps) {
-  // Next.js 15 da params Promise bo'lib keladi
   const { id } = await params;
-  
+
   const book = books.find((b) => String(b.id) === id);
 
   if (!book) {
     return <div className="p-10 text-red-500">Kitob topilmadi</div>;
   }
 
+  // Bo'sh yoki undefined rasmlarni filtrlash
+  const galleryImages = [book.image, ...(book.gallery || [])]
+    .filter((img): img is string => typeof img === "string" && img.trim() !== "");
+
   return (
     <div className="container mx-auto p-10">
       <div className="grid md:grid-cols-2 gap-6">
         {/* Asosiy rasm */}
         <div className="flex justify-center">
-          <Image
-            src={book.image}
-            alt={book.title}
-            width={450}
-            height={300}
-            className="rounded shadow-md object-contain w-full"
-            priority
-          />
+          {book.image ? (
+            <Image
+              src={book.image}
+              alt={book.title}
+              width={450}
+              height={300}
+              className="rounded shadow-md object-contain w-full"
+              priority
+            />
+          ) : (
+            <div className="w-full h-[300px] bg-gray-100 rounded flex items-center justify-center text-gray-400">
+              Rasm yo'q
+            </div>
+          )}
         </div>
 
         {/* Kitob ma'lumotlari */}
         <div>
           <h1 className="text-2xl md:text-3xl font-bold mb-4">{book.title}</h1>
 
-          {/* Karusel (asosiy + 4 rasm) */}
-          <div className="flex gap-5 mb-6">
-            {[book.image, ...(book.gallery || [])].map((img, i) => (
-              <Image
-                key={`gallery-${i}`}
-                src={img}
-                alt={`Gallery image ${i + 1}`}
-                width={100}
-                height={80}
-                className="border rounded hover:scale-105 transition object-cover"
-              />
-            ))}
-          </div>
+          {/* Gallery rasmlari */}
+          {galleryImages.length > 0 && (
+            <div className="flex gap-3 mb-6 flex-wrap">
+              {galleryImages.map((img, i) => (
+                <Image
+                  key={`gallery-${i}`}
+                  src={img}
+                  alt={`Gallery image ${i + 1}`}
+                  width={100}
+                  height={80}
+                  className="border rounded hover:scale-105 transition object-cover"
+                />
+              ))}
+            </div>
+          )}
 
           {/* Ma'lumotlar qatori */}
           <div className="border p-4 rounded-lg shadow-sm grid grid-cols-2 gap-2 text-sm">
@@ -97,15 +107,15 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
         </div>
       </div>
 
-      {/* Footer: Available on */}
-      {book.hamkor && (
+      {/* Hamkorlar */}
+      {book.hamkor && typeof book.hamkor === "string" && book.hamkor.trim() !== "" && (
         <div className="mt-10 text-sm">
           <p className="mb-2 font-semibold">Hamkorlarimiz:</p>
           <div className="flex items-center gap-6">
-            <Image 
-              src={book.hamkor} 
-              alt="Partner" 
-              width={90} 
+            <Image
+              src={book.hamkor}
+              alt="Partner"
+              width={90}
               height={20}
               className="object-contain"
             />

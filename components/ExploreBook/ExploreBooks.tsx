@@ -3,9 +3,9 @@ import React from 'react'
 import ExploreBooksCard from './ExploreBooksCard'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation} from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 import { Autoplay } from "swiper/modules";
 
 
@@ -13,7 +13,7 @@ const categories = [
   {
     id: 1,
     image: '/images/01.png',
-    title: 'Bolalar adabiyoti',
+    title: 'Bolalar kitoblari',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const categories = [
   {
     id: 3,
     image: '/images/04.png',
-    title: "O'quv kitoblari",
+    title: "O'quv va amaliy qo'llanmalar",
   },
   {
     id: 4,

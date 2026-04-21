@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import "../../styles/globals.css"
+// import "../../styles/globals.css"
 
 const Intro = () => {
   return (
