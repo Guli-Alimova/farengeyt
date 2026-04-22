@@ -8,7 +8,6 @@ export default function ContactMain() {
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Bu yerda API ga yuborish logikasi
     console.log(form);
   };
 
@@ -20,7 +19,7 @@ export default function ContactMain() {
           {/* Chap tomon: Kontakt ma'lumotlari */}
           <div className="bg-primary text-white rounded-lg p-6 space-y-4">
             <div>
-              <h3 className="text-sm opacity-80">Bizga qo'ng'iroq qiling:</h3>
+              <h3 className="text-sm opacity-80">{"Bizga qo'ng'iroq qiling:"}</h3>
               <p className="text-lg font-semibold">+99890 999 18 19</p>
             </div>
             <div>
@@ -48,9 +47,7 @@ export default function ContactMain() {
               Savolingiz bormi? Bizga yozing!
             </h2>
             <p className="text-gray-500 font-medium mb-6 text-sm leading-relaxed">
-              Taklif va istaklaringizni bizga yozib yuboring.
-              Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz bo'yicha savollaringiz bo'lsa,
-              biz doim javob berishga tayyormiz.
+              {"Taklif va istaklaringizni bizga yozib yuboring. Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz bo'yicha savollaringiz bo'lsa, biz doim javob berishga tayyormiz."}
             </p>
 
             <div className="space-y-4">

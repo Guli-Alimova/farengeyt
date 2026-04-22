@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import Link from 'next/link';
 import books from "@/app/data/book.json";
 import BookCard from "@/app/books/BookCard"; // ✅ tashqi komponent
 

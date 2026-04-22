@@ -27,7 +27,6 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
     return <div className="p-10 text-red-500">Kitob topilmadi</div>;
   }
 
-  // Bo'sh yoki undefined rasmlarni filtrlash
   const galleryImages = [book.image, ...(book.gallery || [])]
     .filter((img): img is string => typeof img === "string" && img.trim() !== "");
 
@@ -47,7 +46,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
             />
           ) : (
             <div className="w-full h-[300px] bg-gray-100 rounded flex items-center justify-center text-gray-400">
-              Rasm yo'q
+              {"Rasm yo'q"}
             </div>
           )}
         </div>

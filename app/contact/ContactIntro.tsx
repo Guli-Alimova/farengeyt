@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function ContactIntro() {
   return (
     <div className="bg-blue-100 relative overflow-hidden">
-      
+
       {/* Chap rasm - ekran chetiga yopishgan */}
       <div className="absolute left-0 bottom-0 w-[200px] h-[180px] lg:block hidden">
         <Image
@@ -29,12 +29,12 @@ export default function ContactIntro() {
       {/* O'rta matn */}
       <div className="text-center py-16">
         <h1 className="text-4xl font-bold text-primary mb-4 uppercase">
-          Bog'lanish
+          {"Bog'lanish"}
         </h1>
         <div className="text-primary">
           <Link href="/" className="hover:underline">Bosh Sahifa</Link>
           <span> &gt; </span>
-          <span className="font-semibold">Bog'lanish</span>
+          <span className="font-semibold">{"Bog'lanish"}</span>
         </div>
       </div>
 
