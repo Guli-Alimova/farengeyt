@@ -1,32 +1,47 @@
+import Image from 'next/image';
+import { getYouTubeThumbnail } from '@/app/utils/youtube';
+
 interface PodCastCardProps {
-  title: string;
   subtitle: string;
-  image: string;
   link: string;
 }
 
-export default function PodCastCard({ title, subtitle, image, link }: PodCastCardProps) {
-  return (
-    <div
-      className="relative rounded-2xl overflow-hidden w-full h-64 sm:h-72 md:h-80 lg:h-96 bg-cover bg-center text-primary flex items-start justify-start p-4 sm:p-6 md:p-8"
-      style={{ backgroundImage: `url(${image})` }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-blue-500/15 rounded-2xl z-0" />
+export default function PodCastCard({ subtitle, link }: PodCastCardProps) {
+  const thumbnail = getYouTubeThumbnail(link);
 
-      {/* Content */}
-      <div className="z-10 max-w-xs sm:max-w-sm md:max-w-md">
-        <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight mb-2">
-          {title}
-        </h3>
-        <p className="text-xs sm:text-sm md:text-base mb-4">{subtitle}</p>
-        <a
-          href={link}
-          className="bg-white text-primary text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-5 py-2 rounded-full inline-flex items-center gap-2 hover:bg-secondary transition"
-        >
-          Videoni ko`rish <span>→</span>
-        </a>
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+    >
+      {/* Rasm qismi */}
+      <div className="relative w-full h-52 sm:h-60">
+        <Image
+          src={thumbnail}
+          alt={subtitle}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+
+        {/* Play tugmasi - markazda */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-red-600 rounded-full w-14 h-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <span className="text-white text-2xl ml-1">▶</span>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Subtitle - rasm tashqarisida pastda */}
+      <div className="bg-primary px-4 py-3">
+        <p className="text-sm font-semibold text-white uppercase tracking-wide line-clamp-2">
+          {subtitle}
+        </p>
+      </div>
+    </a>
   );
 }

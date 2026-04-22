@@ -1,39 +1,67 @@
-import PodcastCard from './PodCastCard';
+
+'use client';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import PodCastCard from '../PodCast/PodCastCard';
 
 const podcasts = [
-  {
-    title: 'Crime Fiction Talks',
-    subtitle: '15% Off On Kids’ Toys And Gifts!',
-    image: '/images/09.jpg',
-    link: '/podcasts/1',
+   {
+    id: 1,
+    subtitle: 'Jamiyatni oʻzgartiradigan kitoblar | Sigma Podkast',
+    link: 'https://youtu.be/1ilODVvh8c0?si=b3KY37aTct6R-Yvs',
   },
   {
-    title: 'One Year On A Bike',
-    subtitle: '15% Off On Kids’ Toys And Gifts!',
-    image: '/images/10.jpg',
-    link: '/podcasts/2',
+    id: 2,
+    subtitle: 'Baxtli bolalikni ortga qaytarish uchun kitob | "Behalovat avlod" kitobi ustida suhbat',
+    link: 'https://youtu.be/VNhXvoT_gco?si=xLw1Z3MOmCil3cGD',
   },
   {
-    title: 'Grow With Flower',
-    subtitle: '15% Off On Kids’ Toys And Gifts!',
-    image: '/images/11.jpg',
-    link: '/podcasts/3',
+    id: 3,
+    subtitle: "RAQAMLI QAMOQXONA, BEHALOVAT AVLOD KITOBI TAHLILI | Paradoks PodkastGullar bilan o'sish va rivojlanish",
+    link: 'https://youtu.be/vXF7UlMTJXI?si=-5CqdWbcS0KnP1EZ',
+  },
+  {
+    id: 4,
+    subtitle: "Yilning eng muhim kitobining tahlili | Sigma Podkast",
+    link: 'https://youtu.be/IdP4CPaDDjA?si=sPpSgm9DqefZQZbp',
   },
 ];
 
+
 export default function PodCast() {
   return (
- <section id="podcast" className="bg-blue-100 py-14 text-center">
-  <div className="container mx-auto px-4">
-    <h2 className="text-3xl font-bold text-primary mb-6">Podkastlar</h2>
+    <section id="podcast" className="bg-blue-100 py-14">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center">Podkastlar</h2>
 
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-      {podcasts.map((podcast, index) => (
-        <PodcastCard key={index} {...podcast} />
-      ))}
-    </div>
-  </div>
-</section>
-
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          rewind={true}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{ clickable: true, dynamicBullets: true }}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="!pb-10"
+        >
+          {podcasts.map((podcast) => (
+            <SwiperSlide key={podcast.id}>
+              <PodCastCard
+                subtitle={podcast.subtitle}
+                link={podcast.link}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
   );
 }
