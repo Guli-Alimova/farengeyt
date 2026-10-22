@@ -11,7 +11,7 @@
     "format": "Qattiq qoplamli",
     "language": "O'zbek tili",
     "country": "O'zbekiston",
-    "gallery": ["/books/PUL.jpg"],
+    "gallery": [],
     "hamkor": "/images/Anorbank_mini.png"
   },
   {
@@ -56,7 +56,7 @@
     "format": "Qattiq qoplamli",
     "language": "O'zbek tili",
     "country": "O'zbekiston",
-    "gallery": ["/books/book.png"],
+    "gallery": [],
     "hamkor": ""
   },
   {
@@ -86,7 +86,7 @@
     "format": "Qattiq qoplamli",
     "language": "O'zbek tili",
     "country": "O'zbekiston",
-    "gallery": ["/books/book.png", "/books/book.png"],
+    "gallery": [],
     "hamkor": ""
   },
     {
