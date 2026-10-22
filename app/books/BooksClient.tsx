@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import books from "@/app/data/book.json";
+import { books } from "@/app/data/books";
 import BookCard from "@/app/books/BookCard"; // ✅ tashqi komponent
 
 const categories = [

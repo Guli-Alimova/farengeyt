@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import books from "@/app/data/book.json";
+import { books } from "@/app/data/books";
 import Image from "next/image";
 
 export async function generateStaticParams() {
