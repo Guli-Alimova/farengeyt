@@ -1,17 +1,13 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
 import { books } from "@/app/data/books";
+import { ALL_CATEGORIES, categoryTitles } from "@/app/data/categories";
 import BookCard from "@/app/books/BookCard"; // ✅ tashqi komponent
 
-const categories = [
-  'Barchasi',
-  'Bolalar kitoblari',
-  'Badiiy adabiyot',
-  "O'quv va amaliy qo'llanmalar",
-  'Ilmiy-ommabop kitoblar'
-];
+const categories = [ALL_CATEGORIES, ...categoryTitles];
 
 const LoadingSkeleton = () => (
   <div className="p-8 animate-pulse">
@@ -34,19 +30,22 @@ export default function BooksPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [mounted, setMounted] = useState(false);
+  const categoryParam = useSearchParams().get('category');
 
   useEffect(() => {
     setMounted(true);
-    const params = new URLSearchParams(window.location.search);
-    const categoryParam = params.get('category');
-    if (categoryParam && categories.includes(categoryParam)) {
-      setActiveCategory(categoryParam);
-    }
   }, []);
+
+  // /books ichida havola bosilganda ham URL'dagi janrga moslashadi
+  useEffect(() => {
+    setActiveCategory(
+      categoryParam && categories.includes(categoryParam) ? categoryParam : ALL_CATEGORIES
+    );
+  }, [categoryParam]);
 
   const filteredBooks = useMemo(() =>
     books.filter(book => {
-      const matchesCategory = activeCategory === 'Barchasi' || book.category === activeCategory;
+      const matchesCategory = activeCategory === ALL_CATEGORIES || book.category === activeCategory;
       const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase());
       return matchesCategory && matchesSearch;
     }), [activeCategory, searchTerm]

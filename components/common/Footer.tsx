@@ -2,15 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import {  Facebook, Instagram, Twitter } from '@/public/svg'
 import Image from 'next/image';
+import { ALL_CATEGORIES, categoryTitles } from '@/app/data/categories';
 
 
-const categories = [
-  'Barchasi',
-  'Bolalar adabiyoti',
-  "O'quv kitoblar",
-  'Ilmiy-ommabop kitoblar',
-  'Badiiy adabiyot',
-];
+const categories = [ALL_CATEGORIES, ...categoryTitles];
 
 const navLinks = [
   { href: '/', label: 'Bosh sahifa' },
