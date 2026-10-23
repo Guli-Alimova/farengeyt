@@ -3,15 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Burger from '../Burger'
 import Image from 'next/image'
-
-const navLinks = [
-  { href: '/', label: 'Bosh sahifa' },
-  { href: '/about', label: 'Biz haqimizda' },
-  { href: '/books', label: 'Kitoblar' },
-  { href: '#podcast', label: 'Podkastlar' },
-  { href: '#blog', label: 'Blog' },
-  { href: '/contact', label: 'Bogʻlanish' },
-]
+import { navLinks } from '@/app/data/navigation'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

@@ -2,15 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Close } from "@/public/svg";
-
-const navLinks = [
-  { href: "/", label: "Bosh sahifa" },
-  { href: "/about", label: "Biz haqimizda" },
-  { href: "/books", label: "Kitoblar" },
-  { href: "#podcast", label: "Podkastlar" },
-  { href: "#blog", label: "Blog" },
-  { href: "/contact", label: "Bogʻlanish" },
-];
+import { navLinks } from "@/app/data/navigation";
 
 type BurgerProps = {
   onClose: () => void;

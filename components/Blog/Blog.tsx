@@ -34,7 +34,7 @@ const posts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-20">
+    <section id="blog" className="py-20 scroll-mt-28">
       <div className="container">
         <div className="text-center">
         <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">

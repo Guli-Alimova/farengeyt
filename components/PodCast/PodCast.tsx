@@ -31,7 +31,7 @@ const podcasts = [
 
 export default function PodCast() {
   return (
-    <section id="podcast" className="bg-blue-100 py-14">
+    <section id="podcast" className="bg-blue-100 py-14 scroll-mt-28">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center">Podkastlar</h2>
 
