@@ -7,31 +7,8 @@ import { Navigation} from 'swiper/modules';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 import { Autoplay } from "swiper/modules";
+import { categories } from '@/app/data/categories';
 
-
-const categories = [
-  {
-    id: 1,
-    image: '/images/01.png',
-    title: 'Bolalar kitoblari',
-  },
-  {
-    id: 2,
-    image: '/images/02.png',
-    title: 'Badiiy adabiyot',
-  },
-  {
-    id: 3,
-    image: '/images/04.png',
-    title: "O'quv va amaliy qo'llanmalar",
-  },
-  {
-    id: 4,
-    image: '/images/05.png',
-    title: 'Ilmiy-ommabop kitoblar',
-  },
-
-]
 const ExploreBooks = () => {
   return (
     <section className="relative bg-blue-100 py-16  md:px-12 overflow-hidden">

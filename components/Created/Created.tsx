@@ -4,34 +4,34 @@ const creater = [
     {
       name: 'Sardor SALIM ',
       image: '/authors/1.jpg',
-      description:"tarjimon  “ Yoshlar uchun 1000 kitob” tashabbusida qator kitoblarni tarjima qilgan. ",
+      description:"tarjimon  “Yoshlar uchun 1000 kitob” tashabbusida qator kitoblarni tarjima qilgan. ",
       work:"MPA (Manchester University)"
     },
     {
       name: ' Xurshid YULDOSHEV ',
       image: '/authors/2.jpg',
-      description:" muharrir “  Yoshlar uchun 1000 kitob”, “Asaxiy Books” loyihalar doirasida 100ga yaqin kitob nashr etilishiga rahbarlik qilgan. ",
-      work:"Falsafa bo‘yicha magistr (MU) "
+      description:" muharrir “Yoshlar uchun 1000 kitob”, “Asaxiy Books” loyihalari doirasida 100ga yaqin kitob nashr etilishiga rahbarlik qilgan. ",
+      work:"Falsafa boʻyicha magistr (MU) "
     
     },
     {
       name: 'Behzod ALIMOV ',
       image: '/authors/3.jpg',
-      description:" Vestminster Universiteti (WIUT) katta o‘qituvchisi.“Yoshlar uchun 1000 kitob” doirasida iqtisodiyotga doir kitoblarni tayyorlashda ishtirok etgan.  ",
+      description:" Vestminster Universiteti (WIUT) katta oʻqituvchisi. “Yoshlar uchun 1000 kitob” doirasida iqtisodiyotga doir kitoblarni tayyorlashda ishtirok etgan.  ",
       work:"PhD (Turin University)"
      
     },
     {
       name: ' Komil JALILOV',
       image: '/authors/4.jpg',
-      description:"20 yillik pedagog, ta’lim sohasi mutaxassisi ",
-      work:"MA (UCL, London), O‘zbek tili va adabiyoti universiteti doktoranti"
+      description:"20 yillik pedagog, taʼlim sohasi mutaxassisi ",
+      work:"MA (UCL, London), Oʻzbek tili va adabiyoti universiteti doktoranti"
     
     },
     {
         name: 'Madina MUSAYEVA ',
         image: '/authors/4.jpg',
-        description:"O‘zbek tilidagi audiokitoblar suxandoni, tarjimon va kitobxonlik targ‘ibotchisi ",
+        description:"Oʻzbek tilidagi audiokitoblar suxandoni, tarjimon va kitobxonlik targʻibotchisi ",
         work:"MA (Georgetown University)"
       
       },

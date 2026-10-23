@@ -2,24 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 import {  Facebook, Instagram, Twitter } from '@/public/svg'
 import Image from 'next/image';
+import { ALL_CATEGORIES, categoryTitles } from '@/app/data/categories';
+import { navLinks } from '@/app/data/navigation';
 
 
-const categories = [
-  'Barchasi',
-  'Bolalar adabiyoti',
-  "O'quv kitoblar",
-  'Ilmiy-ommabop kitoblar',
-  'Badiiy adabiyot',
-];
+const categories = [ALL_CATEGORIES, ...categoryTitles];
 
-const navLinks = [
-  { href: '/', label: 'Bosh sahifa' },
-  { href: '/about', label: 'Biz haqimizda' },
-  { href: '/books', label: 'Kitoblar' },
-  { href: '#podcast', label: 'Podkastlar' },
-  { href: '#blog', label: 'Blog' },
-  { href: '/contact', label: 'Bog‘lanish' },
-];
 export default function Footer() {
   return (
     <footer className="bg-[#012e4a] text-white py-[28px] px-6">

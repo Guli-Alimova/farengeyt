@@ -24,7 +24,7 @@ const Navbar = () => {
             </li>
             <li className="flex items-center gap-2">
               <i className="far fa-clock"></i>
-              <span>Dushanba - Juma: 09:00- 18:00</span>
+              <span>Dushanba - juma: 09:00- 18:00</span>
             </li>
           </ul>
 

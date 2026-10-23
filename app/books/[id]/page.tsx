@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import books from "@/app/data/book.json";
+import { books } from "@/app/data/books";
 import Image from "next/image";
+import { pageMetadata, SITE_DESCRIPTION, truncate } from "@/app/utils/metadata";
 
 export async function generateStaticParams() {
   return books.map((book) => ({
@@ -8,15 +9,30 @@ export async function generateStaticParams() {
   }));
 }
 
-export const metadata: Metadata = {
-  title: "Book Details",
-};
-
 type BookDetailsPageProps = {
   params: Promise<{
     id: string;
   }>;
 };
+
+export async function generateMetadata({ params }: BookDetailsPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const book = books.find((b) => String(b.id) === id);
+
+  if (!book) return pageMetadata({ path: `/books/${id}` });
+
+  const title = `«${book.title}»`;
+
+  return pageMetadata({
+    title,
+    description: truncate(book.description || book.subtitle || SITE_DESCRIPTION),
+    path: `/books/${book.id}`,
+    // scripts/og-images.mjs prebuild'da yaratadi
+    image: `/og/books/${book.id}.jpg`,
+    imageAlt: title,
+    type: "book",
+  });
+}
 
 export default async function BookDetails({ params }: BookDetailsPageProps) {
   const { id } = await params;
@@ -46,7 +62,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
             />
           ) : (
             <div className="w-full h-[300px] bg-gray-100 rounded flex items-center justify-center text-gray-400">
-              {"Rasm yo'q"}
+              {"Rasm yoʻq"}
             </div>
           )}
         </div>
@@ -101,7 +117,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
 
           {/* Tavsif */}
           <p className="mt-6 text-gray-600 text-sm leading-relaxed">
-            {book.description || "Bu kitob haqida hozircha ma'lumot yo'q."}
+            {book.description || "Bu kitob haqida hozircha maʼlumot yoʻq."}
           </p>
         </div>
       </div>

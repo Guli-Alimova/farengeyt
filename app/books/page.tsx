@@ -1,5 +1,8 @@
 import { Suspense } from 'react';
 import BooksClient from './BooksClient';
+import { pageMetadata } from '@/app/utils/metadata';
+
+export const metadata = pageMetadata({ title: 'Kitoblar', path: '/books' });
 
 // Loading component
 function BooksLoading() {

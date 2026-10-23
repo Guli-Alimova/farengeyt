@@ -15,7 +15,7 @@ const Intro = () => {
             </h1>
               <p className="text-secondary text-[20px] italic mb-12 mt-5 text-center lg:text-left">Ilmiy, badiiy va tarjima asarlar bizning nashriyotimizda</p>
             <Link href="/about" className="bg-[#ED553B] hover:bg-[#14548a] text-white text-[16px] px-6 py-3 rounded-full shadow-md font-semibold transition duration-300">
-              Ko`proq bilish →
+              Koʻproq bilish →
             </Link>
           </div>
 

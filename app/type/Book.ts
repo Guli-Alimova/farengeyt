@@ -1,13 +1,15 @@
 export type Book = {
   id: number;
-  title: string;
   image: string;
+  title: string;
   category: string;
-  description?: string;
-  subtitle:string; 
-  totalPage:string;
-  publishYear:string;
-  format:string;
-  language:string;
-  country:string;
+  subtitle: string;
+  description: string;
+  totalPage: string;
+  publishYear: string;
+  format: string;
+  language: string;
+  country: string;
+  gallery?: string[];
+  hamkor?: string;
 };
