@@ -7,6 +7,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Always ask the user before any `git commit` or `git push`.** Pushing to `main` deploys to the live site immediately via Vercel.
 - All site text is in Uzbek, Latin script (not Cyrillic).
 - Book titles are written in «» quotes, e.g. «Pul».
+- Uzbek text uses ʻ (U+02BB) for oʻ/gʻ and ʼ (U+02BC) for the tutuq belgisi (maʼlumot, taʼlim).
+  Never use ', ‘, ’ or ` in Uzbek words. Applies to components, book.json and category names;
+  not to code, comments or English text.
 
 ## Commands
 

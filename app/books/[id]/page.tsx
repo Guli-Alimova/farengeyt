@@ -62,7 +62,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
             />
           ) : (
             <div className="w-full h-[300px] bg-gray-100 rounded flex items-center justify-center text-gray-400">
-              {"Rasm yo'q"}
+              {"Rasm yoʻq"}
             </div>
           )}
         </div>
@@ -117,7 +117,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
 
           {/* Tavsif */}
           <p className="mt-6 text-gray-600 text-sm leading-relaxed">
-            {book.description || "Bu kitob haqida hozircha ma'lumot yo'q."}
+            {book.description || "Bu kitob haqida hozircha maʼlumot yoʻq."}
           </p>
         </div>
       </div>

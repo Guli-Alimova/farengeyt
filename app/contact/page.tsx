@@ -3,7 +3,7 @@ import ContactIntro from './ContactIntro'
 import ContactMain from './ContactMain'
 import { pageMetadata } from '@/app/utils/metadata'
 
-export const metadata = pageMetadata({ title: 'Bog‘lanish', path: '/contact' })
+export const metadata = pageMetadata({ title: 'Bogʻlanish', path: '/contact' })
 
 const page = () => {
   return (

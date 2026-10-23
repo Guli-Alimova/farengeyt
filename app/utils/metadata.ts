@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Farengeyt Press";
 export const SITE_DESCRIPTION =
-  "Farengeyt Press — ma’rifatning ziyosiga va g‘oyalarning kuchiga ishongan mustaqil nashriyot";
+  "Farengeyt Press — maʼrifatning ziyosiga va gʻoyalarning kuchiga ishongan mustaqil nashriyot";
 
 // Vercel build paytida asosiy domenni beradi; lokal build uchun localhost
 export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL

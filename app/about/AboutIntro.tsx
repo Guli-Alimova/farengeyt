@@ -32,7 +32,7 @@ export default function AboutIntro() {
           Biz haqimizda
         </h1>
         <div className="text-primary">
-          <Link href="/" className="hover:underline">Bosh Sahifa</Link>
+          <Link href="/" className="hover:underline">Bosh sahifa</Link>
           <span> &gt; </span>
           <span className="font-semibold">Biz haqimizda</span>
         </div>

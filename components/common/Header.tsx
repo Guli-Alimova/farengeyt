@@ -10,7 +10,7 @@ const navLinks = [
   { href: '/books', label: 'Kitoblar' },
   { href: '#podcast', label: 'Podkastlar' },
   { href: '#blog', label: 'Blog' },
-  { href: '/contact', label: 'Bog‘lanish' },
+  { href: '/contact', label: 'Bogʻlanish' },
 ]
 
 const Header = () => {
