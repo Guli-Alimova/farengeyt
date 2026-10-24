@@ -85,3 +85,150 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* 3D kitob (components/book/Book3D.tsx). Oʻlchamlar --w, --h, --t (qalinlik),
+   burilish --rx, --ry komponentdan keladi. Tomonlar: old (muqova), chap (umurtqa),
+   oʻng (varaqlar), ichki (titul sahifa), orqa. */
+@layer components {
+  .book3d-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    perspective: 900px;
+  }
+  .book3d-floor {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: calc(var(--w) * 1.15);
+    height: 18px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(19, 26, 49, 0.22), transparent);
+  }
+  .book3d {
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    transform-style: preserve-3d;
+    /* --ry: sichqoncha bilan burish (Book3D), --ry-rest: tinch holat */
+    transform: rotateX(var(--rx, 3deg)) rotateY(var(--ry, var(--ry-rest, 26deg)));
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  /* Ochiq kitob oldinga qaraydi, aks holda muqova titul sahifani toʻsadi */
+  .book3d-open .book3d,
+  :focus-visible .book3d {
+    --ry-rest: 4deg;
+  }
+  @media (hover: hover) {
+    .book3d-stage:hover .book3d {
+      --ry-rest: 4deg;
+    }
+  }
+  .book3d > * {
+    position: absolute;
+    display: block;
+  }
+  .book3d-back {
+    inset: 0;
+    transform: translateZ(calc(var(--t) / -2)) rotateY(180deg);
+    background: var(--spine);
+    filter: brightness(0.8);
+  }
+  .book3d-spine,
+  .book3d-pages {
+    top: 0;
+    left: 50%;
+    width: var(--t);
+    height: var(--h);
+    margin-left: calc(var(--t) / -2);
+  }
+  .book3d-spine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform: rotateY(-90deg) translateZ(calc(var(--w) / 2));
+    background: var(--spine);
+    color: var(--spine-ink);
+    filter: brightness(0.9);
+  }
+  .book3d-spine b {
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-size: clamp(9px, calc(var(--t) * 0.5), 13px);
+    font-weight: 700;
+  }
+  .book3d-pages {
+    top: 3px;
+    height: calc(var(--h) - 6px);
+    transform: rotateY(90deg) translateZ(calc(var(--w) / 2 - 3px));
+    background: repeating-linear-gradient(90deg, #FBF8F1 0 1.5px, #E2DBCA 1.5px 2.5px);
+  }
+  .book3d-top {
+    left: 0;
+    top: 50%;
+    width: calc(var(--w) - 3px);
+    height: var(--t);
+    margin-top: calc(var(--t) / -2);
+    transform: rotateX(90deg) translateZ(calc(var(--h) / 2 - 3px));
+    background: #FBF8F1;
+  }
+  .book3d-inner {
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    right: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 9% 9%;
+    transform: translateZ(calc(var(--t) / 2 - 1px));
+    background: #FBF8F1;
+    color: #2B2A26;
+    box-shadow: inset 8px 0 10px -6px rgba(0, 0, 0, 0.18);
+  }
+  .book3d-cover {
+    inset: 0;
+    transform-style: preserve-3d;
+    transform-origin: 0 50%;
+    transform: translateZ(calc(var(--t) / 2)) rotateY(0deg);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .book3d-cover-front,
+  .book3d-cover-inside {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+  }
+  .book3d-cover-front {
+    overflow: hidden;
+    background: var(--spine);
+    color: var(--spine-ink);
+    box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.1);
+  }
+  /* Muqovaning ichki tomoni (forzats): ochilganda koʻrinadi */
+  .book3d-cover-inside {
+    transform: rotateY(180deg);
+    background: #EFE9DC;
+    box-shadow: inset -6px 0 10px -6px rgba(0, 0, 0, 0.2);
+  }
+  /* Muqova ochilishi (titul sahifa koʻrinadi): sichqoncha ustida (faqat hover bor qurilmalarda),
+     klaviatura fokusida yoki open propida */
+  @media (hover: hover) {
+    .book3d-stage:hover .book3d-cover {
+      transform: translateZ(calc(var(--t) / 2)) rotateY(-105deg);
+    }
+  }
+  :focus-visible .book3d-cover,
+  .book3d-open .book3d-cover {
+    transform: translateZ(calc(var(--t) / 2)) rotateY(-105deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book3d,
+    .book3d-cover {
+      transition: none;
+    }
+  }
+}

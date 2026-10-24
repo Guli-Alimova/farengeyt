@@ -23,9 +23,26 @@ for (const book of raw) {
   if (book.price != null && !(Number.isInteger(book.price) && book.price > 0)) {
     throw new Error(`${where} narxi musbat butun son (soʻmda) bo'lishi kerak: ${book.price}`);
   }
-  if (book.isbn && !/^(\d{13}|\d{9}[\dX])$/.test(book.isbn.replace(/-/g, ""))) {
+  if (!/^#[0-9A-Fa-f]{6}$/.test(book.spineColor)) {
+    throw new Error(`${where} spineColor #RRGGBB koʻrinishida boʻlishi kerak: "${book.spineColor}"`);
+  }
+  if (book.cover && !book.cover.startsWith("/images/covers/")) {
+    throw new Error(`${where} cover /images/covers/ bilan boshlanishi kerak: "${book.cover}"`);
+  }
+  if (book.isbn &&!/^(\d{13}|\d{9}[\dX])$/.test(book.isbn.replace(/-/g, ""))) {
     throw new Error(`${where} ISBN'i 10 yoki 13 xonali emas: "${book.isbn}"`);
   }
 }
 
 export const books: Book[] = raw.map((book) => ({ ...book, status: book.status as BookStatus }));
+
+// Kartochka uchun kerakli maydonlar. Client komponentlarga butun book.json emas, shu uzatiladi
+export type BookCardData = Pick<
+  Book,
+  "id" | "title" | "category" | "subtitle" | "author" | "status" | "uzumUrl" | "cover" | "spineColor" | "totalPage" | "originalTitle"
+>;
+
+export function toCardData(book: Book): BookCardData {
+  const { id, title, category, subtitle, author, status, uzumUrl, cover, spineColor, totalPage, originalTitle } = book;
+  return { id, title, category, subtitle, author, status, uzumUrl, cover, spineColor, totalPage, originalTitle };
+}
