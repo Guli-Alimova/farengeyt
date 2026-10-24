@@ -67,7 +67,7 @@
   --color-silver: #7A7A7A;
   --color-black: #111111;
 
-  --font-display: var(--font-literata), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-okina), var(--font-literata), Georgia, "Times New Roman", serif;
   --font-body: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, Menlo, Consolas, monospace;
 }
