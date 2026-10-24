@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import { books } from "@/app/data/books";
 import Image from "next/image";
 import { pageMetadata, SITE_DESCRIPTION, truncate } from "@/app/utils/metadata";
+import ComingSoonBadge from "@/components/common/ComingSoonBadge";
+
+const priceFormat = new Intl.NumberFormat("uz-UZ");
 
 export async function generateStaticParams() {
   return books.map((book) => ({
@@ -46,6 +49,23 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
   const galleryImages = [book.image, ...(book.gallery || [])]
     .filter((img): img is string => typeof img === "string" && img.trim() !== "");
 
+  // Qiymati bo'sh ("" yoki null) qatorlar ko'rsatilmaydi
+  const details = [
+    { label: "Muallif", value: book.author },
+    { label: "Tarjimon", value: book.translator },
+    { label: "Muharrir", value: book.editor },
+    { label: "Asl nomi", value: book.originalTitle },
+    { label: "Asl tili", value: book.originalLanguage },
+    { label: "Janr", value: book.category },
+    { label: "Tili", value: book.language },
+    { label: "Nashr yili", value: book.publishYear },
+    { label: "Sahifalar soni", value: book.totalPage },
+    { label: "Muqova turi", value: book.format },
+    { label: "ISBN", value: book.isbn },
+    { label: "Mamlakat", value: book.country },
+    { label: "Narx", value: book.price != null ? `${priceFormat.format(book.price)} soʻm` : null },
+  ].filter((row): row is { label: string; value: string } => Boolean(row.value?.trim()));
+
   return (
     <div className="container mx-auto p-10">
       <div className="grid md:grid-cols-2 gap-6">
@@ -69,6 +89,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
 
         {/* Kitob ma'lumotlari */}
         <div>
+          {book.status === "coming-soon" && <ComingSoonBadge className="mb-2" />}
           <h1 className="text-2xl md:text-3xl font-bold mb-4">{book.title}</h1>
 
           {/* Gallery rasmlari */}
@@ -87,33 +108,38 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
             </div>
           )}
 
-          {/* Ma'lumotlar qatori */}
-          <div className="border p-4 rounded-lg shadow-sm grid grid-cols-2 gap-2 text-sm">
-            <p>
-              <span className="font-semibold">Jami sahifalar:</span>{" "}
-              {book.totalPage || "N/A"}
-            </p>
-            <p>
-              <span className="font-semibold">Nashr yili:</span>{" "}
-              {book.publishYear || "N/A"}
-            </p>
-            <p>
-              <span className="font-semibold">Janr:</span>{" "}
-              {book.category || "N/A"}
-            </p>
-            <p>
-              <span className="font-semibold">Shakli:</span>{" "}
-              {book.format || "N/A"}
-            </p>
-            <p>
-              <span className="font-semibold">Tili:</span>{" "}
-              {book.language || "N/A"}
-            </p>
-            <p>
-              <span className="font-semibold">Mamlakat:</span>{" "}
-              {book.country || "N/A"}
-            </p>
-          </div>
+          {/* Sotib olish (nashr qilinmagan kitobda chiqmaydi) */}
+          {book.status === "published" && book.uzumUrl?.trim() ? (
+            <a
+              href={book.uzumUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:opacity-90 transition mb-6"
+            >
+              Sotib olish <span>→</span>
+            </a>
+          ) : null}
+
+          {/* Kitob haqida */}
+          {details.length > 0 && (
+            <section>
+              <h2 className="text-lg font-semibold mb-3">Kitob haqida</h2>
+              <div className="border rounded-lg shadow-sm overflow-hidden">
+                <table className="w-full text-sm">
+                  <tbody>
+                    {details.map((row) => (
+                      <tr key={row.label} className="border-b last:border-b-0">
+                        <th scope="row" className="text-left font-semibold bg-gray-50 py-2 px-4 w-2/5">
+                          {row.label}
+                        </th>
+                        <td className="py-2 px-4">{row.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
 
           {/* Tavsif */}
           <p className="mt-6 text-gray-600 text-sm leading-relaxed">
