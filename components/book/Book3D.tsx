@@ -1,16 +1,14 @@
 'use client';
 
-import Image from "next/image";
 import { useRef, type CSSProperties, type PointerEvent } from "react";
+import CoverFace from "./CoverFace";
+import { inkFor, shapeRatio, thickness } from "./bookShape";
 
 // Kitob boʻyi (px): sm kartochka, lg kitob sahifasi. Eni muqova nisbatidan hisoblanadi
 const HEIGHTS = {
   sm: 186,
   lg: 266,
 } as const;
-
-// Muqova fayli yoʻq kitoblar uchun nisbat
-const DEFAULT_RATIO = 132 / 186;
 
 type Book3DProps = {
   title: string;
@@ -23,20 +21,6 @@ type Book3DProps = {
   open?: boolean; // muqova doim biroz ochiq turadi (masalan, kitob sahifasida)
   className?: string;
 };
-
-// Qalinlik sahifalar soniga qarab, cheklangan oraliqda (sm oʻlchamda 14–34 px)
-function thickness(pages: string | undefined, scale: number) {
-  const n = Number.parseInt(pages ?? "", 10);
-  const t = Number.isFinite(n) && n > 0 ? Math.min(34, Math.max(14, 8 + n * 0.06)) : 22;
-  return Math.round(t * scale);
-}
-
-// Umurtqa rangiga qarab matn oq yoki toʻq boʻladi
-function inkFor(hex: string) {
-  const [r, g, b] = [1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16) / 255);
-  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  return luminance > 0.55 ? "#1A1A1A" : "#FFFFFF";
-}
 
 export default function Book3D({
   title,
@@ -51,7 +35,7 @@ export default function Book3D({
 }: Book3DProps) {
   const bookRef = useRef<HTMLSpanElement>(null);
   const h = HEIGHTS[size];
-  const w = Math.round(h * (cover && coverRatio ? coverRatio : DEFAULT_RATIO));
+  const w = Math.round(h * shapeRatio(cover, coverRatio));
   const scale = h / HEIGHTS.sm;
 
   // Faqat sichqoncha bilan va reduced motion oʻchiq boʻlsa: kitob kursorga qarab biroz buriladi
@@ -108,22 +92,7 @@ export default function Book3D({
         <span className="book3d-cover">
           <span className="book3d-cover-inside" />
           <span className="book3d-cover-front">
-            {cover ? (
-              <Image src={cover} alt="" fill sizes={`${w}px`} className="object-cover" />
-            ) : (
-              // Tekis muqova fayli kelguncha: umurtqa rangida nom
-              <span className="flex h-full flex-col p-[10%]">
-                <span
-                  className="mt-auto font-display font-bold leading-none [overflow-wrap:anywhere]"
-                  style={{ fontSize: (title.length > 9 ? 16 : 22) * scale }}
-                >
-                  {title}
-                </span>
-                <span className="mt-[6%] font-mono tracking-[0.12em] opacity-75" style={{ fontSize: 7 * scale }}>
-                  FARENGEYT
-                </span>
-              </span>
-            )}
+            <CoverFace title={title} cover={cover} sizes={`${w}px`} scale={scale} />
           </span>
         </span>
       </span>

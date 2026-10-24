@@ -16,6 +16,12 @@
   --ember: #C94A22;
   --ember-soft: #FBE7DE;
   --on-ember: #FFFFFF;
+  /* 3D kitob va javon */
+  --wood: #CDD3E0;
+  --wood-edge: #A9B2C6;
+  --floor: rgba(19, 26, 49, 0.22);
+  --page: #FBF8F1;
+  --page-line: #E2DBCA;
 }
 
 /* Qorongʻi rejim hozircha oʻchiq: eski boʻlimlarda ranglar hali qattiq yozilgan.
@@ -34,6 +40,11 @@
   --ember: #FF8457;
   --ember-soft: #3A1D14;
   --on-ember: #1A0C06;
+  --wood: #2A3252;
+  --wood-edge: #1C2340;
+  --floor: rgba(0, 0, 0, 0.55);
+  --page: #D9D3C4;
+  --page-line: #B5AC98;
   color-scheme: dark;
 }
 
@@ -104,7 +115,7 @@ html {
     height: 18px;
     transform: translateX(-50%);
     border-radius: 50%;
-    background: radial-gradient(closest-side, rgba(19, 26, 49, 0.22), transparent);
+    background: radial-gradient(closest-side, var(--floor), transparent);
   }
   .book3d {
     position: relative;
@@ -164,7 +175,7 @@ html {
     top: 3px;
     height: calc(var(--h) - 6px);
     transform: rotateY(90deg) translateZ(calc(var(--w) / 2 - 3px));
-    background: repeating-linear-gradient(90deg, #FBF8F1 0 1.5px, #E2DBCA 1.5px 2.5px);
+    background: repeating-linear-gradient(90deg, var(--page) 0 1.5px, var(--page-line) 1.5px 2.5px);
   }
   .book3d-top {
     left: 0;
@@ -173,7 +184,7 @@ html {
     height: var(--t);
     margin-top: calc(var(--t) / -2);
     transform: rotateX(90deg) translateZ(calc(var(--h) / 2 - 3px));
-    background: #FBF8F1;
+    background: var(--page);
   }
   .book3d-inner {
     top: 3px;
@@ -185,7 +196,7 @@ html {
     gap: 6px;
     padding: 9% 9%;
     transform: translateZ(calc(var(--t) / 2 - 1px));
-    background: #FBF8F1;
+    background: var(--page);
     color: #2B2A26;
     box-shadow: inset 8px 0 10px -6px rgba(0, 0, 0, 0.18);
   }
@@ -231,4 +242,201 @@ html {
       transition: none;
     }
   }
+}
+
+/* Hero'dagi 3D kitob javoni (components/Intro/HeroShelf.tsx). Kitob tik turadi, oldida umurtqa.
+   --k: ekran oʻlchamiga qarab (CSS), --fit: javon sigʻishi uchun (ResizeObserver, JS).
+   Sahna balandligi faqat --k ga bogʻliq, shuning uchun --fit oʻzgarsa sahifa siljimaydi.
+   Kitobdan: --t (qalinlik, px raqami), --r (muqova nisbati), --c / --ci (umurtqa va matn rangi),
+   --dx (chiqqan kitob ekranga sigʻishi uchun siljish). Sahnadan: --rmax, --ry (sichqoncha). */
+@layer components {
+  .shelf3d-stage {
+    --H0: 232px;
+    --k: 1;
+    --fit: 1;
+    --s: calc(var(--k) * var(--fit));
+    --H: calc(var(--H0) * var(--s));
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: calc(var(--H0) * var(--k) + 150px);
+    padding-bottom: 84px;
+    perspective: 1200px;
+    perspective-origin: 50% 30%;
+    overflow-x: clip;
+    touch-action: pan-y;
+  }
+  @media (max-width: 520px) {
+    .shelf3d-stage {
+      --k: 0.8;
+    }
+  }
+  .shelf3d-scene {
+    --Dmax: calc(var(--H) * var(--rmax));
+    position: relative;
+    flex: none;
+    transform-style: preserve-3d;
+    transform: rotateX(-11deg) rotateY(var(--ry, -16deg));
+    transition: transform 0.5s ease-out;
+  }
+  .shelf3d-row {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: calc(5px * var(--s));
+    padding: 0 calc(22px * var(--s));
+    transform-style: preserve-3d;
+  }
+  .shelf3d-plank-top,
+  .shelf3d-plank-front {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  .shelf3d-plank-top {
+    bottom: 0;
+    height: calc(var(--Dmax) + 22px * var(--s));
+    transform-origin: 50% 100%;
+    transform: translateZ(calc(var(--Dmax) / 2 + 11px * var(--s))) rotateX(90deg);
+    background: var(--wood);
+  }
+  .shelf3d-plank-front {
+    bottom: calc(-16px * var(--s));
+    height: calc(16px * var(--s));
+    transform: translateZ(calc(var(--Dmax) / 2 + 11px * var(--s)));
+    background: var(--wood-edge);
+  }
+
+  .shelf3d-book {
+    --T: calc(var(--t) * 1px * var(--s));
+    --D: calc(var(--H) * var(--r));
+    /* Chuqurligi turlicha kitoblarning umurtqalari bir chiziqda turadi */
+    --zo: calc((var(--Dmax) - var(--D)) / 2);
+    position: relative;
+    display: block;
+    flex: none;
+    width: var(--T);
+    height: var(--H);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, var(--zo));
+    transition: transform 0.75s cubic-bezier(0.2, 0.75, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (hover: hover) {
+    .shelf3d-book:not([aria-pressed="true"]):hover {
+      transform: translate3d(0, -6px, calc(var(--zo) + var(--D) * 0.16));
+    }
+  }
+  /* Javondan chiqib, muqovasi bilan oldinga burilgan kitob */
+  .shelf3d-book[aria-pressed="true"] {
+    transform: translate3d(var(--dx, 0px), calc(-16px * var(--s)), calc(var(--zo) + var(--D) * 0.8)) rotateY(-90deg);
+  }
+  .shelf3d-book:focus-visible {
+    outline: none;
+  }
+  .shelf3d-book:focus-visible .shelf3d-spine {
+    outline: 3px solid var(--ember);
+    outline-offset: 2px;
+  }
+
+  .shelf3d-face {
+    position: absolute;
+    display: block;
+    backface-visibility: hidden;
+  }
+  .shelf3d-spine {
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(10px * var(--s)) 0;
+    overflow: hidden;
+    transform: translateZ(calc(var(--D) / 2));
+    background: var(--c);
+    color: var(--ci);
+    box-shadow:
+      inset calc(3px * var(--s)) 0 0 rgba(255, 255, 255, 0.14),
+      inset calc(-4px * var(--s)) 0 0 rgba(0, 0, 0, 0.18);
+  }
+  .shelf3d-title {
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-size: min(calc(16px * var(--s)), calc(var(--T) * 0.62));
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .shelf3d-mark {
+    font-family: var(--font-mono);
+    font-size: calc(10px * var(--s));
+    opacity: 0.85;
+  }
+  /* «Tez kunda» kitoblar */
+  .shelf3d-dot {
+    display: block;
+    width: calc(8px * var(--s));
+    height: calc(8px * var(--s));
+    border-radius: 50%;
+    background: var(--ember);
+    box-shadow: 0 0 0 2px var(--c);
+  }
+  .shelf3d-cover,
+  .shelf3d-back {
+    top: 0;
+    left: 50%;
+    width: var(--D);
+    height: var(--H);
+    margin-left: calc(var(--D) / -2);
+    overflow: hidden;
+    background: var(--c);
+  }
+  .shelf3d-cover {
+    --cover-fit: var(--s);
+    transform: rotateY(90deg) translateZ(calc(var(--T) / 2));
+    color: var(--ci);
+  }
+  .shelf3d-back {
+    transform: rotateY(-90deg) translateZ(calc(var(--T) / 2));
+    filter: brightness(0.82);
+  }
+  .shelf3d-top {
+    left: 0;
+    top: 50%;
+    width: var(--T);
+    height: var(--D);
+    margin-top: calc(var(--D) / -2);
+    transform: rotateX(90deg) translateZ(calc(var(--H) / 2));
+    background: repeating-linear-gradient(90deg, var(--page) 0 2px, var(--page-line) 2px 3px);
+    box-shadow: inset 3px 0 0 var(--c), inset -3px 0 0 var(--c);
+  }
+
+  /* Sokin tebranish: faqat sichqonchali qurilmalarda. Telefonda javon qimirlamaydi */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .shelf3d-scene.is-idle {
+      animation: shelf3d-sway 10s ease-in-out infinite;
+    }
+    .shelf3d-scene.is-paused {
+      animation-play-state: paused;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shelf3d-scene,
+    .shelf3d-book {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes shelf3d-sway {
+  /* Tinch holatdan (-16deg) boshlanadi, sakrash boʻlmaydi */
+  0%, 100% { transform: rotateX(-11deg) rotateY(-16deg); }
+  25% { transform: rotateX(-11deg) rotateY(-23deg); }
+  75% { transform: rotateX(-11deg) rotateY(-9deg); }
 }
