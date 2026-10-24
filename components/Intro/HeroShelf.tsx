@@ -156,7 +156,7 @@ export default function HeroShelf({ books }: { books: BookCardData[] }) {
                   <span className="shelf3d-mark" aria-hidden="true">F°</span>
                 </span>
                 <span className="shelf3d-face shelf3d-cover" aria-hidden="true">
-                  <CoverFace title={book.title} cover={book.cover} sizes="160px" scale={SCALE} />
+                  <CoverFace title={book.title} cover={book.cover} sizes="190px" scale={SCALE} />
                 </span>
                 <span className="shelf3d-face shelf3d-back" aria-hidden="true" />
                 <span className="shelf3d-face shelf3d-top" aria-hidden="true" />

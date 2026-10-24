@@ -260,8 +260,9 @@ html {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    height: calc(var(--H0) * var(--k) + 150px);
-    padding-bottom: 84px;
+    /* padding-bottom: ostidagi yozuv (40px) va u bilan taxta orasidagi joy */
+    height: calc(var(--H0) * var(--k) + 162px);
+    padding-bottom: 96px;
     perspective: 1200px;
     perspective-origin: 50% 30%;
     overflow-x: clip;
@@ -270,6 +271,13 @@ html {
   @media (max-width: 520px) {
     .shelf3d-stage {
       --k: 0.8;
+    }
+  }
+  /* Keng ekranda kitob boʻyi ~270px (232 × 1.16). --H0 emas, --k oshiriladi:
+     qalinlik, shriftlar va sahna balandligi ham shu nisbatda kattalashadi */
+  @media (min-width: 1200px) {
+    .shelf3d-stage {
+      --k: 1.16;
     }
   }
   .shelf3d-scene {
