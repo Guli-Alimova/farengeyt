@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import React from 'react'
 import Image from 'next/image';
+import type { BookStatus } from '@/app/type/Book';
+import ComingSoonBadge from '@/components/common/ComingSoonBadge';
 type FeaturedBookCardProps = {
   id:number;
   image: string;
   title: string;
   category: string;
   subtitle: string;
-
+  status: BookStatus;
 
 }
 const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
@@ -15,13 +17,15 @@ const FeaturedBookCard: React.FC<FeaturedBookCardProps> = ({
   image,
   title,
   category,
-  subtitle
+  subtitle,
+  status
 
 }) => {
   return (
     <div   className="w-full  flex flex-col gap-2">
       <div className="relative">
         <Image src={image} alt={title} className="rounded-lg" width={500} height={213} />
+        {status === 'coming-soon' && <ComingSoonBadge className="absolute top-3 left-3" />}
       </div>
       <p className="text-xs text-secondary">{category}</p>
       <h3 className="font-semibold text-primary leading-tight">{title}</h3>

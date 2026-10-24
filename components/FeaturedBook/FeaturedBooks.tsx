@@ -2,16 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import FeaturedBookCard from './FeaturedBookCard';
-
-const books = [
-  { id: 1, image: '/images/PUL.jpg', title: 'Pul', category: "Bolalar kitoblari", subtitle: "Boshlangʻich saboqlar" },
-  { id: 2, image: '/images/BIOLOGIYA.jpg', title: 'Biologiya', category: "Bolalar kitoblari", subtitle: "Boshlangʻich saboqlar" },
-  { id: 3, image: '/images/FIZIKA.jpg', title: 'Fizika', category: "Bolalar kitoblari", subtitle: "Boshlangʻich saboqlar" },
-  { id: 4, image: '/images/IQTISODIYOT.jpg', title: 'Iqtisodiyot', category: "Bolalar kitoblari", subtitle: "Boshlangʻich saboqlar" },
-  { id: 5, image: '/images/KIMYO.jpg', title: 'Kimyo', category: "Bolalar kitoblari", subtitle: "Boshlangʻich saboqlar" },
-  { id: 6, image: '/images/MATEMATIKA.jpg', title: 'Matematika', category: "Bolalar kitoblari", subtitle: "Boshlangʻich saboqlar" },
-  { id: 7, image: '/images/Behalovat.jpg', title: 'Behalovat avlod', category: "Ilmiy-ommabop kitoblar", subtitle: "" },
-];
+import { books } from '@/app/data/books';
 
 export default function FeaturedBooks() {
   return (
@@ -50,7 +41,7 @@ export default function FeaturedBooks() {
                 title={item.title}
                 category={item.category}
                 subtitle={item.subtitle}
-                
+                status={item.status}
               />
             </SwiperSlide>
           ))}

@@ -26,7 +26,7 @@ const posts = [
     "title": "Behalovat avlod",
     "date": "2025-05-19",
     "author": "@farengeyt_press",
-    "content": "Jonatan Hait bolalarning ruhiy holati va texnologiyalarning ularning hayotiga taʼsiri haqida yozadi.",
+    "content": "Jonathan Haidt bolalarning ruhiy holati va texnologiyalarning ularning hayotiga taʼsiri haqida yozadi.",
     "image": "/images/post3.png",
     "url":"https://www.instagram.com/p/DJ0rEbUoZse/"
   }

@@ -10,6 +10,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Uzbek text uses ʻ (U+02BB) for oʻ/gʻ and ʼ (U+02BC) for the tutuq belgisi (maʼlumot, taʼlim).
   Never use ', ‘, ’ or ` in Uzbek words. Applies to components, book.json and category names;
   not to code, comments or English text.
+- Author names (`author`, and the same people elsewhere on the site) are written in full (first name + surname)
+  in Uzbek transliteration, e.g. «Eddi Reynolds», «Minna Leysi». Exception chosen by the user: Jonathan Haidt
+  stays in English spelling. Translator/editor names are written as the user gives them.
+- Lists of names use the «A, B va C» form (commas, «va» before the last name), e.g.
+  «Eddi Reynolds, Metyu Oldem va Lara Brayan».
+- English titles (`originalTitle`) use title case with prepositions/articles in lowercase unless first:
+  «Money for Beginners», not «Money For Beginners».
+- Don't change the spelling of personal names on your own; ask the user when something looks inconsistent.
 
 ## Commands
 
@@ -27,7 +35,7 @@ The site is a static Next.js 15 (App Router) + React 19 + TypeScript site for th
   - no API routes, server actions, middleware, or runtime server features
   - every dynamic route must implement `generateStaticParams`, as `app/books/[id]/page.tsx` does
   - `next/image` does no optimization
-- **Data source**: all book data lives in `app/data/book.json`. Always import it through `app/data/books.ts` (`import { books } from "@/app/data/books"`), which types it as `Book[]` (`app/type/Book.ts`). Then a missing or mistyped required field fails `tsc`/the build. `gallery` and `hamkor` (partner logo) are optional. A field added to the JSON but not to `Book` goes undetected, so update the type as well. To add a book, add an entry to the JSON and put its images in `public/images/`. `firebase` is listed as a dependency but isn't used anywhere yet.
+- **Data source**: all book data lives in `app/data/book.json`. Always import it through `app/data/books.ts` (`import { books } from "@/app/data/books"`), which types it as `Book[]` (`app/type/Book.ts`). Then a missing or mistyped required field fails `tsc`/the build. `gallery` and `hamkor` (partner logo) are optional. Book details fields: `author`, `translator`, `editor`, `originalTitle`, `originalLanguage`, `isbn`, `price` (whole soʻm, or `null`) and `uzumUrl` (must start with `https://uzum.uz/`, shown as the «Sotib olish» button). `totalPage` is the page count and `format` is the cover type (Qattiq/Yumshoq qoplamli). On the book page every field is shown in the «Kitob haqida» table, and empty values (`""`/`null`) are hidden, never shown as "N/A". `app/data/books.ts` fails the build on an invalid `uzumUrl`, `price` or `isbn`. `status` is required: `"published"` or `"coming-soon"` (not yet published). It is validated in `books.ts` and then typed as `BookStatus`. Coming-soon books show `ComingSoonBadge` («Tez kunda», `components/common/ComingSoonBadge.tsx`) on `BookCard`, `FeaturedBookCard` and the book page, and they never show the «Sotib olish» button. The home-page `FeaturedBooks` reads from `books` too, so don't add a separate book list. A field added to the JSON but not to `Book` goes undetected, so update the type as well. To add a book, add an entry to the JSON and put its images in `public/images/`. `firebase` is listed as a dependency but isn't used anywhere yet.
 - **Layout**: `app/layout.tsx` wraps every page with `Navbar`, `Header`, and `Footer`. The home page (`app/page.tsx`) stacks the section components from `components/` (Intro, FeaturedBooks, ExploreBooks, Blog, PodCast). Route-specific components live next to their route (e.g. `app/about/AboutIntro.tsx`).
 - **Books page**: `app/books/page.tsx` is a server component that wraps the client-side `BooksClient` in `<Suspense>`. `BooksClient` reads `?category=` with `useSearchParams` (which needs that Suspense boundary in a static export) and handles search and category filtering on the client.
 - **Categories (janrlar)**: the single list is `app/data/categories.ts` (`categories`, `categoryTitles`, `ALL_CATEGORIES = "Barchasi"`). It is used by the footer, the home-page `ExploreBooks` section and `BooksClient`. A `category` in `book.json` that isn't in this list throws in `app/data/books.ts` and fails the build. Don't hardcode category names anywhere else.
