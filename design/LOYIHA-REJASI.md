@@ -27,7 +27,8 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 - Kitob nomlari «» qo'shtirnoqda.
 - Mualliflar o'zbekcha transliteratsiyada, to'liq ism bilan, "A, B va C" shaklida.
 - Asl inglizcha nomlarda qisqa predloglar kichik harf bilan ("Biology for Beginners").
-- Narx saytda yozilmaydi (Uzum'dagi narx bilan farq qilib qolmasligi uchun). Faqat "Sotib olish" havolasi.
+- Narx: `book.json` da `price` maydoni va kitob sahifasida "Narx" qatori bor, lekin maydon bo'sh (`null`) qoldiriladi, shuning uchun saytda ko'rinmaydi (Uzum'dagi narx bilan farq qilib qolmasligi uchun). Kartochkada faqat "Uzumda olish" havolasi.
+- «Behalovat avlod» muallifi inglizcha yozilishda qoladi: "Jonathan Haidt" (blogda ham shunday).
 - Maʼlumoti yo'q maydon saytda ko'rinmaydi.
 - «Iqtisodiyot», «Kimyo», «Matematika» hali nashr qilinmagan: holati "Tez kunda", nashr yili va sahifalar soni bo'sh.
 
@@ -51,15 +52,14 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 
 ## 6. Qolgan dizayn qadamlari (`dizayn` branch'ida, har biri alohida commit)
 
-2. Book3D komponenti va kitob kartochkalari: umurtqa rangi muqovadan olinadi va `book.json` ga yoziladi; kartochkalar /books va bosh sahifadagi "Tanlangan kitoblar"da; /books janr filtri tugmalar ko'rinishida; bosh sahifadagi brauzer komponentiga faqat kerakli maydonlar uzatiladi.
+2. Book3D komponenti va kitob kartochkalari: umurtqa rangi muqovadan olinadi va `book.json` ga yoziladi; kartochkalar /books va bosh sahifadagi "Tanlangan kitoblar"da; /books janr filtri tugmalar ko'rinishida; /books'da qidiruv (nom, muallif, asl nomi); bosh sahifadagi brauzer komponentiga faqat kerakli maydonlar uzatiladi.
 3. Hero'dagi 3D javon.
-4. Kitob sahifasi (katta 3D kitob, "Kitob haqida" jadvali), «Boshlangʻich saboqlar» seriya bo'limi (yelpig'ich muqovalar), /books'da qidiruv (nom, muallif, asl nomi).
+4. Kitob sahifasi (katta 3D kitob, "Kitob haqida" jadvali), «Boshlangʻich saboqlar» seriya bo'limi (yelpig'ich muqovalar).
 5. "O'qituvchilar va maktablar uchun" bloki, Telegram obunasi, kitob sahifasida "Muallif haqida", "Tez kunda" kitoblarda "Chiqqanda xabar olish", uchqunlar (egasi tasdiqlasa), qorong'i rejimni yoqish.
 6. Hammasi tayyor bo'lgach: build, preview, Pull Request, merge.
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 
-- «Behalovat avlod» muallifining yozilishi (o'zbekcha muqovadagi kabi). Blogdagi «Jonatan Hait» ham shunga moslanadi.
 - «Pul» mualliflari: Eddi Reynolds, Metyu Oldem va Lara Brayan (titul sahifasidan tasdiqlansin).
 - Muharrir ismining yozilishi (Yoʻldoshev yoki Yuldoshev).
 - Tekis muqova fayllari.

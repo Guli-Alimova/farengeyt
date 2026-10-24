@@ -4,6 +4,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import PodCastCard from '../PodCast/PodCastCard';
+import { useReducedMotion } from '@/app/utils/useReducedMotion';
 
 const podcasts = [
    {
@@ -30,14 +31,18 @@ const podcasts = [
 
 
 export default function PodCast() {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section id="podcast" className="bg-blue-100 py-14 scroll-mt-28">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center">Podkastlar</h2>
 
         <Swiper
+          // reduced motion: autoplay yoʻq (Swiper uni faqat ishga tushishda oʻqiydi, shuning uchun key)
+          key={reducedMotion ? 'static' : 'autoplay'}
           modules={[Pagination, Autoplay]}
-          autoplay={{
+          autoplay={reducedMotion ? false : {
             delay: 4000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,

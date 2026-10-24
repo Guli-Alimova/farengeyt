@@ -8,8 +8,11 @@ import { Navigation} from 'swiper/modules';
 // import 'swiper/css/pagination';
 import { Autoplay } from "swiper/modules";
 import { categories } from '@/app/data/categories';
+import { useReducedMotion } from '@/app/utils/useReducedMotion';
 
 const ExploreBooks = () => {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section className="relative bg-blue-100 py-16  md:px-12 overflow-hidden">
       <div className="text-center">
@@ -21,11 +24,13 @@ const ExploreBooks = () => {
 
       <div className="flex gap-10 justify-center flex-wrap md:flex-nowrap mt-10">
       <Swiper
+      // reduced motion: autoplay yoʻq (Swiper uni faqat ishga tushishda oʻqiydi, shuning uchun key)
+      key={reducedMotion ? 'static' : 'autoplay'}
       modules={[Navigation, Autoplay]}
-      autoplay={{
-        delay: 5000, 
-        disableOnInteraction: false, 
-         pauseOnMouseEnter: true, 
+      autoplay={reducedMotion ? false : {
+        delay: 5000,
+        disableOnInteraction: false,
+         pauseOnMouseEnter: true,
       }}
       loop={true} // qayta aylanish
         spaceBetween={3}

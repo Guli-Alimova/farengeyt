@@ -3,12 +3,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import type { BookCardData } from '@/app/data/books';
 import BookCard from '@/components/book/BookCard';
+import { useReducedMotion } from '@/app/utils/useReducedMotion';
 
 export default function FeaturedBooksSlider({ books }: { books: BookCardData[] }) {
+  const reducedMotion = useReducedMotion();
+
   return (
     <Swiper
+      // Swiper autoplay sozlamasini faqat ishga tushishda oʻqiydi, shuning uchun qiymat oʻzgarsa qayta yaratiladi
+      key={reducedMotion ? 'static' : 'autoplay'}
       modules={[Pagination, Autoplay]}
-      autoplay={{
+      autoplay={reducedMotion ? false : {
         delay: 5000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
