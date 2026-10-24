@@ -458,3 +458,75 @@ html {
   25% { transform: rotateX(-11deg) rotateY(-23deg); }
   75% { transform: rotateX(-11deg) rotateY(-9deg); }
 }
+
+/* Bosh sahifadagi seriya yelpigʻichi (components/Series/SeriesSection.tsx). Faqat CSS, JS yoʻq.
+   Kitobdan: --i (markazdan tartib raqami, masalan -2.5…2.5), --r (muqova nisbati), --spine / --spine-ink.
+   Yelpigʻichdan: --s (telefonda kichrayish), --fh (muqova boʻyi). Faqat transform animatsiya qilinadi */
+@layer components {
+  .series-fan {
+    --s: 1;
+    --fh: 180px;
+    --gap: 34px;
+    --rot: 9deg;
+    position: relative;
+    height: 250px;
+  }
+  .series-fan-book {
+    --lift: 0px;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    width: calc(var(--fh) * var(--r));
+    height: var(--fh);
+    margin-left: calc(var(--fh) * var(--r) / -2);
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--spine);
+    color: var(--spine-ink);
+    box-shadow: 0 14px 30px -12px var(--floor);
+    transform-origin: 50% 120%;
+    transform: translateX(calc(var(--i) * var(--gap) * var(--s))) translateY(var(--lift))
+      rotate(calc(var(--i) * var(--rot)));
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .series-fan-book > a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .series-fan-book > a:focus-visible {
+    outline: 3px solid var(--ember);
+    outline-offset: -3px;
+  }
+  /* Klaviatura bilan ham: fokusdagi muqova koʻtariladi, yelpigʻich kengayadi */
+  .series-fan:focus-within {
+    --gap: 58px;
+    --rot: 13deg;
+  }
+  .series-fan-book:focus-within {
+    --lift: -18px;
+  }
+  @media (hover: hover) {
+    .series-fan:hover {
+      --gap: 58px;
+      --rot: 13deg;
+    }
+    .series-fan-book:hover {
+      --lift: -18px;
+    }
+  }
+  @media (max-width: 520px) {
+    .series-fan {
+      --s: 0.62;
+      --fh: 135px;
+      --cover-fit: 0.75;
+      height: 200px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .series-fan-book {
+      transition: none;
+    }
+  }
+}
