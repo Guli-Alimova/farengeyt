@@ -55,7 +55,8 @@ Don't put unlayered element resets (`* { margin: 0 }` etc.) in `globals.css`: in
 
 ## Images
 
-Large originals (5000 px covers, ~5 MB) live in `originals/images/`, outside `public/`. The folder is gitignored; the originals of the current covers are in Git history (`git show 07448b9:public/images/PUL.jpg > originals/images/PUL.jpg`). `node scripts/resize-images.mjs` writes 2000 px copies with the same names to `public/images/`, which is what `book.json` references. For a new large image, put the original in `originals/images/` and run the script.
+Large originals (5000 px covers, ~5 MB) live in `originals/images/`, outside `public/`. The folder is gitignored; the originals of the current covers are in Git history. Don't restore them with `git show … > file`: in PowerShell `>` corrupts binary files. Instead:
+`git restore --source=07448b9 -- public/images/PUL.jpg` (puts the original in place of the resized copy), then move it to `originals/images/` and run `git restore -- public/images/PUL.jpg` to bring the resized copy back. `node scripts/resize-images.mjs` writes 2000 px copies with the same names to `public/images/`, which is what `book.json` references. For a new large image, put the original in `originals/images/` and run the script.
 
 ## Dizayn tugagach qilinadigan ishlar
 
