@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**Har bir vazifadan oldin `design/LOYIHA-REJASI.md` ni hisobga ol.**
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Rules
