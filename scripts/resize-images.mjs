@@ -4,7 +4,7 @@
 // Muqovalardan faqat book.json'da "cover" sifatida koʻrsatilganlari saytga chiqadi;
 // hali saytda yoʻq kitoblarning muqovalari originals/covers/ da kutib turadi.
 // Yangi rasm qoʻshilsa: aslini tegishli papkaga qoʻyib, `node scripts/resize-images.mjs`
-import { mkdir, readdir, readFile, stat } from "node:fs/promises";
+import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
@@ -59,3 +59,17 @@ for (const job of jobs) {
     console.log(`${job.src}${name}: ${(before.size / 1e6).toFixed(1)} MB -> ${(after.size / 1e3).toFixed(0)} KB`);
   }
 }
+
+// 3D kitob shakli muqovaning oʻz nisbatiga moslashishi uchun saytdagi muqovalar oʻlchami
+// app/data/cover-sizes.json ga yoziladi (build paytida originals/ kerak boʻlmaydi)
+const sizes = {};
+for (const cover of [...usedCovers].sort()) {
+  try {
+    const { width, height } = await sharp(fileURLToPath(new URL(`public${cover}`, root))).metadata();
+    sizes[cover] = { width, height };
+  } catch {
+    console.log(`${cover}: public/ da topilmadi (aslini originals/covers/ ga qoʻying)`);
+  }
+}
+await writeFile(new URL("app/data/cover-sizes.json", root), `${JSON.stringify(sizes, null, 2)}\n`);
+console.log(`cover-sizes.json: ${Object.keys(sizes).length} ta muqova`);

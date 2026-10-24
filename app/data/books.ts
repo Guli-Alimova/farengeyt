@@ -1,6 +1,9 @@
 import data from "./book.json";
 import { BOOK_STATUSES, type Book, type BookStatus } from "@/app/type/Book";
 import { categoryTitles } from "./categories";
+import sizes from "./cover-sizes.json"; // scripts/resize-images.mjs yozadi
+
+const coverSizes: Record<string, { width: number; height: number } | undefined> = sizes;
 
 // JSON importida status oddiy string bo'lib keladi; quyida tekshirilgach BookStatus'ga o'tkaziladi
 type BookJson = Omit<Book, "status"> & { status: string };
@@ -29,7 +32,10 @@ for (const book of raw) {
   if (book.cover && !book.cover.startsWith("/images/covers/")) {
     throw new Error(`${where} cover /images/covers/ bilan boshlanishi kerak: "${book.cover}"`);
   }
-  if (book.isbn &&!/^(\d{13}|\d{9}[\dX])$/.test(book.isbn.replace(/-/g, ""))) {
+  if (book.cover && !coverSizes[book.cover]) {
+    throw new Error(`${where} muqovasi cover-sizes.json'da yoʻq: "${book.cover}". node scripts/resize-images.mjs ni ishga tushiring`);
+  }
+  if (book.isbn && !/^(\d{13}|\d{9}[\dX])$/.test(book.isbn.replace(/-/g, ""))) {
     throw new Error(`${where} ISBN'i 10 yoki 13 xonali emas: "${book.isbn}"`);
   }
 }
@@ -40,9 +46,13 @@ export const books: Book[] = raw.map((book) => ({ ...book, status: book.status a
 export type BookCardData = Pick<
   Book,
   "id" | "title" | "category" | "subtitle" | "author" | "status" | "uzumUrl" | "cover" | "spineColor" | "totalPage" | "originalTitle"
->;
+> & {
+  coverRatio?: number; // muqova eni / boʻyi: 3D kitob shu nisbatda chiziladi
+};
 
 export function toCardData(book: Book): BookCardData {
   const { id, title, category, subtitle, author, status, uzumUrl, cover, spineColor, totalPage, originalTitle } = book;
-  return { id, title, category, subtitle, author, status, uzumUrl, cover, spineColor, totalPage, originalTitle };
+  const size = cover ? coverSizes[cover] : undefined;
+  const coverRatio = size ? size.width / size.height : undefined;
+  return { id, title, category, subtitle, author, status, uzumUrl, cover, coverRatio, spineColor, totalPage, originalTitle };
 }

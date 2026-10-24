@@ -3,19 +3,23 @@
 import Image from "next/image";
 import { useRef, type CSSProperties, type PointerEvent } from "react";
 
-// sm: kartochka, lg: kitob sahifasi (px)
-const SIZES = {
-  sm: { w: 132, h: 186 },
-  lg: { w: 190, h: 266 },
+// Kitob boʻyi (px): sm kartochka, lg kitob sahifasi. Eni muqova nisbatidan hisoblanadi
+const HEIGHTS = {
+  sm: 186,
+  lg: 266,
 } as const;
+
+// Muqova fayli yoʻq kitoblar uchun nisbat
+const DEFAULT_RATIO = 132 / 186;
 
 type Book3DProps = {
   title: string;
   author?: string;
   cover?: string;
+  coverRatio?: number; // muqova eni / boʻyi; kitob shu shaklda chiziladi, muqova kesilmaydi
   spineColor: string;
   pages?: string;
-  size?: keyof typeof SIZES;
+  size?: keyof typeof HEIGHTS;
   open?: boolean; // muqova doim biroz ochiq turadi (masalan, kitob sahifasida)
   className?: string;
 };
@@ -38,6 +42,7 @@ export default function Book3D({
   title,
   author,
   cover,
+  coverRatio,
   spineColor,
   pages,
   size = "sm",
@@ -45,8 +50,9 @@ export default function Book3D({
   className = "",
 }: Book3DProps) {
   const bookRef = useRef<HTMLSpanElement>(null);
-  const { w, h } = SIZES[size];
-  const scale = w / SIZES.sm.w;
+  const h = HEIGHTS[size];
+  const w = Math.round(h * (cover && coverRatio ? coverRatio : DEFAULT_RATIO));
+  const scale = h / HEIGHTS.sm;
 
   // Faqat sichqoncha bilan va reduced motion oʻchiq boʻlsa: kitob kursorga qarab biroz buriladi
   const handleMove = (e: PointerEvent<HTMLSpanElement>) => {

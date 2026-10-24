@@ -65,7 +65,7 @@ Large originals (5000 px covers, ~5 MB) live in `originals/images/`, outside `pu
 Flat front covers for the 3D book (one file per book, front only; crop spreads/print files and remove bleed and crop marks first):
 1. Put the original (JPG/PNG; sharp can't read PDF) in `originals/covers/`.
 2. Set `"cover": "/images/covers/<name>.jpg"` for that book in `book.json`.
-3. Run `node scripts/resize-images.mjs`. It writes an 800 px JPG to `public/images/covers/`, but only for covers that some book's `cover` points to. Covers of books not yet on the site (e.g. `argument.jpg`, `povarnin.jpg`) stay only in `originals/covers/`.
+3. Run `node scripts/resize-images.mjs`. It writes an 800 px JPG to `public/images/covers/`, but only for covers that some book's `cover` points to. Covers of books not yet on the site (e.g. `argument.jpg`, `povarnin.jpg`) stay only in `originals/covers/`. It also rewrites `app/data/cover-sizes.json` (pixel size of each cover; commit it). `Book3D` uses that ratio so the book has the cover's shape and the cover isn't cropped. A `cover` missing from that file fails the build.
 4. Run `node scripts/cover-colors.mjs --force` (or delete just that book's `spineColor` and run it without `--force`).
 
 ## Dizayn tugagach qilinadigan ishlar
