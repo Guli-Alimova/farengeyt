@@ -260,9 +260,11 @@ html {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    /* padding-bottom: ostidagi yozuv (40px) va u bilan taxta orasidagi joy */
-    height: calc(var(--H0) * var(--k) + 162px);
-    padding-bottom: 96px;
+    /* Pastdagi joy: yozuv (oʻlchami oʻzgarmaydi) uchun 38px va taxta uchun --k bilan oʻsadigan qism —
+       javon kattalashganda taxta pastroq tushadi, oraliq har oʻlchamda ~16px qoladi */
+    --pad: calc(38px + 70px * var(--k));
+    height: calc((var(--H0) + 66px) * var(--k) + var(--pad));
+    padding-bottom: var(--pad);
     perspective: 1200px;
     perspective-origin: 50% 30%;
     overflow-x: clip;
