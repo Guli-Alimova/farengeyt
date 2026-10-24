@@ -18,7 +18,9 @@ type Book3DProps = {
   spineColor: string;
   pages?: string;
   size?: keyof typeof HEIGHTS;
-  open?: boolean; // muqova doim biroz ochiq turadi (masalan, kitob sahifasida)
+  open?: boolean; // muqova doim biroz ochiq turadi
+  closed?: boolean; // muqova doim yopiq: hover va fokusda ochilmaydi (kitob sahifasi), faqat burilish
+  priority?: boolean; // muqova rasmi kechiktirmasdan yuklanadi (birinchi ekrandagi katta kitob)
   className?: string;
 };
 
@@ -31,6 +33,8 @@ export default function Book3D({
   pages,
   size = "sm",
   open = false,
+  closed = false,
+  priority = false,
   className = "",
 }: Book3DProps) {
   const bookRef = useRef<HTMLSpanElement>(null);
@@ -46,7 +50,9 @@ export default function Book3D({
     const r = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;
     const y = (e.clientY - r.top) / r.height;
-    book.style.setProperty("--ry", `${(8 + (x - 0.5) * 40).toFixed(1)}deg`);
+    // Yopiq kitob kamroq buriladi: muqova oldidan koʻrinib, umurtqa yoʻqolmaydi (6°–30°)
+    const ry = closed ? 18 + (x - 0.5) * 24 : 8 + (x - 0.5) * 40;
+    book.style.setProperty("--ry", `${ry.toFixed(1)}deg`);
     book.style.setProperty("--rx", `${((0.5 - y) * 16).toFixed(1)}deg`);
   };
 
@@ -65,7 +71,7 @@ export default function Book3D({
 
   return (
     <span
-      className={`book3d-stage ${open ? "book3d-open" : ""} ${className}`}
+      className={`book3d-stage ${open ? "book3d-open" : ""} ${closed ? "book3d-closed" : ""} ${className}`}
       style={style}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
@@ -92,7 +98,7 @@ export default function Book3D({
         <span className="book3d-cover">
           <span className="book3d-cover-inside" />
           <span className="book3d-cover-front">
-            <CoverFace title={title} cover={cover} sizes={`${w}px`} scale={scale} />
+            <CoverFace title={title} cover={cover} sizes={`${w}px`} scale={scale} priority={priority} />
           </span>
         </span>
       </span>

@@ -236,6 +236,14 @@ html {
   .book3d-open .book3d-cover {
     transform: translateZ(calc(var(--t) / 2)) rotateY(-105deg);
   }
+  /* closed propi (kitob sahifasi): muqova doim yopiq, hover va fokusda ochilmaydi.
+     Kitob biroz burilgan turadi, umurtqa koʻrinadi. Yuqoridagi qoidalardan keyin, shuning uchun ustun */
+  .book3d-stage.book3d-closed .book3d {
+    --ry-rest: 18deg;
+  }
+  .book3d-stage.book3d-closed .book3d-cover {
+    transform: translateZ(calc(var(--t) / 2)) rotateY(0deg);
+  }
   @media (prefers-reduced-motion: reduce) {
     .book3d,
     .book3d-cover {
