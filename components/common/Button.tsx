@@ -8,7 +8,7 @@ interface ButtonProps {
   }
 const Button: React.FC<ButtonProps> = ({ children}) => {
   return (
-    <button className='py-[14px] px-[35px] bg-transparent border-1 border-primary rounded-[8px] inter font-normal text-base text-primary flex justify-center items-center w-[197px] max-w-full '>
+    <button className='py-[14px] px-[35px] bg-transparent border-1 border-primary rounded-[8px] font-normal text-base text-primary flex justify-center items-center w-[197px] max-w-full '>
     {children } <span className='ml-[8px]'><Right/></span>
     </button>
   )

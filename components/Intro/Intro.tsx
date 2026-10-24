@@ -1,72 +1,36 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
-// import "../../styles/globals.css"
 
 const Intro = () => {
   return (
-    <div className="relative bg-blue-100 overflow-hidden pb-20">
+    <section className="pb-12 pt-11">
       <div className="container">
-        <div className="flex flex-col lg:flex-row items-center justify-between pt-[25px] relative z-10 text-center lg:text-left">
-          {/* Text Section */}
-          <div className=" max-w-xl">
-            <h1 className="text-center lg:text-left text-[32px] sm:text-[56px] lg:text-[64px] leading-[1.2] font-bold md:text-center text-primary font-inter lg:w-[735px]  ">
-             Biz bilan kitob olami yanada yaqin
-            </h1>
-              <p className="text-secondary text-[20px] italic mb-12 mt-5 text-center lg:text-left">Ilmiy, badiiy va tarjima asarlar bizning nashriyotimizda</p>
-            <Link href="/about" className="bg-[#ED553B] hover:bg-[#14548a] text-white text-[16px] px-6 py-3 rounded-full shadow-md font-semibold transition duration-300">
-              Koʻproq bilish →
-            </Link>
-          </div>
-
-          {/* Image Section */}
-          <div className="pt-10 lg:pt-70 top-[80px] left-[60px] relative ">
-            <Image
-              src="/images/hero-book.png"
-              alt="hero girl"
-              className="w-[300px] hidden lg:inline md:w-[400px] lg:w-[500px] xl:w-[589px] z-50 animate-float-x"
-              width={300}
-              height={300}
-            />
-          </div>
+        <p className="font-mono text-xs uppercase tracking-[0.09em] text-brand">
+          {"Ilmiy-ommabop, taʼlimiy va tarjima adabiyot"}
+        </p>
+        <h1 className="mb-[18px] mt-3.5 max-w-[16ch] text-balance font-display text-[clamp(34px,5.2vw,58px)] font-semibold leading-[1.06] tracking-[-0.015em] text-ink">
+          Kitob olami biz bilan <em className="text-brand">yanada yaqin</em>
+        </h1>
+        <p className="max-w-[44ch] text-lg text-muted">
+          {"Farengeyt Press dunyo ilm-fani va tafakkurining eng yaxshi kitoblarini oʻzbek oʻquvchisiga yetkazadi."}
+        </p>
+        <div className="mt-[26px] flex flex-wrap gap-3">
+          <Link
+            href="/books"
+            className="inline-flex items-center rounded-full bg-brand px-5 py-3 text-[15px] font-semibold text-brand-ink"
+          >
+            {"Kitoblarni koʻrish"}
+          </Link>
+          <Link
+            href="/about"
+            className="inline-flex items-center rounded-full border border-line px-5 py-3 text-[15px] font-semibold text-ink"
+          >
+            Biz haqimizda
+          </Link>
         </div>
       </div>
-
-      {/* Decorations */}
-      <Image
-        src="/images/bg-shape.png"
-        alt="shape"
-        className="hidden lg:inline absolute top-0 left-[488px] lg:w-[750px] w-[200px] z-10"
-        width={200}
-        height={200}
-      />
-      <Image
-        src="/images/frame-2.png"
-        alt="frame"
-        className="hidden lg:inline absolute top-0 left-[36%] w-[254px] animate-float-x"
-        width={254}
-        height={254}
-      />
-
-      <Image
-        src="/images/output-onlinegiftools.gif"
-        alt="frame"
-        className="hidden lg:inline absolute top-[40%] left-[45%] w-[145px] animate-float-x"
-        width={254}
-        height={254}
-      />
-      <Image
-      src="/images/frame-2.png"
-      alt="frame"
-      className="hidden lg:inline absolute bottom-[-3%] left-[-1%] w-[254px] animate-float-y"
-      width={254}
-      height={254}
-      />
-
-     
-    </div>
+    </section>
   )
 }
 
 export default Intro;
-

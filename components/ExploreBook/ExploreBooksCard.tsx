@@ -23,11 +23,8 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({
 }) => {
   return (
     <div className="relative flex flex-col items-center text-center">
-      {/* Rounded image with dashed border */}
+      {/* Rounded image */}
       <div className="relative w-[230px] h-[230px] flex items-center justify-center bg-white rounded-full">
-        {/* Aylanuvchi border */}
-        <div className="absolute w-[200px] h-[200px] border-2 border-dashed border-secondary rounded-full animate-spin-slow"></div>
-
         {category ? (
           <Link href={`/books?category=${encodeURIComponent(category.title)}`}>
             <div className="relative z-10 flex flex-col items-center">

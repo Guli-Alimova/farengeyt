@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
-import {  Inter } from "next/font/google";
+import { IBM_Plex_Mono, Literata, Noto_Sans } from "next/font/google";
 import "@/styles/globals.css"
-import Navbar from "@/components/Navbar";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { pageMetadata, SITE_NAME, SITE_URL } from "@/app/utils/metadata";
 
-
-
-const inter = Inter({
-  variable: "--font-inter",
+// "latin" subseti ʻ (U+02BB) va ʼ (U+02BC) belgilarini ham oʻz ichiga oladi
+const literata = Literata({
+  variable: "--font-literata",
   subsets: ["latin"],
-  weight: ['400', '500', '600','700'], 
-  style: ['normal', 'italic'],
- 
+  style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
   ...pageMetadata({ path: "/" }),
@@ -29,12 +37,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uz">
-      <body className={`${inter}`}>
-        <Navbar/>
-         <Header />   
-         {children} 
-         <Footer />      
+    <html
+      lang="uz"
+      className={`${literata.variable} ${notoSans.variable} ${plexMono.variable}`}
+    >
+      <body>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

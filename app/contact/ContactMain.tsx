@@ -1,6 +1,5 @@
 'use client';
 
-import Image from "next/image";
 import { useState } from "react";
 
 export default function ContactMain() {
@@ -29,15 +28,6 @@ export default function ContactMain() {
             <div>
               <h3 className="text-sm opacity-80">Manzil:</h3>
               <p className="text-lg font-semibold">Komolon 134 a</p>
-            </div>
-            <div className="mt-8 flex justify-center">
-              <Image
-                src="/images/Full logo anim.gif"
-                alt="Contact"
-                className="rounded-lg"
-                width={250}
-                height={250}
-              />
             </div>
           </div>
 

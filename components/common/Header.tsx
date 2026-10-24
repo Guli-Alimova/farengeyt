@@ -1,83 +1,66 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Burger from '../Burger'
-import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { navLinks } from '@/app/data/navigation'
+
+// "/books" ham "/books/3" sahifasida faol koʻrinadi; "/#..." havolalari hech qachon faol emas
+function isActive(pathname: string, href: string) {
+  if (href.includes('#')) return false
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="container mx-auto px-4 flex items-center justify-between py-4">
-        {/* Logo */}
-        <Link href="/" className="w-[86px] max-w-full">
-          <Image
-            src="/images/burning cycle.gif"
-            alt="farengeyt"
-            className="h-auto w-full"
-            width={300}
-            height={300}
-          />
+    <header className="sticky top-[env(safe-area-inset-top,0px)] z-50 border-b border-line bg-paper/90 backdrop-blur-md">
+      <div className="container relative flex items-center gap-5 py-3.5">
+        <Link
+          href="/"
+          className="flex items-center gap-1.5 font-display text-[23px] font-bold tracking-[-0.01em] text-ink"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Farengeyt
+          <span className="font-body text-xs font-medium uppercase tracking-[0.09em] text-muted">
+            Press
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex gap-6 text-lg font-medium text-primary font-inter">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="transition-colors duration-300 hover:text-secondary"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Burger icon (faqat ☰ turadi, o‘zgarmaydi) */}
         <button
-          className="md:hidden text-2xl font-bold"
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Open Menu"
+          type="button"
+          className="ml-auto inline-flex rounded-lg border border-line px-3 py-1.5 text-sm text-ink min-[821px]:hidden"
+          aria-expanded={isMenuOpen}
+          aria-controls="site-nav"
+          onClick={() => setIsMenuOpen((open) => !open)}
         >
-          ☰
+          {isMenuOpen ? 'Yopish' : 'Menyu'}
         </button>
+
+        <nav
+          id="site-nav"
+          className={`${isMenuOpen ? 'flex' : 'hidden'} absolute inset-x-0 top-full flex-col border-b border-line bg-paper px-4 pb-2.5 pt-1.5 min-[821px]:static min-[821px]:ml-auto min-[821px]:flex min-[821px]:flex-row min-[821px]:gap-[22px] min-[821px]:border-0 min-[821px]:bg-transparent min-[821px]:p-0`}
+        >
+          {navLinks.map((link) => {
+            const active = isActive(pathname, link.href)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? 'page' : undefined}
+                className={`border-t border-line py-2.5 text-[15px] transition-colors hover:text-ink min-[821px]:border-0 min-[821px]:py-0 ${active ? 'text-ink' : 'text-muted'}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+        </nav>
       </div>
-
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40">
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setIsMenuOpen(false)}
-          />
-
-          {/* Sidebar */}
-          <div className="relative md:hidden bg-[#cde3e8] w-3/4 max-w-xs h-full ml-auto shadow-xl">
-            {/* Close button (X icon ichkarida) */}
-            {/* <button
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-4 right-4"
-              aria-label="Close Menu"
-            >
-              <Close />
-            </button> */}
-
-            {/* Burger component */}
-            <div>
-              <Burger onClose={() => setIsMenuOpen(false)} />
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   )
 }
 
 export default Header
-

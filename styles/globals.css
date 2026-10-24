@@ -1,151 +1,87 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
 @import "tailwindcss";
 @import 'swiper/css';
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+/* Ranglar: design/prototip.html dagi palitra */
 :root {
-  --primary: #29479E;
-  --secondary: #ED553B;
-  --black:#111111;
-  --silver:#7A7A7A;
+  --paper: #F5F7FB;
+  --card: #FFFFFF;
+  --ink: #131A31;
+  --muted: #58617E;
+  --line: #DCE1EC;
+  --brand: #29479E;
+  --brand-ink: #FFFFFF;
+  --brand-soft: #E7ECF8;
+  --ember: #C94A22;
+  --ember-soft: #FBE7DE;
+  --on-ember: #FFFFFF;
+}
+
+/* Qorongʻi rejim hozircha oʻchiq: eski boʻlimlarda ranglar hali qattiq yozilgan.
+   Hamma boʻlim yangi dizaynga oʻtgach, bu blokni
+   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ... } }
+   ichiga olib yoqiladi. */
+:root[data-theme="dark"] {
+  --paper: #0D1120;
+  --card: #141A2D;
+  --ink: #E7EBF5;
+  --muted: #9CA5C0;
+  --line: #262E47;
+  --brand: #91A8F0;
+  --brand-ink: #0D1120;
+  --brand-soft: #18213D;
+  --ember: #FF8457;
+  --ember-soft: #3A1D14;
+  --on-ember: #1A0C06;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --font-inter: var(--font-inter);
-  --color-primary:#29479E; 
-  --color-secondary:#ED553B;
-  --color-silver:#7A7A7A;
-  --color-black:#111111;
-}
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-on-ember: var(--on-ember);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #29479E;
-    --secondary: #ED553B;
-    --silver:#7A7A7A;
-    --black:#111111;
-  }
+  /* Eski komponentlar uchun */
+  --color-primary: var(--brand);
+  --color-secondary: #ED553B;
+  --color-silver: #7A7A7A;
+  --color-black: #111111;
+
+  --font-display: var(--font-literata), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, Consolas, monospace;
 }
 
 body {
-  color: var(--primary);
-  background: var(--background);
-  font-family: "Inter", sans-serif;
-}
-.container{
-  max-width: 1140px;
-  width:100%;
-  padding-left:15px;
-  padding-right:15px;
-  margin:0 auto;
-}
-* {
-padding: 0;
-margin: 0;
-}
-  
-ul{
-padding-left: 0;
-list-style: none;
-  
-}
-.inter{
-  font-family: var(--font-inter);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
 }
 
-@keyframes float-x {
-  0%, 100% {
-    transform: translateX(0px);
-  }
-  50% {
-    transform: translateX(20px);
-  }
+.container {
+  max-width: 1160px;
+  width: 100%;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  margin: 0 auto;
 }
-
-.animate-float-x {
-  animation: float-x 4s ease-in-out infinite;
-}
-
-@keyframes float-y {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.animate-float-y {
-  animation: float-y 4s ease-in-out infinite;
-}
-
-@keyframes rotate-half {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.animate-rotate-half {
-  animation: rotate-half 4s ease-in-out infinite;
-}
-
-@keyframes spin-slow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-
 
 html {
   scroll-behavior: smooth;
 }
 
-@layer utilities {
-  /* Trail chizish animatsiyasi */
-  .trail-path {
-    animation: trailDraw 4s linear forwards;
-  }
-  @keyframes trailDraw {
-    from {
-      stroke-dashoffset: 600;
-    }
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  /* Samolyot uchish animatsiyasi */
-  .plane-anim {
-    position: absolute;
-    offset-path: path("M0 150 Q150 50, 300 100 T400 50");
-    offset-rotate: auto;
-    animation: planeFly 4s linear forwards;
-  }
-  @keyframes planeFly {
-    from {
-      offset-distance: 0%;
-    }
-    to {
-      offset-distance: 100%;
-    }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
