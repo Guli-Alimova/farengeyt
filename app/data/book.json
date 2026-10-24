@@ -2,7 +2,8 @@
   {
     "id": 1,
     "image": "/images/PUL.jpg",
-    "spineColor": "#25837D",
+    "cover": "/images/covers/pul.jpg",
+    "spineColor": "#14847E",
     "title": "Pul",
     "category": "Bolalar kitoblari",
     "status": "published",
@@ -27,7 +28,8 @@
   {
     "id": 2,
     "image": "/images/BIOLOGIYA.jpg",
-    "spineColor": "#E7CB46",
+    "cover": "/images/covers/biologiya.jpg",
+    "spineColor": "#FDDA3B",
     "title": "Biologiya",
     "category": "Bolalar kitoblari",
     "status": "published",
@@ -52,7 +54,8 @@
   {
     "id": 3,
     "image": "/images/FIZIKA.jpg",
-    "spineColor": "#DB7BA4",
+    "cover": "/images/covers/fizika.jpg",
+    "spineColor": "#ED7AAA",
     "title": "Fizika",
     "category": "Bolalar kitoblari",
     "status": "published",
@@ -152,7 +155,8 @@
     {
     "id": 7,
     "image": "/images/Behalovat.jpg",
-    "spineColor": "#B7772A",
+    "cover": "/images/covers/behalovat-avlod.jpg",
+    "spineColor": "#291507",
     "title": "Behalovat avlod",
     "category": "Ilmiy-ommabop kitoblar",
     "status": "published",

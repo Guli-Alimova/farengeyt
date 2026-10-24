@@ -1,16 +1,27 @@
 // Katta rasmlarni saytga moslab kichraytiradi (asl nusxalar originals/ da, u gitignore qilingan):
 //   originals/images/*.jpg      (maketlar, 5000 px, ~5 MB) -> public/images/<shu nom>.jpg         (2000 px)
 //   originals/covers/*.jpg|png  (tekis muqovalar)          -> public/images/covers/<shu nom>.jpg  (800 px)
+// Muqovalardan faqat book.json'da "cover" sifatida koʻrsatilganlari saytga chiqadi;
+// hali saytda yoʻq kitoblarning muqovalari originals/covers/ da kutib turadi.
 // Yangi rasm qoʻshilsa: aslini tegishli papkaga qoʻyib, `node scripts/resize-images.mjs`
-import { mkdir, readdir, stat } from "node:fs/promises";
+import { mkdir, readdir, readFile, stat } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
 const root = new URL("../", import.meta.url);
 
+const books = JSON.parse(await readFile(new URL("app/data/book.json", root), "utf8"));
+const usedCovers = new Set(books.map((b) => b.cover).filter(Boolean));
+
 const jobs = [
   { src: "originals/images/", out: "public/images/", width: 2000, pattern: /\.jpe?g$/i },
-  { src: "originals/covers/", out: "public/images/covers/", width: 800, pattern: /\.(jpe?g|png)$/i },
+  {
+    src: "originals/covers/",
+    out: "public/images/covers/",
+    width: 800,
+    pattern: /\.(jpe?g|png)$/i,
+    include: (outName) => usedCovers.has(`/images/covers/${outName}`),
+  },
 ];
 
 for (const job of jobs) {
@@ -28,8 +39,14 @@ for (const job of jobs) {
   for (const name of names) {
     if (!job.pattern.test(name)) continue;
 
+    const outName = name.replace(/\.(jpe?g|png)$/i, ".jpg");
+    if (job.include && !job.include(outName)) {
+      console.log(`${job.src}${name}: book.json'da yoʻq, oʻtkazib yuborildi`);
+      continue;
+    }
+
     const src = fileURLToPath(new URL(name, srcDir));
-    const out = fileURLToPath(new URL(name.replace(/\.(jpe?g|png)$/i, ".jpg"), outDir));
+    const out = fileURLToPath(new URL(outName, outDir));
 
     await sharp(src)
       .rotate()

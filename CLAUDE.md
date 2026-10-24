@@ -62,7 +62,11 @@ Don't put unlayered element resets (`* { margin: 0 }` etc.) in `globals.css`: in
 Large originals (5000 px covers, ~5 MB) live in `originals/images/`, outside `public/`. The folder is gitignored; the originals of the current covers are in Git history. Don't restore them with `git show … > file`: in PowerShell `>` corrupts binary files. Instead:
 `git restore --source=07448b9 -- public/images/PUL.jpg` (puts the original in place of the resized copy), then move it to `originals/images/` and run `git restore -- public/images/PUL.jpg` to bring the resized copy back. `node scripts/resize-images.mjs` writes 2000 px copies with the same names to `public/images/`, which is what `book.json` references. For a new large image, put the original in `originals/images/` and run the script.
 
-Flat front covers for the 3D book: put the original (JPG/PNG; sharp can't read PDF) in `originals/covers/`, then run `node scripts/resize-images.mjs`, which writes an 800 px JPG to `public/images/covers/`. Next set `"cover": "/images/covers/<name>.jpg"` in `book.json` and run `node scripts/cover-colors.mjs --force` (or delete just that book's `spineColor` and run it without `--force`).
+Flat front covers for the 3D book (one file per book, front only; crop spreads/print files and remove bleed and crop marks first):
+1. Put the original (JPG/PNG; sharp can't read PDF) in `originals/covers/`.
+2. Set `"cover": "/images/covers/<name>.jpg"` for that book in `book.json`.
+3. Run `node scripts/resize-images.mjs`. It writes an 800 px JPG to `public/images/covers/`, but only for covers that some book's `cover` points to. Covers of books not yet on the site (e.g. `argument.jpg`, `povarnin.jpg`) stay only in `originals/covers/`.
+4. Run `node scripts/cover-colors.mjs --force` (or delete just that book's `spineColor` and run it without `--force`).
 
 ## Dizayn tugagach qilinadigan ishlar
 
