@@ -3,6 +3,7 @@ export const contact = {
   phone: { label: "+998 90 999 18 19", href: "tel:+998909991819" },
   email: { label: "info@farengeyt.press", href: "mailto:info@farengeyt.press" },
   instagram: { label: "@farengeyt_press", href: "https://instagram.com/farengeyt_press" },
+  telegram: { label: "@farengeyt_press", href: "https://t.me/farengeyt_press" },
   hours: "Dushanba–Juma, 09:00–18:00",
   address: "Komolon 134 a",
 };

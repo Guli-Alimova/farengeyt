@@ -79,6 +79,6 @@ Hozircha qilinmaydi, keyin alohida hal qilinadi:
 - «Pul» mualliflari: Eddi Reynolds, Metyu Oldem va Lara Brayan (titul sahifasidan tasdiqlansin).
 - Muharrir ismining yozilishi (Yoʻldoshev yoki Yuldoshev).
 - Tekis muqova fayllari.
-- Telegram kanal manzili, "O'qituvchilar uchun" bloki matni.
+- "O'qituvchilar uchun" bloki matni. (Telegram kanal manzili maʼlum: https://t.me/farengeyt_press, `app/data/contact.ts` da.)
 - `fizika4.jpg`, `fizika5.jpg`: «Fizika» galereyasiga kerakmi.
 - Keyinroq: `farengeyt.press` domenini ulash, ruscha versiya.
