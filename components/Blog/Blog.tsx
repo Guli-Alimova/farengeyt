@@ -38,11 +38,15 @@ export default function Blog() {
     <section id="blog" className="scroll-mt-28 bg-brand-soft py-14">
       <div className="container">
         <SectionHeading eyebrow="Blog" title="Yangiliklar" />
-        <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+        {/* Telefonda (640px dan tor) gorizontal suriladi: karta ~85% kenglikda, keyingisi chetdan koʻrinadi.
+            -mx-4/px-4: lenta ekran chetigacha boradi, sahifada gorizontal skroll paydo boʻlmaydi */}
+        <ul className="-mx-4 mt-7 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 md:grid-cols-3">
           {posts.map((post) => (
-            <BlogCard key={post.id} {...post} />
+            <li key={post.id} className="w-[85%] shrink-0 snap-start sm:w-auto">
+              <BlogCard {...post} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
