@@ -1,5 +1,6 @@
 import React from 'react'
 import AboutUS from '@/app/about/AboutUS'
+import Epigraph from '@/app/about/Epigraph'
 import PageHeading from '@/components/common/PageHeading'
 import { pageMetadata } from '@/app/utils/metadata'
 
@@ -9,6 +10,7 @@ const AboutUs = () => {
   return (
     <div>
       <PageHeading title="Biz haqimizda" />
+      <Epigraph />
       <AboutUS />
     </div>
   )

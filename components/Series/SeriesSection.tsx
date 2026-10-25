@@ -4,6 +4,7 @@ import { toCardData } from "@/app/data/books";
 import { SERIES_TITLE, seriesBooks } from "@/app/data/series";
 import CoverFace from "@/components/book/CoverFace";
 import SectionHeading from "@/components/common/SectionHeading";
+import StatsRow from "@/components/common/StatsRow";
 import { inkFor, shapeRatio } from "@/components/book/bookShape";
 
 // Bosh sahifadagi «Boshlangʻich saboqlar» boʻlimi. Server komponent: yelpigʻich faqat CSS
@@ -18,7 +19,7 @@ export default function SeriesSection() {
     { value: fanBooks.length, label: "kitob" },
     { value: onSale, label: "sotuvda" },
     { value: comingSoon, label: "tez kunda" },
-  ].filter((s, i) => i === 0 || s.value > 0);
+  ];
 
   return (
     <section id="seriya" className="scroll-mt-28 overflow-x-clip border-t border-line py-14">
@@ -28,14 +29,7 @@ export default function SeriesSection() {
           <p className="mt-3 max-w-[50ch] text-muted">
             {"Usborne nashriyotining «for Beginners» turkumi asosida. Murakkab fanlarni bolalar uchun sodda tilda, rasmlar bilan tushuntiradi."}
           </p>
-          <p className="mb-6 mt-[18px] flex flex-wrap gap-x-5 gap-y-2 font-mono text-[13px] text-muted">
-            {stats.map((s) => (
-              <span key={s.label}>
-                <b className="mr-1.5 font-display text-[26px] font-semibold text-ink">{s.value}</b>
-                {s.label}
-              </span>
-            ))}
-          </p>
+          <StatsRow stats={stats} className="mb-6 mt-[18px]" />
           <Link
             href={`/books?category=${encodeURIComponent(fanBooks[0].category)}`}
             className="inline-flex items-center rounded-full bg-brand px-5 py-3 text-[15px] font-semibold text-brand-ink transition-opacity hover:opacity-90 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-ember"

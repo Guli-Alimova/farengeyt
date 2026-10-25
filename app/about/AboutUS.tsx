@@ -1,7 +1,17 @@
 import React from 'react'
 import { contact } from '@/app/data/contact'
+import { activeCategories, books } from '@/app/data/books'
+import StatsRow from '@/components/common/StatsRow'
 
 const AboutUS = () => {
+  // Hammasi book.json'dan hisoblanadi; janrlar faqat kitobi borlari
+  const stats = [
+    { value: books.length, label: 'kitob' },
+    { value: books.filter((b) => b.status === 'published').length, label: 'sotuvda' },
+    { value: books.filter((b) => b.status === 'coming-soon').length, label: 'tez kunda' },
+    { value: activeCategories.length, label: 'janr' },
+  ]
+
   return (
     <section className="border-t border-line bg-brand-soft py-14">
       <div className="container">
@@ -15,6 +25,7 @@ const AboutUS = () => {
           <p className="mb-6 text-muted">
             Nashriyotimizning bosh gʻoyasi oʻzbek kitobxoniga progressiv, yangi, dolzarb bilimlarni sifatli va tezkor surʼatlarda taqdim etish orqali ilm sarhadlarini kengaytirishga hissa qoʻshishdan iborat. Bunda biz ham tarjima, ham mahalliy muallif va mutaxassislar asarlarini kitobxonga taqdim etishni rejalashtirmoqdamiz. Bundan tashqari, nashriyotimiz faoliyati doirasida yana qator qoʻshimcha maʼrifiy loyihalarni amalga oshirish ham koʻzda tutilmoqda.
           </p>
+          <StatsRow stats={stats} className="mb-7" />
           <a
             href={contact.telegram.href}
             target="_blank"

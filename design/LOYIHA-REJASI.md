@@ -62,6 +62,9 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
      - 5c-1. Kitob janrlari: kitobi yo'q janrlar (hozir «Badiiy adabiyot», «Oʻquv va amaliy qoʻllanmalar») bosh sahifada, footer'da va /books filtrida ko'rinmaydi (`categories.ts` da qoladi, janrga kitob qo'shilsa o'zi paydo bo'ladi). Janr kartasida begona stok rasmlar (`01.png`, `02.png`, `04.png`, `05.png`) o'rniga shu janrdagi kitob muqovasi. Janr kam bo'lgani uchun karusel emas, grid.
      - 5c-2. Telefonda "Yangiliklar" kartalari gorizontal suriladi (scroll-snap), kompyuterda grid.
      - 5c-3. "Biz haqimizda" va "Bogʻlanish" sahifalari yangi dizaynda. Bogʻlanish'dagi ishlamaydigan forma o'rniga bog'lanish kartalari (telefon, email, Instagram, ish vaqti, manzil; ma'lumot footer bilan bitta joydan). Ishlatilmayotgan komponentlar o'chiriladi.
+   - 5d. "Biz haqimizda" va "Bogʻlanish" sahifalariga o'ziga xos qismlar (faqat CSS va ozgina JS, kutubxonasiz, faqat tokenlar; ikkita commit):
+     - 5d-1. Biz haqimizda: Bredberi romanidan epigraf (matnni egasi beradi; konstanta bo'sh bo'lsa epigraf ko'rinmaydi). Raqamlar qatori (seriya bo'limidagi uslubda): jami kitoblar, sotuvda, tez kunda, janrlar soni (`activeCategories`). Hammasi `book.json` dan hisoblanadi, 0 bo'lgan raqam ko'rinmaydi.
+     - 5d-2. Bogʻlanish: maʼlumotlar eski kutubxona kartochkasi ko'rinishida (`--page` qog'oz fon, ingichka chiziqli qatorlar, mono yorliqlar, qiyshiq "Farengeyt Press" muhri). Qatorlar: telefon, email, Telegram, Instagram, manzil, ish vaqti (hammasi `contact.ts` dan). "Hozir ochiqmi?" belgisi Toshkent vaqti bo'yicha, faqat brauzerda, har daqiqada yangilanadi. Ish vaqti `contact.ts` da bitta joyda (footer bilan umumiy).
 6. Hammasi tayyor bo'lgach: build, preview, Pull Request, merge.
 
 ## 6a. Keyinroq qilinadigan ishlar
