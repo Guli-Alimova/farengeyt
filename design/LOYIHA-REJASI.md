@@ -42,11 +42,11 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 
 - Ranglar va shriftlar: prototipdagidek. Brend ko'ki #29479E. Shriftlar: Literata (sarlavhalar), Noto Sans (matn), IBM Plex Mono (kichik yorliqlar, ISBN).
 - Logo matni: "Farengeyt Press". "451" logoda ham, footer'da ham yo'q.
-- Qorong'i rejim: ranglari yozilgan, lekin dizayn tugaguncha o'chiq. Oxirgi qadamda yoqiladi.
+- Qorong'i rejim: ranglari yozilgan, lekin dizayn tugaguncha o'chiq. Yoqish "Keyinroq qilinadigan ishlar"da.
 - 3D: faqat CSS 3D, kutubxonasiz. Three.js, GSAP, janrlar uchun alohida 3D javon ishlatilmaydi.
 - Kartochkalarda 3D kitoblar (sichqoncha bilan burilish, ustiga borganda muqova ochilib titul ko'rinadi). Telefonda burilish yo'q, bosilganda kitob sahifasi ochiladi.
 - Hero'da 3D kitob javoni (bosilgan kitob javondan chiqib muqovasini ko'rsatadi).
-- Uchqunlar: faqat mayda va sokin, ixtiyoriy, eng oxirida. Egasi ko'rib qaror qiladi.
+- Uchqunlar: faqat mayda va sokin, ixtiyoriy (5b, alohida commit). Egasi ko'rib qaror qiladi.
 - `prefers-reduced-motion` hamma joyda hurmat qilinadi. Telefonda sekinlashmasligi shart.
 - Muqovalar: 3D kitob uchun tekis (qiyshaymagan, fonsiz) muqova kerak. Fayllar `public/images/covers/` ga qo'yiladi, `book.json` dagi `cover` maydoni orqali ulanadi. Fayllar kelguncha vaqtinchalik rangli muqova. Bosmaxona yoymasi berilsa, old qismi va umurtqasi kesib olinadi, bleed va kesish belgilari olib tashlanadi.
 
@@ -55,8 +55,20 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 2. Book3D komponenti va kitob kartochkalari: umurtqa rangi muqovadan olinadi va `book.json` ga yoziladi; kartochkalar /books va bosh sahifadagi "Tanlangan kitoblar"da; /books janr filtri tugmalar ko'rinishida; /books'da qidiruv (nom, muallif, asl nomi); bosh sahifadagi brauzer komponentiga faqat kerakli maydonlar uzatiladi.
 3. Hero'dagi 3D javon.
 4. Kitob sahifasi (katta 3D kitob, "Kitob haqida" jadvali), «Boshlangʻich saboqlar» seriya bo'limi (yelpig'ich muqovalar).
-5. "O'qituvchilar va maktablar uchun" bloki, Telegram obunasi, kitob sahifasida "Muallif haqida", "Tez kunda" kitoblarda "Chiqqanda xabar olish", uchqunlar (egasi tasdiqlasa), qorong'i rejimni yoqish.
+5. Bosh sahifa va eski bo'limlar:
+   - 5a. Bosh sahifa tartibi: Intro (javon) → "Tanlangan kitoblar" → "Yangiliklar" (Blog) → «Boshlangʻich saboqlar» seriyasi → "Podkastlar" → "Kitob janrlari". Blog, Podkastlar va Kitob janrlari (kartochkalari bilan) yangi dizaynga o'tkaziladi: faqat tokenlar, bo'limlar orasida fon almashib turadi.
+   - 5b. Hero'da uchqunlar: mayda va sokin, alohida commit. Egasi ko'rib, qoldirish yoki olib tashlashni hal qiladi.
 6. Hammasi tayyor bo'lgach: build, preview, Pull Request, merge.
+
+## 6a. Keyinroq qilinadigan ishlar
+
+Hozircha qilinmaydi, keyin alohida hal qilinadi:
+
+- "O'qituvchilar va maktablar uchun" bloki.
+- Telegram obunasi.
+- Kitob sahifasida "Muallif haqida".
+- "Tez kunda" kitoblarda "Chiqqanda xabar olish".
+- Qorong'i rejimni yoqish (avval hech bir komponentda qattiq yozilgan rang qolmasligi kerak, CLAUDE.md'dagi tartib bo'yicha).
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 
