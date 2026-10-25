@@ -1,10 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import { FacebookBlue, InstagramBlue, TwitterBlue } from '@/public/svg'
-import { ALL_CATEGORIES, categoryTitles } from '@/app/data/categories';
+import { ALL_CATEGORIES } from '@/app/data/categories';
+import { activeCategoryTitles } from '@/app/data/books';
 import { navLinks } from '@/app/data/navigation';
 
-const categories = [ALL_CATEGORIES, ...categoryTitles];
+// Faqat kitobi bor janrlar
+const categories = [ALL_CATEGORIES, ...activeCategoryTitles];
 
 const socials = [
   { href: "https://facebook.com/FarengeytPress", label: "Facebook", icon: <FacebookBlue /> },

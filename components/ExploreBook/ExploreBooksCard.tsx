@@ -1,15 +1,21 @@
-import React from "react"
+import React, { type CSSProperties } from "react"
 import Link from "next/link"
-import Image from "next/image"
+import type { BookCardData } from "@/app/data/books"
+import CoverFace from "@/components/book/CoverFace"
+import { inkFor, shapeRatio } from "@/components/book/bookShape"
 
 type ExploreBooksCardProps = {
   index: number
-  image: string
   title: string
+  book: BookCardData // janrdagi kitob: kartada uning tekis muqovasi
 }
 
+const COVER_HEIGHT = 150
+
 // Janr kartochkasi: /books sahifasini shu janr filtri bilan ochadi
-const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, image, title }) => {
+const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, title, book }) => {
+  const width = Math.round(COVER_HEIGHT * shapeRatio(book.cover, book.coverRatio))
+
   return (
     <Link
       href={`/books?category=${encodeURIComponent(title)}`}
@@ -19,13 +25,19 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, image, title
         <span className="absolute left-[18px] top-4 font-mono text-xs text-brand">
           {String(index).padStart(2, "0")}
         </span>
-        <Image
-          src={image}
-          alt=""
-          width={104}
-          height={144}
-          className="h-[144px] w-[104px] object-contain transition-transform duration-300 motion-safe:group-hover:-translate-y-1"
-        />
+        <span
+          className="relative block overflow-hidden rounded-[2px] shadow-[0_14px_30px_-12px_var(--floor)] transition-transform duration-300 motion-safe:group-hover:-translate-y-1"
+          style={
+            {
+              width,
+              height: COVER_HEIGHT,
+              background: book.spineColor,
+              color: inkFor(book.spineColor),
+            } as CSSProperties
+          }
+        >
+          <CoverFace title={book.title} cover={book.cover} sizes={`${width}px`} scale={0.8} />
+        </span>
       </div>
       <h3 className="mt-auto border-t border-line px-[18px] py-4 font-display text-xl font-semibold leading-[1.2] text-ink text-balance">
         {title}

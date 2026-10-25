@@ -1,6 +1,6 @@
 import data from "./book.json";
 import { BOOK_STATUSES, type Book, type BookStatus } from "@/app/type/Book";
-import { categoryTitles } from "./categories";
+import { categories, categoryTitles } from "./categories";
 import sizes from "./cover-sizes.json"; // scripts/resize-images.mjs yozadi
 
 const coverSizes: Record<string, { width: number; height: number } | undefined> = sizes;
@@ -56,3 +56,14 @@ export function toCardData(book: Book): BookCardData {
   const coverRatio = size ? size.width / size.height : undefined;
   return { id, title, category, subtitle, author, status, uzumUrl, cover, coverRatio, spineColor, totalPage, originalTitle };
 }
+
+// Kitobi bor janrlar (categories.ts tartibida): bosh sahifa, footer va /books filtri shundan oladi.
+// Janrga kitob qoʻshilsa, oʻzi paydo boʻladi. Karta rasmi: janrdagi tekis muqovasi bor birinchi kitob
+export const activeCategories = categories.flatMap((category) => {
+  const inCategory = books.filter((book) => book.category === category.title);
+  if (inCategory.length === 0) return [];
+  const coverBook = inCategory.find((book) => book.cover) ?? inCategory[0];
+  return [{ ...category, book: toCardData(coverBook) }];
+});
+
+export const activeCategoryTitles = activeCategories.map((c) => c.title);

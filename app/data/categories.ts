@@ -1,10 +1,12 @@
 export const ALL_CATEGORIES = "Barchasi";
 
+// Barcha janrlar: book.json tekshiruvi shu roʻyxat boʻyicha. Saytda faqat kitobi bor janrlar
+// koʻrinadi (activeCategories, app/data/books.ts)
 export const categories = [
-  { id: 1, title: "Bolalar kitoblari", image: "/images/01.png" },
-  { id: 2, title: "Badiiy adabiyot", image: "/images/02.png" },
-  { id: 3, title: "Oʻquv va amaliy qoʻllanmalar", image: "/images/04.png" },
-  { id: 4, title: "Ilmiy-ommabop kitoblar", image: "/images/05.png" },
+  { id: 1, title: "Bolalar kitoblari" },
+  { id: 2, title: "Badiiy adabiyot" },
+  { id: 3, title: "Oʻquv va amaliy qoʻllanmalar" },
+  { id: 4, title: "Ilmiy-ommabop kitoblar" },
 ];
 
 export const categoryTitles = categories.map((c) => c.title);

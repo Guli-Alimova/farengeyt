@@ -3,17 +3,17 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { BookCardData } from "@/app/data/books";
-import { ALL_CATEGORIES, categoryTitles } from "@/app/data/categories";
+import { ALL_CATEGORIES } from "@/app/data/categories";
 import BookCard from "@/components/book/BookCard";
-
-const categories = [ALL_CATEGORIES, ...categoryTitles];
 
 // Qidiruvda ʻ/ʼ va oddiy apostroflar farq qilmaydi: "o'quv" ham "oʻquv" ni topadi
 const normalize = (s: string) => s.toLowerCase().replace(/[ʻʼ'‘’`]/g, "");
 
-export default function BooksClient({ books }: { books: BookCardData[] }) {
+// categoryTitles: faqat kitobi bor janrlar (activeCategoryTitles, server komponentdan keladi)
+export default function BooksClient({ books, categoryTitles }: { books: BookCardData[]; categoryTitles: string[] }) {
+  const categories = useMemo(() => [ALL_CATEGORIES, ...categoryTitles], [categoryTitles]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES);
   const categoryParam = useSearchParams().get('category');
 
   // /books ichida havola bosilganda ham URL'dagi janrga moslashadi
@@ -21,7 +21,7 @@ export default function BooksClient({ books }: { books: BookCardData[] }) {
     setActiveCategory(
       categoryParam && categories.includes(categoryParam) ? categoryParam : ALL_CATEGORIES
     );
-  }, [categoryParam]);
+  }, [categoryParam, categories]);
 
   const filteredBooks = useMemo(() => {
     const query = normalize(searchTerm.trim());

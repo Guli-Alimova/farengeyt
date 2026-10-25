@@ -58,6 +58,10 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 5. Bosh sahifa va eski bo'limlar:
    - 5a. Bosh sahifa tartibi: Intro (javon) → "Tanlangan kitoblar" → "Yangiliklar" (Blog) → «Boshlangʻich saboqlar» seriyasi → "Podkastlar" → "Kitob janrlari". Blog, Podkastlar va Kitob janrlari (kartochkalari bilan) yangi dizaynga o'tkaziladi: faqat tokenlar, bo'limlar orasida fon almashib turadi.
    - 5b. Hero'da uchqunlar: mayda va sokin, alohida commit. Egasi ko'rib, qoldirish yoki olib tashlashni hal qiladi.
+   - 5c. Saytga chiqarishdan oldingi tuzatishlar (uchta commit):
+     - 5c-1. Kitob janrlari: kitobi yo'q janrlar (hozir «Badiiy adabiyot», «Oʻquv va amaliy qoʻllanmalar») bosh sahifada, footer'da va /books filtrida ko'rinmaydi (`categories.ts` da qoladi, janrga kitob qo'shilsa o'zi paydo bo'ladi). Janr kartasida begona stok rasmlar (`01.png`, `02.png`, `04.png`, `05.png`) o'rniga shu janrdagi kitob muqovasi. Janr kam bo'lgani uchun karusel emas, grid.
+     - 5c-2. Telefonda "Yangiliklar" kartalari gorizontal suriladi (scroll-snap), kompyuterda grid.
+     - 5c-3. "Biz haqimizda" va "Bogʻlanish" sahifalari yangi dizaynda. Bogʻlanish'dagi ishlamaydigan forma o'rniga bog'lanish kartalari (telefon, email, Instagram, ish vaqti, manzil; ma'lumot footer bilan bitta joydan). Ishlatilmayotgan komponentlar o'chiriladi.
 6. Hammasi tayyor bo'lgach: build, preview, Pull Request, merge.
 
 ## 6a. Keyinroq qilinadigan ishlar
@@ -69,12 +73,6 @@ Hozircha qilinmaydi, keyin alohida hal qilinadi:
 - Kitob sahifasida "Muallif haqida".
 - "Tez kunda" kitoblarda "Chiqqanda xabar olish".
 - Qorong'i rejimni yoqish (avval hech bir komponentda qattiq yozilgan rang qolmasligi kerak, CLAUDE.md'dagi tartib bo'yicha).
-
-Keyingi tuzatishlar (bosh sahifa, 5a tekshiruvidan keyin):
-
-- Kitob janrlari: kitobi yo'q janrlar (hozir «Badiiy adabiyot», «Oʻquv va amaliy qoʻllanmalar») bo'sh ro'yxatga olib bormasin: yashirilsin yoki kartada "Tez kunda" deb ko'rsatilsin.
-- Janr kartalaridagi begona stok rasmlar (`01.png`, `02.png`, `04.png`, `05.png`) o'z kitoblarimiz muqovalariga almashtirilsin.
-- Telefonda "Yangiliklar" bo'limi juda uzun: kartalar gorizontal suriladigan qilinsin.
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 

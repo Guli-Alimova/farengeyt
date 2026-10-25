@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import BooksClient from './BooksClient';
-import { books, toCardData } from '@/app/data/books';
+import { activeCategoryTitles, books, toCardData } from '@/app/data/books';
 import { pageMetadata } from '@/app/utils/metadata';
 
 export const metadata = pageMetadata({ title: 'Kitoblar', path: '/books' });
@@ -37,7 +37,7 @@ function BooksLoading() {
 export default function BooksPage() {
   return (
     <Suspense fallback={<BooksLoading />}>
-      <BooksClient books={books.map(toCardData)} />
+      <BooksClient books={books.map(toCardData)} categoryTitles={activeCategoryTitles} />
     </Suspense>
   );
 }
