@@ -2,13 +2,16 @@ import Link from "next/link";
 import React from "react";
 import { books, toCardData } from "@/app/data/books";
 import HeroShelf from "./HeroShelf";
+import HeroEmbers from "./HeroEmbers";
 
 const Intro = () => {
   // Javonga faqat kartochka maydonlari uzatiladi: tavsiflar client JS'ga tushmaydi
   const shelfBooks = books.map(toCardData);
 
   return (
-    <section className="pb-12 pt-11">
+    // relative isolate: uchqunlar canvas'i (-z-10) section boʻyicha joylashadi va kontent ortida qoladi.
+    // Oradagi container va ustunlarni positioned qilmang, aks holda canvas ularga bogʻlanib qoladi
+    <section className="relative isolate overflow-hidden pb-12 pt-11">
       <div className="container grid items-center gap-8 min-[880px]:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.09em] text-brand">
@@ -34,6 +37,7 @@ const Intro = () => {
               Biz haqimizda
             </Link>
           </div>
+          <HeroEmbers />
         </div>
         <HeroShelf books={shelfBooks} />
       </div>

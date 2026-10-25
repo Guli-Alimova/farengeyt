@@ -46,7 +46,7 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 - 3D: faqat CSS 3D, kutubxonasiz. Three.js, GSAP, janrlar uchun alohida 3D javon ishlatilmaydi.
 - Kartochkalarda 3D kitoblar (sichqoncha bilan burilish, ustiga borganda muqova ochilib titul ko'rinadi). Telefonda burilish yo'q, bosilganda kitob sahifasi ochiladi.
 - Hero'da 3D kitob javoni (bosilgan kitob javondan chiqib muqovasini ko'rsatadi).
-- Uchqunlar: faqat mayda va sokin, ixtiyoriy (5b, alohida commit). Egasi ko'rib qaror qiladi.
+- Uchqunlar: faqat mayda va sokin, hero'da javon ortida. Egasi ko'rib qoldirdi: doim yoqilgan, yoqish/o'chirish tugmasi yo'q (reduced motion'da chiqmaydi).
 - `prefers-reduced-motion` hamma joyda hurmat qilinadi. Telefonda sekinlashmasligi shart.
 - Muqovalar: 3D kitob uchun tekis (qiyshaymagan, fonsiz) muqova kerak. Fayllar `public/images/covers/` ga qo'yiladi, `book.json` dagi `cover` maydoni orqali ulanadi. Fayllar kelguncha vaqtinchalik rangli muqova. Bosmaxona yoymasi berilsa, old qismi va umurtqasi kesib olinadi, bleed va kesish belgilari olib tashlanadi.
 
@@ -69,6 +69,12 @@ Hozircha qilinmaydi, keyin alohida hal qilinadi:
 - Kitob sahifasida "Muallif haqida".
 - "Tez kunda" kitoblarda "Chiqqanda xabar olish".
 - Qorong'i rejimni yoqish (avval hech bir komponentda qattiq yozilgan rang qolmasligi kerak, CLAUDE.md'dagi tartib bo'yicha).
+
+Keyingi tuzatishlar (bosh sahifa, 5a tekshiruvidan keyin):
+
+- Kitob janrlari: kitobi yo'q janrlar (hozir «Badiiy adabiyot», «Oʻquv va amaliy qoʻllanmalar») bo'sh ro'yxatga olib bormasin: yashirilsin yoki kartada "Tez kunda" deb ko'rsatilsin.
+- Janr kartalaridagi begona stok rasmlar (`01.png`, `02.png`, `04.png`, `05.png`) o'z kitoblarimiz muqovalariga almashtirilsin.
+- Telefonda "Yangiliklar" bo'limi juda uzun: kartalar gorizontal suriladigan qilinsin.
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 
