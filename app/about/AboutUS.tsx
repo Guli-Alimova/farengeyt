@@ -2,6 +2,7 @@ import React from 'react'
 import { contact } from '@/app/data/contact'
 import { activeCategories, books } from '@/app/data/books'
 import StatsRow from '@/components/common/StatsRow'
+import CatalogCard from '@/components/common/CatalogCard'
 
 const AboutUS = () => {
   // Hammasi book.json'dan hisoblanadi; janrlar faqat kitobi borlari
@@ -14,7 +15,7 @@ const AboutUS = () => {
 
   return (
     <section className="border-t border-line bg-brand-soft py-14">
-      <div className="container">
+      <div className="container grid items-start gap-10 min-[880px]:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] min-[880px]:gap-14">
         <div className="max-w-[65ch]">
           <h2 className="mb-4 font-display text-[clamp(24px,2.6vw,30px)] font-semibold leading-[1.15] text-ink">
             Missiyamiz va maqsadimiz
@@ -25,7 +26,6 @@ const AboutUS = () => {
           <p className="mb-6 text-muted">
             Nashriyotimizning bosh gʻoyasi oʻzbek kitobxoniga progressiv, yangi, dolzarb bilimlarni sifatli va tezkor surʼatlarda taqdim etish orqali ilm sarhadlarini kengaytirishga hissa qoʻshishdan iborat. Bunda biz ham tarjima, ham mahalliy muallif va mutaxassislar asarlarini kitobxonga taqdim etishni rejalashtirmoqdamiz. Bundan tashqari, nashriyotimiz faoliyati doirasida yana qator qoʻshimcha maʼrifiy loyihalarni amalga oshirish ham koʻzda tutilmoqda.
           </p>
-          <StatsRow stats={stats} className="mb-7" />
           <a
             href={contact.telegram.href}
             target="_blank"
@@ -44,6 +44,25 @@ const AboutUS = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
+        </div>
+
+        {/* Oʻng ustun: kompyuterda header ostida yopishib turadi, telefonda matndan keyin tushadi */}
+        <div className="min-[880px]:sticky min-[880px]:top-24">
+          <CatalogCard>
+            <dl>
+              <dt className="flex items-baseline gap-2 border-b-2 border-ember/40 pb-3">
+                <span className="font-display text-2xl font-semibold">Ahli kitob</span>
+                <i className="font-display text-page-ink/65">ot</i>
+              </dt>
+              <dd className="mt-3 text-[16px]">
+                Hayotini kitoblarni avaylash va ilmni odamlarga yetkazishga bagʻishlagan insonlar.
+              </dd>
+            </dl>
+            <p className="mt-4 font-mono text-[12px] text-page-ink/65">
+              {"Rey Bredberi, «Farengeyt boʻyicha 451 daraja»"}
+            </p>
+          </CatalogCard>
+          <StatsRow stats={stats} layout="column" className="mt-6" />
         </div>
       </div>
     </section>

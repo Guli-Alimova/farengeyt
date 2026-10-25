@@ -1,4 +1,5 @@
 import { contact } from "@/app/data/contact";
+import CatalogCard from "@/components/common/CatalogCard";
 import OpenNowBadge from "./OpenNowBadge";
 
 type Row = { label: string; value: string; href?: string };
@@ -53,7 +54,7 @@ export default function ContactMain() {
           {"Taklif va istaklaringizni bizga yozib yuboring. Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz boʻyicha savollaringiz boʻlsa, biz doim javob berishga tayyormiz."}
         </p>
 
-        <div className="catalog-card relative mt-8 max-w-[640px] overflow-hidden rounded-[6px] border border-page-line bg-page px-5 pb-12 pt-6 text-page-ink shadow-[0_1px_3px_var(--floor)] [--hole:var(--brand-soft)] sm:px-8">
+        <CatalogCard className="mt-8 max-w-[640px]">
           <Stamp />
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b-2 border-ember/40 pb-3">
             <p className="font-display text-xl font-semibold">Farengeyt Press</p>
@@ -87,7 +88,7 @@ export default function ContactMain() {
               </dd>
             </div>
           </dl>
-        </div>
+        </CatalogCard>
       </div>
     </section>
   );
