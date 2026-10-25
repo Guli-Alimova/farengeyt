@@ -1,10 +1,18 @@
 import { Metadata } from "next";
-import { books } from "@/app/data/books";
 import Image from "next/image";
+import Link from "next/link";
+import { books, toCardData } from "@/app/data/books";
+import { isSeriesBook, SERIES_TITLE } from "@/app/data/series";
 import { pageMetadata, SITE_DESCRIPTION, truncate } from "@/app/utils/metadata";
+import Book3D from "@/components/book/Book3D";
 import ComingSoonBadge from "@/components/common/ComingSoonBadge";
 
 const priceFormat = new Intl.NumberFormat("uz-UZ");
+
+const buttonClass =
+  "inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-[15px] font-semibold text-brand-ink transition-opacity hover:opacity-90 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-ember";
+const labelClass = "font-mono text-xs uppercase tracking-[0.09em]";
+const headingClass = `${labelClass} mb-3 text-muted`;
 
 export async function generateStaticParams() {
   return books.map((book) => ({
@@ -43,13 +51,27 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
   const book = books.find((b) => String(b.id) === id);
 
   if (!book) {
-    return <div className="p-10 text-red-500">Kitob topilmadi</div>;
+    return (
+      <section className="container max-w-[720px] py-20 text-center">
+        <h1 className="font-display text-[clamp(28px,3.4vw,38px)] font-semibold leading-[1.1] text-ink">
+          Kitob topilmadi
+        </h1>
+        <p className="mb-7 mt-3 text-muted">{"Bunday kitob yoʻq yoki u olib tashlangan."}</p>
+        <Link href="/books" className={buttonClass}>
+          Barcha kitoblar
+        </Link>
+      </section>
+    );
   }
+
+  const { coverRatio } = toCardData(book);
+  const comingSoon = book.status === "coming-soon";
+  const canBuy = book.status === "published" && Boolean(book.uzumUrl?.trim());
 
   const galleryImages = [book.image, ...(book.gallery || [])]
     .filter((img): img is string => typeof img === "string" && img.trim() !== "");
 
-  // Qiymati bo'sh ("" yoki null) qatorlar ko'rsatilmaydi
+  // Qiymati bo'sh ("" yoki null) qatorlar ko'rsatilmaydi. mono: raqamlar IBM Plex Mono'da
   const details = [
     { label: "Muallif", value: book.author },
     { label: "Tarjimon", value: book.translator },
@@ -59,110 +81,111 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
     { label: "Janr", value: book.category },
     { label: "Tili", value: book.language },
     { label: "Nashr yili", value: book.publishYear },
-    { label: "Sahifalar soni", value: book.totalPage },
+    { label: "Sahifalar soni", value: book.totalPage, mono: true },
     { label: "Muqova turi", value: book.format },
-    { label: "ISBN", value: book.isbn },
+    { label: "ISBN", value: book.isbn, mono: true },
     { label: "Mamlakat", value: book.country },
     { label: "Narx", value: book.price != null ? `${priceFormat.format(book.price)} soʻm` : null },
-  ].filter((row): row is { label: string; value: string } => Boolean(row.value?.trim()));
+  ].filter((row): row is { label: string; value: string; mono?: boolean } => Boolean(row.value?.trim()));
 
   return (
-    <div className="container mx-auto p-10">
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Asosiy rasm */}
-        <div className="flex justify-center">
-          {book.image ? (
-            <Image
-              src={book.image}
-              alt={book.title}
-              width={450}
-              height={300}
-              className="rounded shadow-md object-contain w-full"
-              priority
-            />
-          ) : (
-            <div className="w-full h-[300px] bg-gray-100 rounded flex items-center justify-center text-gray-400">
-              {"Rasm yoʻq"}
-            </div>
-          )}
-        </div>
-
-        {/* Kitob ma'lumotlari */}
-        <div>
-          {book.status === "coming-soon" && <ComingSoonBadge className="mb-2" />}
-          <h1 className="text-2xl md:text-3xl font-bold mb-4">{book.title}</h1>
-
-          {/* Gallery rasmlari */}
-          {galleryImages.length > 0 && (
-            <div className="flex gap-3 mb-6 flex-wrap">
-              {galleryImages.map((img, i) => (
-                <Image
-                  key={`gallery-${i}`}
-                  src={img}
-                  alt={`Gallery image ${i + 1}`}
-                  width={100}
-                  height={80}
-                  className="border rounded hover:scale-105 transition object-cover"
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Sotib olish (nashr qilinmagan kitobda chiqmaydi) */}
-          {book.status === "published" && book.uzumUrl?.trim() ? (
-            <a
-              href={book.uzumUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:opacity-90 transition mb-6"
-            >
-              Sotib olish <span>→</span>
-            </a>
-          ) : null}
-
-          {/* Kitob haqida */}
-          {details.length > 0 && (
-            <section>
-              <h2 className="text-lg font-semibold mb-3">Kitob haqida</h2>
-              <div className="border rounded-lg shadow-sm overflow-hidden">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {details.map((row) => (
-                      <tr key={row.label} className="border-b last:border-b-0">
-                        <th scope="row" className="text-left font-semibold bg-gray-50 py-2 px-4 w-2/5">
-                          {row.label}
-                        </th>
-                        <td className="py-2 px-4">{row.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          )}
-
-          {/* Tavsif */}
-          <p className="mt-6 text-gray-600 text-sm leading-relaxed">
-            {book.description || "Bu kitob haqida hozircha maʼlumot yoʻq."}
-          </p>
-        </div>
+    <article className="pb-16">
+      {/* Katta 3D kitob: muqova yopiq, kompyuterda sichqonchaga qarab buriladi (Book3D) */}
+      <div className="bg-gradient-to-b from-brand-soft to-transparent">
+        <Book3D
+          size="lg"
+          closed
+          priority
+          title={book.title}
+          author={book.author}
+          cover={book.cover}
+          coverRatio={coverRatio}
+          spineColor={book.spineColor}
+          pages={book.totalPage}
+          className="container pb-10 pt-12"
+        />
       </div>
 
-      {/* Hamkorlar */}
-      {book.hamkor && typeof book.hamkor === "string" && book.hamkor.trim() !== "" && (
-        <div className="mt-10 text-sm">
-          <p className="mb-2 font-semibold">Hamkorlarimiz:</p>
-          <div className="flex items-center gap-6">
+      <div className="container max-w-[720px]">
+        <p className={`${labelClass} text-brand`}>
+          {isSeriesBook(book) ? `${SERIES_TITLE} seriyasi` : book.category}
+        </p>
+        <h1 className="mt-2 text-balance font-display text-[clamp(32px,4.6vw,48px)] font-semibold leading-[1.08] tracking-[-0.015em] text-ink">
+          {book.title}
+        </h1>
+        {book.author && <p className="mt-2 text-lg text-muted">{book.author}</p>}
+
+        {comingSoon && (
+          <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-muted">
+            <ComingSoonBadge />
+            {"Bu kitob hozir tayyorlanmoqda. Maʼlumotlari nashrdan soʻng qoʻshiladi."}
+          </p>
+        )}
+
+        {canBuy && (
+          <a href={book.uzumUrl} target="_blank" rel="noopener noreferrer" className={`${buttonClass} mt-6`}>
+            Sotib olish <span aria-hidden="true">↗</span>
+          </a>
+        )}
+
+        {book.description && (
+          <p className="mt-8 max-w-[65ch] text-[17px] leading-relaxed text-ink">{book.description}</p>
+        )}
+
+        {details.length > 0 && (
+          <section className="mt-10">
+            <h2 className={headingClass}>Kitob haqida</h2>
+            <dl className="grid grid-cols-[minmax(0,10em)_minmax(0,1fr)] gap-x-4 border-t border-line">
+              {details.map((row) => (
+                <div key={row.label} className="contents">
+                  <dt className="min-w-0 border-b border-line py-2.5 text-sm text-muted">{row.label}</dt>
+                  <dd
+                    className={`min-w-0 border-b border-line py-2.5 text-[15px] text-ink ${
+                      row.mono ? "font-mono tabular-nums" : ""
+                    }`}
+                  >
+                    {row.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+
+        {galleryImages.length > 0 && (
+          <section className="mt-10">
+            <h2 className={headingClass}>Rasmlar</h2>
+            <ul className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
+              {galleryImages.map((img, i) => (
+                <li key={`${i}-${img}`}className="overflow-hidden rounded-[10px] border border-line bg-card">
+                  <Image
+                    src={img}
+                    alt={i === 0 ? `«${book.title}» kitobi` : `«${book.title}» kitobi: ${i + 1}-rasm`}
+                    width={400}
+                    height={300}
+                    sizes="(max-width: 720px) 50vw, 230px"
+                    loading="lazy"
+                    className="aspect-[4/3] h-auto w-full object-contain"
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {book.hamkor?.trim() && (
+          <section className="mt-10 border-t border-line pt-6">
+            <h2 className={headingClass}>Hamkorimiz</h2>
             <Image
               src={book.hamkor}
-              alt="Partner"
-              width={90}
-              height={20}
-              className="object-contain"
+              alt="Hamkor logotipi"
+              width={120}
+              height={40}
+              className="h-10 w-auto object-contain"
             />
-          </div>
-        </div>
-      )}
-    </div>
+          </section>
+        )}
+      </div>
+    </article>
   );
 }

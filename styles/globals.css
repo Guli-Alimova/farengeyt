@@ -1,151 +1,549 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
 @import "tailwindcss";
 @import 'swiper/css';
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+/* Ranglar: design/prototip.html dagi palitra */
 :root {
-  --primary: #29479E;
-  --secondary: #ED553B;
-  --black:#111111;
-  --silver:#7A7A7A;
+  --paper: #F5F7FB;
+  --card: #FFFFFF;
+  --ink: #131A31;
+  --muted: #58617E;
+  --line: #DCE1EC;
+  --brand: #29479E;
+  --brand-ink: #FFFFFF;
+  --brand-soft: #E7ECF8;
+  --ember: #C94A22;
+  --ember-soft: #FBE7DE;
+  --on-ember: #FFFFFF;
+  /* 3D kitob va javon */
+  --wood: #CDD3E0;
+  --wood-edge: #A9B2C6;
+  --floor: rgba(19, 26, 49, 0.22);
+  --page: #FBF8F1;
+  --page-line: #E2DBCA;
+  /* Qogʻoz (--page) ustidagi matn: qorongʻi rejimda ham qogʻoz och boʻlgani uchun alohida */
+  --page-ink: #1E2540;
+  /* Swiper nuqtalari va strelkalari (standart #007aff emas) */
+  --swiper-theme-color: var(--brand);
+}
+
+/* Qorongʻi rejim hozircha oʻchiq (LOYIHA-REJASI: «Keyinroq qilinadigan ishlar»).
+   Yoqish uchun bu blokni
+   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ... } }
+   ichiga olib yoqiladi. */
+:root[data-theme="dark"] {
+  --paper: #0D1120;
+  --card: #141A2D;
+  --ink: #E7EBF5;
+  --muted: #9CA5C0;
+  --line: #262E47;
+  --brand: #91A8F0;
+  --brand-ink: #0D1120;
+  --brand-soft: #18213D;
+  --ember: #FF8457;
+  --ember-soft: #3A1D14;
+  --on-ember: #1A0C06;
+  --wood: #2A3252;
+  --wood-edge: #1C2340;
+  --floor: rgba(0, 0, 0, 0.55);
+  --page: #D9D3C4;
+  --page-line: #B5AC98;
+  --page-ink: #1E2540;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --font-inter: var(--font-inter);
-  --color-primary:#29479E; 
-  --color-secondary:#ED553B;
-  --color-silver:#7A7A7A;
-  --color-black:#111111;
-}
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-on-ember: var(--on-ember);
+  --color-page: var(--page);
+  --color-page-line: var(--page-line);
+  --color-page-ink: var(--page-ink);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #29479E;
-    --secondary: #ED553B;
-    --silver:#7A7A7A;
-    --black:#111111;
-  }
+  --font-display: var(--font-okina), var(--font-literata), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, Consolas, monospace;
 }
 
 body {
-  color: var(--primary);
-  background: var(--background);
-  font-family: "Inter", sans-serif;
-}
-.container{
-  max-width: 1140px;
-  width:100%;
-  padding-left:15px;
-  padding-right:15px;
-  margin:0 auto;
-}
-* {
-padding: 0;
-margin: 0;
-}
-  
-ul{
-padding-left: 0;
-list-style: none;
-  
-}
-.inter{
-  font-family: var(--font-inter);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
 }
 
-@keyframes float-x {
-  0%, 100% {
-    transform: translateX(0px);
-  }
-  50% {
-    transform: translateX(20px);
-  }
+.container {
+  max-width: 1160px;
+  width: 100%;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  margin: 0 auto;
 }
-
-.animate-float-x {
-  animation: float-x 4s ease-in-out infinite;
-}
-
-@keyframes float-y {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.animate-float-y {
-  animation: float-y 4s ease-in-out infinite;
-}
-
-@keyframes rotate-half {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.animate-rotate-half {
-  animation: rotate-half 4s ease-in-out infinite;
-}
-
-@keyframes spin-slow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-
 
 html {
   scroll-behavior: smooth;
 }
 
-@layer utilities {
-  /* Trail chizish animatsiyasi */
-  .trail-path {
-    animation: trailDraw 4s linear forwards;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  @keyframes trailDraw {
-    from {
-      stroke-dashoffset: 600;
+}
+
+/* 3D kitob (components/book/Book3D.tsx). Oʻlchamlar --w, --h, --t (qalinlik),
+   burilish --rx, --ry komponentdan keladi. Tomonlar: old (muqova), chap (umurtqa),
+   oʻng (varaqlar), ichki (titul sahifa), orqa. */
+@layer components {
+  .book3d-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    perspective: 900px;
+  }
+  .book3d-floor {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: calc(var(--w) * 1.15);
+    height: 18px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--floor), transparent);
+  }
+  .book3d {
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    transform-style: preserve-3d;
+    /* --ry: sichqoncha bilan burish (Book3D), --ry-rest: tinch holat */
+    transform: rotateX(var(--rx, 3deg)) rotateY(var(--ry, var(--ry-rest, 26deg)));
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  /* Ochiq kitob oldinga qaraydi, aks holda muqova titul sahifani toʻsadi */
+  .book3d-open .book3d,
+  :focus-visible .book3d {
+    --ry-rest: 4deg;
+  }
+  @media (hover: hover) {
+    .book3d-stage:hover .book3d {
+      --ry-rest: 4deg;
     }
-    to {
-      stroke-dashoffset: 0;
+  }
+  .book3d > * {
+    position: absolute;
+    display: block;
+  }
+  .book3d-back {
+    inset: 0;
+    transform: translateZ(calc(var(--t) / -2)) rotateY(180deg);
+    background: var(--spine);
+    filter: brightness(0.8);
+  }
+  .book3d-spine,
+  .book3d-pages {
+    top: 0;
+    left: 50%;
+    width: var(--t);
+    height: var(--h);
+    margin-left: calc(var(--t) / -2);
+  }
+  .book3d-spine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform: rotateY(-90deg) translateZ(calc(var(--w) / 2));
+    background: var(--spine);
+    color: var(--spine-ink);
+    filter: brightness(0.9);
+  }
+  .book3d-spine b {
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-size: clamp(9px, calc(var(--t) * 0.5), 13px);
+    font-weight: 700;
+  }
+  .book3d-pages {
+    top: 3px;
+    height: calc(var(--h) - 6px);
+    transform: rotateY(90deg) translateZ(calc(var(--w) / 2 - 3px));
+    background: repeating-linear-gradient(90deg, var(--page) 0 1.5px, var(--page-line) 1.5px 2.5px);
+  }
+  .book3d-top {
+    left: 0;
+    top: 50%;
+    width: calc(var(--w) - 3px);
+    height: var(--t);
+    margin-top: calc(var(--t) / -2);
+    transform: rotateX(90deg) translateZ(calc(var(--h) / 2 - 3px));
+    background: var(--page);
+  }
+  .book3d-inner {
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    right: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 9% 9%;
+    transform: translateZ(calc(var(--t) / 2 - 1px));
+    background: var(--page);
+    color: #2B2A26;
+    box-shadow: inset 8px 0 10px -6px rgba(0, 0, 0, 0.18);
+  }
+  .book3d-cover {
+    inset: 0;
+    transform-style: preserve-3d;
+    transform-origin: 0 50%;
+    transform: translateZ(calc(var(--t) / 2)) rotateY(0deg);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .book3d-cover-front,
+  .book3d-cover-inside {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+  }
+  .book3d-cover-front {
+    overflow: hidden;
+    background: var(--spine);
+    color: var(--spine-ink);
+    box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.1);
+  }
+  /* Muqovaning ichki tomoni (forzats): ochilganda koʻrinadi */
+  .book3d-cover-inside {
+    transform: rotateY(180deg);
+    background: #EFE9DC;
+    box-shadow: inset -6px 0 10px -6px rgba(0, 0, 0, 0.2);
+  }
+  /* Muqova ochilishi (titul sahifa koʻrinadi): sichqoncha ustida (faqat hover bor qurilmalarda),
+     klaviatura fokusida yoki open propida */
+  @media (hover: hover) {
+    .book3d-stage:hover .book3d-cover {
+      transform: translateZ(calc(var(--t) / 2)) rotateY(-105deg);
     }
+  }
+  :focus-visible .book3d-cover,
+  .book3d-open .book3d-cover {
+    transform: translateZ(calc(var(--t) / 2)) rotateY(-105deg);
+  }
+  /* closed propi (kitob sahifasi): muqova doim yopiq, hover va fokusda ochilmaydi.
+     Kitob biroz burilgan turadi, umurtqa koʻrinadi. Yuqoridagi qoidalardan keyin, shuning uchun ustun */
+  .book3d-stage.book3d-closed .book3d {
+    --ry-rest: 18deg;
+  }
+  .book3d-stage.book3d-closed .book3d-cover {
+    transform: translateZ(calc(var(--t) / 2)) rotateY(0deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book3d,
+    .book3d-cover {
+      transition: none;
+    }
+  }
+}
+
+/* Hero'dagi 3D kitob javoni (components/Intro/HeroShelf.tsx). Kitob tik turadi, oldida umurtqa.
+   --k: ekran oʻlchamiga qarab (CSS), --fit: javon sigʻishi uchun (ResizeObserver, JS).
+   Sahna balandligi faqat --k ga bogʻliq, shuning uchun --fit oʻzgarsa sahifa siljimaydi.
+   Kitobdan: --t (qalinlik, px raqami), --r (muqova nisbati), --c / --ci (umurtqa va matn rangi),
+   --dx (chiqqan kitob ekranga sigʻishi uchun siljish). Sahnadan: --rmax, --ry (sichqoncha). */
+@layer components {
+  .shelf3d-stage {
+    --H0: 232px;
+    --k: 1;
+    --fit: 1;
+    --s: calc(var(--k) * var(--fit));
+    --H: calc(var(--H0) * var(--s));
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    /* Pastdagi joy: yozuv (oʻlchami oʻzgarmaydi) uchun 38px va taxta uchun --k bilan oʻsadigan qism —
+       javon kattalashganda taxta pastroq tushadi, oraliq har oʻlchamda ~16px qoladi */
+    --pad: calc(38px + 70px * var(--k));
+    height: calc((var(--H0) + 66px) * var(--k) + var(--pad));
+    padding-bottom: var(--pad);
+    perspective: 1200px;
+    perspective-origin: 50% 30%;
+    overflow-x: clip;
+    touch-action: pan-y;
+  }
+  @media (max-width: 520px) {
+    .shelf3d-stage {
+      --k: 0.8;
+    }
+  }
+  /* Keng ekranda kitob boʻyi ~270px (232 × 1.16). --H0 emas, --k oshiriladi:
+     qalinlik, shriftlar va sahna balandligi ham shu nisbatda kattalashadi */
+  @media (min-width: 1200px) {
+    .shelf3d-stage {
+      --k: 1.16;
+    }
+  }
+  .shelf3d-scene {
+    --Dmax: calc(var(--H) * var(--rmax));
+    position: relative;
+    flex: none;
+    transform-style: preserve-3d;
+    transform: rotateX(-11deg) rotateY(var(--ry, -16deg));
+    transition: transform 0.5s ease-out;
+  }
+  .shelf3d-row {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: calc(5px * var(--s));
+    padding: 0 calc(22px * var(--s));
+    transform-style: preserve-3d;
+  }
+  .shelf3d-plank-top,
+  .shelf3d-plank-front {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  .shelf3d-plank-top {
+    bottom: 0;
+    height: calc(var(--Dmax) + 22px * var(--s));
+    transform-origin: 50% 100%;
+    transform: translateZ(calc(var(--Dmax) / 2 + 11px * var(--s))) rotateX(90deg);
+    background: var(--wood);
+  }
+  .shelf3d-plank-front {
+    bottom: calc(-16px * var(--s));
+    height: calc(16px * var(--s));
+    transform: translateZ(calc(var(--Dmax) / 2 + 11px * var(--s)));
+    background: var(--wood-edge);
   }
 
-  /* Samolyot uchish animatsiyasi */
-  .plane-anim {
+  .shelf3d-book {
+    --T: calc(var(--t) * 1px * var(--s));
+    --D: calc(var(--H) * var(--r));
+    /* Chuqurligi turlicha kitoblarning umurtqalari bir chiziqda turadi */
+    --zo: calc((var(--Dmax) - var(--D)) / 2);
+    position: relative;
+    display: block;
+    flex: none;
+    width: var(--T);
+    height: var(--H);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, var(--zo));
+    transition: transform 0.75s cubic-bezier(0.2, 0.75, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (hover: hover) {
+    .shelf3d-book:not([aria-pressed="true"]):hover {
+      transform: translate3d(0, -6px, calc(var(--zo) + var(--D) * 0.16));
+    }
+  }
+  /* Javondan chiqib, muqovasi bilan oldinga burilgan kitob */
+  .shelf3d-book[aria-pressed="true"] {
+    transform: translate3d(var(--dx, 0px), calc(-16px * var(--s)), calc(var(--zo) + var(--D) * 0.8)) rotateY(-90deg);
+  }
+  .shelf3d-book:focus-visible {
+    outline: none;
+  }
+  .shelf3d-book:focus-visible .shelf3d-spine {
+    outline: 3px solid var(--ember);
+    outline-offset: 2px;
+  }
+
+  .shelf3d-face {
     position: absolute;
-    offset-path: path("M0 150 Q150 50, 300 100 T400 50");
-    offset-rotate: auto;
-    animation: planeFly 4s linear forwards;
+    display: block;
+    backface-visibility: hidden;
   }
-  @keyframes planeFly {
-    from {
-      offset-distance: 0%;
+  .shelf3d-spine {
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(10px * var(--s)) 0;
+    overflow: hidden;
+    transform: translateZ(calc(var(--D) / 2));
+    background: var(--c);
+    color: var(--ci);
+    box-shadow:
+      inset calc(3px * var(--s)) 0 0 rgba(255, 255, 255, 0.14),
+      inset calc(-4px * var(--s)) 0 0 rgba(0, 0, 0, 0.18);
+  }
+  .shelf3d-title {
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-size: min(calc(16px * var(--s)), calc(var(--T) * 0.62));
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .shelf3d-mark {
+    font-family: var(--font-mono);
+    font-size: calc(10px * var(--s));
+    opacity: 0.85;
+  }
+  /* «Tez kunda» kitoblar */
+  .shelf3d-dot {
+    display: block;
+    width: calc(8px * var(--s));
+    height: calc(8px * var(--s));
+    border-radius: 50%;
+    background: var(--ember);
+    box-shadow: 0 0 0 2px var(--c);
+  }
+  .shelf3d-cover,
+  .shelf3d-back {
+    top: 0;
+    left: 50%;
+    width: var(--D);
+    height: var(--H);
+    margin-left: calc(var(--D) / -2);
+    overflow: hidden;
+    background: var(--c);
+  }
+  .shelf3d-cover {
+    --cover-fit: var(--s);
+    transform: rotateY(90deg) translateZ(calc(var(--T) / 2));
+    color: var(--ci);
+  }
+  .shelf3d-back {
+    transform: rotateY(-90deg) translateZ(calc(var(--T) / 2));
+    filter: brightness(0.82);
+  }
+  .shelf3d-top {
+    left: 0;
+    top: 50%;
+    width: var(--T);
+    height: var(--D);
+    margin-top: calc(var(--D) / -2);
+    transform: rotateX(90deg) translateZ(calc(var(--H) / 2));
+    background: repeating-linear-gradient(90deg, var(--page) 0 2px, var(--page-line) 2px 3px);
+    box-shadow: inset 3px 0 0 var(--c), inset -3px 0 0 var(--c);
+  }
+
+  /* Sokin tebranish: faqat sichqonchali qurilmalarda. Telefonda javon qimirlamaydi */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .shelf3d-scene.is-idle {
+      animation: shelf3d-sway 10s ease-in-out infinite;
     }
-    to {
-      offset-distance: 100%;
+    .shelf3d-scene.is-paused {
+      animation-play-state: paused;
     }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .shelf3d-scene,
+    .shelf3d-book {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes shelf3d-sway {
+  /* Tinch holatdan (-16deg) boshlanadi, sakrash boʻlmaydi */
+  0%, 100% { transform: rotateX(-11deg) rotateY(-16deg); }
+  25% { transform: rotateX(-11deg) rotateY(-23deg); }
+  75% { transform: rotateX(-11deg) rotateY(-9deg); }
+}
+
+/* Bosh sahifadagi seriya yelpigʻichi (components/Series/SeriesSection.tsx). Faqat CSS, JS yoʻq.
+   Kitobdan: --i (markazdan tartib raqami, masalan -2.5…2.5), --r (muqova nisbati), --spine / --spine-ink.
+   Yelpigʻichdan: --s (telefonda kichrayish), --fh (muqova boʻyi). Faqat transform animatsiya qilinadi */
+@layer components {
+  .series-fan {
+    --s: 1;
+    --fh: 180px;
+    --gap: 34px;
+    --rot: 9deg;
+    position: relative;
+    height: 250px;
+  }
+  .series-fan-book {
+    --lift: 0px;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    width: calc(var(--fh) * var(--r));
+    height: var(--fh);
+    margin-left: calc(var(--fh) * var(--r) / -2);
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--spine);
+    color: var(--spine-ink);
+    box-shadow: 0 14px 30px -12px var(--floor);
+    transform-origin: 50% 120%;
+    transform: translateX(calc(var(--i) * var(--gap) * var(--s))) translateY(var(--lift))
+      rotate(calc(var(--i) * var(--rot)));
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .series-fan-book > a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .series-fan-book > a:focus-visible {
+    outline: 3px solid var(--ember);
+    outline-offset: -3px;
+  }
+  /* Klaviatura bilan ham: fokusdagi muqova koʻtariladi, yelpigʻich kengayadi */
+  .series-fan:focus-within {
+    --gap: 58px;
+    --rot: 13deg;
+  }
+  .series-fan-book:focus-within {
+    --lift: -18px;
+  }
+  @media (hover: hover) {
+    .series-fan:hover {
+      --gap: 58px;
+      --rot: 13deg;
+    }
+    .series-fan-book:hover {
+      --lift: -18px;
+    }
+  }
+  @media (max-width: 520px) {
+    .series-fan {
+      --s: 0.62;
+      --fh: 135px;
+      --cover-fit: 0.75;
+      height: 200px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .series-fan-book {
+      transition: none;
+    }
+  }
+}
+
+/* «Bogʻlanish» sahifasidagi kutubxona kartochkasi (app/contact/ContactMain.tsx):
+   pastki oʻrtada eski katalog kartochkalaridagi kabi teshik. Teshik rangi = orqadagi fon (--hole) */
+.catalog-card::after {
+  content: "";
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--hole, var(--paper));
+  box-shadow: inset 0 1px 2px var(--floor);
 }

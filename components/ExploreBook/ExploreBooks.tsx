@@ -1,57 +1,35 @@
-'use client';
-import React from 'react'
+import React, { type CSSProperties } from 'react'
 import ExploreBooksCard from './ExploreBooksCard'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation} from 'swiper/modules';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-import { Autoplay } from "swiper/modules";
-import { categories } from '@/app/data/categories';
+import { activeCategories } from '@/app/data/books';
+import SectionHeading from '@/components/common/SectionHeading';
 
+// Server komponent: faqat kitobi bor janrlar. Janr kam, shuning uchun karusel emas, grid
 const ExploreBooks = () => {
+  if (activeCategories.length === 0) return null;
+
   return (
-    <section className="relative bg-blue-100 py-16  md:px-12 overflow-hidden">
-      <div className="text-center">
-        <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">
-          Kitob janrlari
-        </h2>
-      </div>
-
-
-      <div className="flex gap-10 justify-center flex-wrap md:flex-nowrap mt-10">
-      <Swiper
-      modules={[Navigation, Autoplay]}
-      autoplay={{
-        delay: 5000, 
-        disableOnInteraction: false, 
-         pauseOnMouseEnter: true, 
-      }}
-      loop={true} // qayta aylanish
-        spaceBetween={3}
-        slidesPerView={1}
-        navigation
-        breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-      >
-        {categories.map((item, index) => (
-             <SwiperSlide key={index}>
-          <ExploreBooksCard
-            index={index + 1}
-            image={item.image}
-            title={item.title}
-            category={item}
-           
-         />
-        
-          </SwiperSlide>
-        ))}
-         </Swiper>
+    <section className="border-t border-line py-14">
+      <div className="container">
+        <SectionHeading eyebrow="Katalog" title="Kitob janrlari" />
+        {/* Ustunlar janrlar soniga qarab (640px+ da koʻpi bilan 2, 1024px+ da 3): 2 ta janr qatorni toʻldiradi,
+            bitta karta 520px dan kengaymaydi. Telefonda bitta ustun */}
+        <ul
+          className="mt-7 grid gap-5 sm:max-w-[calc(var(--cols-sm)*520px+(var(--cols-sm)-1)*20px)] sm:grid-cols-[repeat(var(--cols-sm),minmax(0,1fr))] lg:max-w-[calc(var(--cols)*520px+(var(--cols)-1)*20px)] lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+          style={
+            {
+              "--cols-sm": Math.min(activeCategories.length, 2),
+              "--cols": Math.min(activeCategories.length, 3),
+            } as CSSProperties
+          }
+        >
+          {activeCategories.map((category, index) => (
+            <li key={category.id}>
+              <ExploreBooksCard index={index + 1} title={category.title} book={category.book} />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
-
   )
 }
 

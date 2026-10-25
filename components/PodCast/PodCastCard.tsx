@@ -14,34 +14,33 @@ export default function PodCastCard({ subtitle, link }: PodCastCardProps) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-card focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-ember"
     >
-      {/* Rasm qismi */}
-      <div className="relative w-full h-52 sm:h-60">
+      {/* Video rasmi */}
+      <div className="relative aspect-video w-full overflow-hidden">
         <Image
           src={thumbnail}
           alt={subtitle}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+        <div className="absolute inset-0 bg-ink/25 transition-colors group-hover:bg-ink/35" />
 
-        {/* Play tugmasi - markazda */}
+        {/* Play tugmasi markazda */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-red-600 rounded-full w-14 h-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span className="text-white text-2xl ml-1">▶</span>
-          </div>
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-card text-brand shadow-md transition-transform duration-300 motion-safe:group-hover:scale-110">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="ml-1 h-6 w-6 fill-current">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
         </div>
       </div>
 
-      {/* Subtitle - rasm tashqarisida pastda */}
-      <div className="bg-primary px-4 py-3">
-        <p className="text-sm font-semibold text-white uppercase tracking-wide line-clamp-2">
-          {subtitle}
-        </p>
-      </div>
+      <p className="line-clamp-2 px-[18px] py-4 text-[15px] font-semibold leading-snug text-ink">
+        {subtitle}
+      </p>
     </a>
   );
 }

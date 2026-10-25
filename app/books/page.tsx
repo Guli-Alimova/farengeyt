@@ -1,55 +1,43 @@
 import { Suspense } from 'react';
 import BooksClient from './BooksClient';
+import { activeCategoryTitles, books, toCardData } from '@/app/data/books';
 import { pageMetadata } from '@/app/utils/metadata';
 
 export const metadata = pageMetadata({ title: 'Kitoblar', path: '/books' });
 
-// Loading component
+// useSearchParams tufayli statik HTML'da shu skelet turadi, roʻyxat brauzerda chiziladi
 function BooksLoading() {
   return (
-    <div className="p-8">
-      <div className="animate-pulse">
-        {/* Search skeleton */}
-        <div className="mb-6">
-          <div className="h-6 bg-gray-200 rounded w-20 mb-2"></div>
-          <div className="h-10 bg-gray-200 rounded w-full"></div>
-        </div>
-        
-        {/* Categories skeleton */}
-        <div className="mb-6">
-          <div className="h-6 bg-gray-200 rounded w-24 mb-2"></div>
-          <div className="flex flex-wrap gap-2">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-10 bg-gray-200 rounded w-20"></div>
-            ))}
-          </div>
-        </div>
-
-        {/* Books grid skeleton */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="bg-white rounded-lg shadow-md">
-              <div className="aspect-[3/4] bg-gray-200 rounded-t-lg"></div>
-              <div className="p-4">
-                <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded w-20 mb-2"></div>
-                <div className="h-3 bg-gray-200 rounded w-32"></div>
-              </div>
-            </div>
+    <div className="container animate-pulse pb-16 pt-12" aria-hidden="true">
+      <div className="mb-7 flex flex-wrap items-end justify-between gap-5">
+        <div className="h-10 w-56 rounded-lg bg-line" />
+        <div className="flex flex-wrap gap-2">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="h-9 w-24 rounded-full bg-line" />
           ))}
         </div>
+      </div>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="overflow-hidden rounded-[14px] border border-line bg-card">
+            <div className="h-[250px] bg-brand-soft" />
+            <div className="space-y-2 p-[18px]">
+              <div className="h-3 w-24 rounded bg-line" />
+              <div className="h-6 w-40 rounded bg-line" />
+              <div className="h-4 w-32 rounded bg-line" />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-// Main page component (Server Component)
+// Server komponent: client'ga butun book.json emas, faqat kartochka maydonlari uzatiladi
 export default function BooksPage() {
   return (
-    <div>
-      <Suspense fallback={<BooksLoading />}>
-        <BooksClient />
-      </Suspense>
-    </div>
+    <Suspense fallback={<BooksLoading />}>
+      <BooksClient books={books.map(toCardData)} categoryTitles={activeCategoryTitles} />
+    </Suspense>
   );
 }

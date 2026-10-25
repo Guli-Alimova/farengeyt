@@ -1,6 +1,7 @@
 // pages/blog.tsx
 
 import BlogCard from "./BlogCard";
+import SectionHeading from "@/components/common/SectionHeading";
 // posts.ts
 const posts = [
   {
@@ -34,21 +35,19 @@ const posts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-20 scroll-mt-28">
+    <section id="blog" className="scroll-mt-28 bg-brand-soft py-14">
       <div className="container">
-        <div className="text-center">
-        <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">
-          Yangiliklar
-        </h2>
+        <SectionHeading eyebrow="Blog" title="Yangiliklar" />
+        {/* Telefonda (640px dan tor) gorizontal suriladi: karta ~85% kenglikda, keyingisi chetdan koʻrinadi.
+            -mx-4/px-4: lenta ekran chetigacha boradi, sahifada gorizontal skroll paydo boʻlmaydi */}
+        <ul className="-mx-4 mt-7 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 md:grid-cols-3">
+          {posts.map((post) => (
+            <li key={post.id} className="w-[85%] shrink-0 snap-start sm:w-auto">
+              <BlogCard {...post} />
+            </li>
+          ))}
+        </ul>
       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {posts.map((post) => (
-        <BlogCard key={post.id} {...post} />
-      ))}
-    </div>
-      </div>
-
     </section>
-   
   );
 }

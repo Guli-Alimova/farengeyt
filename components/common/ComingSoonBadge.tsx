@@ -1,7 +1,7 @@
-// «Tez kunda» belgisi (status: "coming-soon" kitoblar uchun). Dizayni vaqtincha oddiy.
+// «Tez kunda» belgisi (status: "coming-soon" kitoblar uchun)
 export default function ComingSoonBadge({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-block bg-secondary text-white text-xs font-semibold px-2 py-1 rounded ${className}`}>
+    <span className={`inline-block rounded-full bg-ember-soft px-[11px] py-1 text-xs font-semibold text-ember ${className}`}>
       Tez kunda
     </span>
   );

@@ -1,70 +1,51 @@
-import React from "react"
+import React, { type CSSProperties } from "react"
 import Link from "next/link"
-import Image from "next/image"
-
-type Category = {
-  id: number
-  image: string
-  title: string
-}
+import type { BookCardData } from "@/app/data/books"
+import CoverFace from "@/components/book/CoverFace"
+import { inkFor, shapeRatio } from "@/components/book/bookShape"
 
 type ExploreBooksCardProps = {
   index: number
-  image: string
   title: string
-  category?: Category // bu yerda optional
+  book: BookCardData // janrdagi kitob: kartada uning tekis muqovasi
 }
 
-const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({
-  index,
-  image,
-  title,
-  category,
-}) => {
+const COVER_HEIGHT = 150
+
+// Janr kartochkasi: /books sahifasini shu janr filtri bilan ochadi
+const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, title, book }) => {
+  const width = Math.round(COVER_HEIGHT * shapeRatio(book.cover, book.coverRatio))
+
   return (
-    <div className="relative flex flex-col items-center text-center">
-      {/* Rounded image with dashed border */}
-      <div className="relative w-[230px] h-[230px] flex items-center justify-center bg-white rounded-full">
-        {/* Aylanuvchi border */}
-        <div className="absolute w-[200px] h-[200px] border-2 border-dashed border-secondary rounded-full animate-spin-slow"></div>
+    <Link
+      href={`/books?category=${encodeURIComponent(title)}`}
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-card focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-ember"
+    >
+      {/* Muqova maydoni qatʼiy balandlikda: nom ikki qatorga tushsa ham muqova kichraymaydi */}
+      <div className="relative grid h-[214px] shrink-0 place-items-center bg-linear-to-b from-brand-soft to-transparent">
 
-        {category ? (
-          <Link href={`/books?category=${encodeURIComponent(category.title)}`}>
-            <div className="relative z-10 flex flex-col items-center">
-              <Image
-                src={image}
-                alt={title}
-                className="w-[90px] h-[120px] object-cover rounded"
-                width={90}
-                height={120}
-              />
-              <div className="absolute -top-8 right-[-36px] bg-[#29479E] text-secondary text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center">
-                {index < 10 ? `0${index}` : index}
-              </div>
-            </div>
-          </Link>
-        ) : (
-          <div className="relative z-10 flex flex-col items-center">
-            <Image
-              src={image}
-              alt={title}
-              className="w-[90px] h-[120px] object-cover rounded"
-              width={90}
-              height={120}
-            />
-            <div className="absolute -top-8 right-[-36px] bg-[#29479E] text-secondary text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center">
-              {index < 10 ? `0${index}` : index}
-            </div>
-          </div>
-        )}
+        <span className="absolute left-[18px] top-4 font-mono text-xs text-brand">
+          {String(index).padStart(2, "0")}
+        </span>
+        <span
+          className="relative block overflow-hidden rounded-[2px] shadow-[0_14px_30px_-12px_var(--floor)] transition-transform duration-300 motion-safe:group-hover:-translate-y-1"
+          style={
+            {
+              width,
+              height: COVER_HEIGHT,
+              background: book.spineColor,
+              color: inkFor(book.spineColor),
+            } as CSSProperties
+          }
+        >
+          <CoverFace title={book.title} cover={book.cover} sizes={`${width}px`} scale={0.8} />
+        </span>
       </div>
-
-      {/* Kitobning nomi */}
-      <h3 className="text-primary font-semibold mt-4 text-[16px]">{title}</h3>
-    </div>
+      <h3 className="flex-1 border-t border-line px-[18px] py-4 font-display text-xl font-semibold leading-[1.2] text-ink text-balance">
+        {title}
+      </h3>
+    </Link>
   )
 }
 
 export default ExploreBooksCard
-
-

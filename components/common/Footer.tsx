@@ -1,92 +1,80 @@
 import React from 'react'
 import Link from 'next/link'
-import {  Facebook, Instagram, Twitter } from '@/public/svg'
-import Image from 'next/image';
-import { ALL_CATEGORIES, categoryTitles } from '@/app/data/categories';
+import { FacebookIcon, InstagramIcon, XIcon } from '@/public/svg'
+import { ALL_CATEGORIES } from '@/app/data/categories';
+import { activeCategoryTitles } from '@/app/data/books';
+import { contact, socials } from '@/app/data/contact';
 import { navLinks } from '@/app/data/navigation';
 
+// Faqat kitobi bor janrlar
+const categories = [ALL_CATEGORIES, ...activeCategoryTitles];
 
-const categories = [ALL_CATEGORIES, ...categoryTitles];
+const socialIcons = { facebook: <FacebookIcon />, instagram: <InstagramIcon />, x: <XIcon /> };
 
 export default function Footer() {
   return (
-    <footer className="bg-[#012e4a] text-white py-[28px] px-6">
-      <div className="container">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-
-        {/* Bookle Logo Section */}
+    <footer className="border-t border-line pb-11 pt-9 text-sm text-muted">
+      <div className="container grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
         <div>
-        <div className="w-[86px] max-w-full">
-            <Link href="/">
-              <Image
-                src="/images/Farengeyt_Press_LOGO_small.png"
-                alt="farengeyt"
-                className="h-auto w-full"
-                height={300}
-                width={300}
-              />
-            </Link>
-          </div>
-       
-          <div className="flex items-center gap-4 mt-4">
-          <Link href="https://facebook.com/FarengeytPress" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Facebook /></Link>
-            <Link href="https://instagram.com/farengeyt_press" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px] text-center'><Instagram /></Link>
-            <Link href="https://x.com/FarengeytPress" className='px-[8px] py-[5px]  items-center hover:bg-secondary transition-all duration-300 max-w-[36px]'><Twitter/></Link>
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 font-display text-[23px] font-bold tracking-[-0.01em] text-ink"
+          >
+            Farengeyt
+            <span className="font-body text-xs font-medium uppercase tracking-[0.09em] text-muted">
+              Press
+            </span>
+          </Link>
+          <p className="mt-2">{"Ilmiy-ommabop, taʼlimiy va tarjima adabiyot."}</p>
+          <div className="mt-4 flex items-center gap-2">
+            {socials.map((social) => (
+              <Link
+                key={social.href}
+                href={social.href}
+                aria-label={social.label}
+                target="_blank"
+                rel="noopener"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-brand transition-colors hover:bg-brand-soft"
+              >
+                {socialIcons[social.key]}
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* Customer Support */}
         <div>
-          <h3 className="text-lg font-semibold mb-1">Yordam xizmati</h3>
-          <div className="h-[2px] w-8 bg-orange-500 mb-4"></div>
-          <ul className="space-y-2 text-sm  text-white">
-              {navLinks.map((link) => (
-                <li key={link.href} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>
-                  <Link
-                    href={link.href}
-                  >
-                    » {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <h3 className="mb-2 font-semibold text-ink">{"Bogʻlanish"}</h3>
+          <ul className="space-y-1">
+            <li><a href={contact.phone.href} className="hover:text-ink">{contact.phone.label}</a></li>
+            <li><a href={contact.email.href} className="hover:text-ink">{contact.email.label}</a></li>
+            <li>{contact.hours}</li>
+          </ul>
         </div>
 
-      <div>
-      <h3 className="text-lg font-semibold mb-1">Janrlar</h3>
-      <div className="h-[2px] w-8 bg-orange-500 mb-4"></div>
-        <ul className="space-y-2 text-white text-sm">
-        {categories.map((category) => (
-          <li key={category} className='hover:text-secondary hover:translate-x-1 transition-all duration-300 mb-5'>
-            <Link href={`/books?category=${encodeURIComponent(category)}`}>
-            »  {category}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      </div>
+        <div>
+          <h3 className="mb-2 font-semibold text-ink">Sahifalar</h3>
+          <ul className="space-y-1">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-ink">{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-
-        {/* Newsletter */}
-        {/* <div className='relative text-white'>
-          <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-          <div className="h-[2px] w-8 bg-orange-500 mb-2"></div>
-        
-          <form className="flex">
-            <input
-              type="email"
-              placeholder="Enter Email Address"
-              className="px-4 py-2 rounded-l-md w-full text-white active:border-primary border-1 border-primary"
-            />
-            <button type="submit" className="bg-[#29479E] text-white px-4 py-2 rounded-r-md">
-        Send
-            </button>
-          </form>
-          <Image src="/images/frame-shape.png" alt="" className='absolute  bottom-9 left-14 animate-float-x' width={300} height={300}/>
-        </div> */}
-      </div> 
+        <div>
+          <h3 className="mb-2 font-semibold text-ink">Janrlar</h3>
+          <ul className="space-y-1">
+            {categories.map((category) => (
+              <li key={category}>
+                <Link href={`/books?category=${encodeURIComponent(category)}`} className="hover:text-ink">
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-     
     </footer>
   );
 }

@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# asl katta rasmlar (Git tarixida bor, qarang: CLAUDE.md > Images)
+/originals/

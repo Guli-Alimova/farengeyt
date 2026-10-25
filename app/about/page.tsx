@@ -1,21 +1,18 @@
 import React from 'react'
-// import Created from '@/components/Created/Created'
 import AboutUS from '@/app/about/AboutUS'
-import AboutIntro from '@/app/about/AboutIntro'
+import Epigraph from '@/app/about/Epigraph'
+import PageHeading from '@/components/common/PageHeading'
 import { pageMetadata } from '@/app/utils/metadata'
 
 export const metadata = pageMetadata({ title: 'Biz haqimizda', path: '/about' })
 
-
-
-
 const AboutUs = () => {
   return (
-  <div>
-    <AboutIntro/>
-    <AboutUS/>
-    {/* <Created/> */}
-  </div>
+    <div>
+      <PageHeading title="Biz haqimizda" />
+      <Epigraph />
+      <AboutUS />
+    </div>
   )
 }
 

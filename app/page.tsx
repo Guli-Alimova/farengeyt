@@ -3,6 +3,7 @@ import FeaturedBooks from '@/components/FeaturedBook/FeaturedBooks'
 import Intro from '@/components/Intro/Intro'
 import Blog from "@/components/Blog/Blog"
 import PodCast from "@/components/PodCast/PodCast"
+import SeriesSection from "@/components/Series/SeriesSection"
 import React from 'react'
 
 
@@ -12,9 +13,10 @@ const page = () => {
    
     <Intro/>
     <FeaturedBooks/>
-    <ExploreBooks/>
     <Blog/>
+    <SeriesSection/>
     <PodCast/>
+    <ExploreBooks/>
     </div>
   )
 }

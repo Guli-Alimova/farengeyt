@@ -1,60 +1,71 @@
 import React from 'react'
-import Image from 'next/image'
+import { contact } from '@/app/data/contact'
+import { activeCategories, books } from '@/app/data/books'
+import StatsRow from '@/components/common/StatsRow'
+import CatalogCard from '@/components/common/CatalogCard'
 
 const AboutUS = () => {
-  return (
-  
-    <div className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
-{/* Chap rasm qismi */}
-<div className="relative">
-<Image
-  src="/images/09.jpg"
-  alt="Reading book"
-  className="w-full rounded-lg"
-  width={300}
-  height={300}
-/>
-<button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-8 w-8 text-primary"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path d="M8 5v14l11-7z" />
-  </svg>
-</button>
-</div>
+  // Hammasi book.json'dan hisoblanadi; janrlar faqat kitobi borlari
+  const stats = [
+    { value: books.length, label: 'kitob' },
+    { value: books.filter((b) => b.status === 'published').length, label: 'sotuvda' },
+    { value: books.filter((b) => b.status === 'coming-soon').length, label: 'tez kunda' },
+    { value: activeCategories.length, label: 'janr' },
+  ]
 
-{/* O‘ng matn qismi */}
-<div>
-<h2 className="text-3xl font-bold text-gray-900 mb-4">
-  Missiyamiz va maqsadimiz 
-</h2>
-<p className="text-gray-600 mb-4">
-Farengeyt Press – chindan yangi nashriyot va unga turli sohalarda faoliyat koʻrsatib kelayotgan, ayni chogʻda, kitob va kitobxonlikka befarq boʻlmagan faollar va mutaxassislar asos soldi. Mushtarak gʻoyamiz va maqsadimiz ifodasi oʻlaroq “Farengeyt Press” nashriyoti nomini tanlashda yozuvchi Rey Bredberining 🔥“Farengeyt boʻyicha 451 daraja” asaridagi “Ahli kitob” (“Book People”) gʻoyasidan ilhomlandik. Ahli kitob – hayotini kitoblarni avaylash va ilmni odamlarga yetkazishga bagʻishlagan insonlardir. Biz endilikda kitob, mutolaa va maʼrifatga qilinajak xizmatimizni mustaqil nashriyot sifatida davom ettirishga qaror qildik. Shuningdek, jamoamizda oʻz sohasi yetakchilaridan boʻlmish art-direktor Orzu Aʼzam ham faoliyat yuritmoqda.
-</p>
-<p className="text-gray-600 mb-6">
-  Nashriyotimizning bosh gʻoyasi oʻzbek kitobxoniga progressiv, yangi, dolzarb bilimlarni sifatli va tezkor surʼatlarda taqdim etish orqali ilm sarhadlarini kengaytirishga hissa qoʻshishdan iborat. Bunda biz ham tarjima, ham mahalliy muallif va mutaxassislar asarlarini kitobxonga taqdim etishni rejalashtirmoqdamiz. Bundan tashqari, nashriyotimiz faoliyati doirasida yana qator qoʻshimcha maʼrifiy loyihalarni amalga oshirish ham koʻzda tutilmoqda.
-</p>
-<a
-  href="t.me/farengeyt_press"
-  className="inline-flex items-center text-secondary font-semibold hover:underline"
->
-Umumiy maʼlumot
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4 ml-1"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-  </svg>
-</a>
-</div>
-</div>
-  
+  return (
+    <section className="border-t border-line bg-brand-soft py-14">
+      <div className="container grid items-start gap-10 min-[880px]:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] min-[880px]:gap-14">
+        <div className="max-w-[65ch]">
+          <h2 className="mb-4 font-display text-[clamp(24px,2.6vw,30px)] font-semibold leading-[1.15] text-ink">
+            Missiyamiz va maqsadimiz
+          </h2>
+          <p className="mb-4 text-muted">
+            Farengeyt Press – chindan yangi nashriyot va unga turli sohalarda faoliyat koʻrsatib kelayotgan, ayni chogʻda, kitob va kitobxonlikka befarq boʻlmagan faollar va mutaxassislar asos soldi. Mushtarak gʻoyamiz va maqsadimiz ifodasi oʻlaroq «Farengeyt Press» nashriyoti nomini tanlashda yozuvchi Rey Bredberining «Farengeyt boʻyicha 451 daraja» asaridagi «Ahli kitob» («Book People») gʻoyasidan ilhomlandik. Ahli kitob – hayotini kitoblarni avaylash va ilmni odamlarga yetkazishga bagʻishlagan insonlardir. Biz endilikda kitob, mutolaa va maʼrifatga qilinajak xizmatimizni mustaqil nashriyot sifatida davom ettirishga qaror qildik. Shuningdek, jamoamizda oʻz sohasi yetakchilaridan boʻlmish art-direktor Orzu Aʼzam ham faoliyat yuritmoqda.
+          </p>
+          <p className="mb-6 text-muted">
+            Nashriyotimizning bosh gʻoyasi oʻzbek kitobxoniga progressiv, yangi, dolzarb bilimlarni sifatli va tezkor surʼatlarda taqdim etish orqali ilm sarhadlarini kengaytirishga hissa qoʻshishdan iborat. Bunda biz ham tarjima, ham mahalliy muallif va mutaxassislar asarlarini kitobxonga taqdim etishni rejalashtirmoqdamiz. Bundan tashqari, nashriyotimiz faoliyati doirasida yana qator qoʻshimcha maʼrifiy loyihalarni amalga oshirish ham koʻzda tutilmoqda.
+          </p>
+          <a
+            href={contact.telegram.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-full bg-brand px-5 py-3 text-[15px] font-semibold text-brand-ink transition-opacity hover:opacity-90 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-ember"
+          >
+            Telegram kanalimiz
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="ml-1.5 h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Oʻng ustun: kompyuterda header ostida yopishib turadi, telefonda matndan keyin tushadi */}
+        <div className="min-[880px]:sticky min-[880px]:top-24">
+          <CatalogCard>
+            <dl>
+              <dt className="flex items-baseline gap-2 border-b-2 border-ember/40 pb-3">
+                <span className="font-display text-2xl font-semibold">Ahli kitob</span>
+                <i className="font-display text-page-ink/65">ot</i>
+              </dt>
+              <dd className="mt-3 text-[16px]">
+                Hayotini kitoblarni avaylash va ilmni odamlarga yetkazishga bagʻishlagan insonlar.
+              </dd>
+            </dl>
+            <p className="mt-4 font-mono text-[12px] text-page-ink/65">
+              {"Rey Bredberi, «Farengeyt boʻyicha 451 daraja»"}
+            </p>
+          </CatalogCard>
+          <StatsRow stats={stats} layout="column" className="mt-6" />
+        </div>
+      </div>
+    </section>
   )
 }
 

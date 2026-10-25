@@ -1,106 +1,95 @@
-'use client';
+import { contact } from "@/app/data/contact";
+import CatalogCard from "@/components/common/CatalogCard";
+import OpenNowBadge from "./OpenNowBadge";
 
-import Image from "next/image";
-import { useState } from "react";
+type Row = { label: string; value: string; href?: string };
 
-export default function ContactMain() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+const rows: Row[] = [
+  { label: "Telefon", value: contact.phone.label, href: contact.phone.href },
+  { label: "Email", value: contact.email.label, href: contact.email.href },
+  { label: "Telegram", value: contact.telegram.label, href: contact.telegram.href },
+  { label: "Instagram", value: contact.instagram.label, href: contact.instagram.href },
+  { label: "Manzil", value: contact.address },
+];
 
-  const handleSubmit = (e: React.MouseEvent) => {
-    e.preventDefault();
-    console.log(form);
-  };
+const rowClass = "grid gap-x-4 gap-y-0.5 border-b border-page-line py-3 sm:grid-cols-[9rem_minmax(0,1fr)]";
+const labelClass = "font-mono text-[12px] uppercase leading-6 tracking-[0.09em] text-page-ink/65";
+const valueClass = "text-[16px] [overflow-wrap:anywhere]";
 
+// Qiyshiq dumaloq muhr: faqat bezak, ekran oʻquvchilardan yashirilgan
+function Stamp() {
   return (
-    <main className="min-h-screen py-10">
+    <svg
+      viewBox="0 0 120 120"
+      aria-hidden="true"
+      className="pointer-events-none absolute right-3 top-16 h-[84px] w-[84px] -rotate-12 text-brand opacity-[0.18] sm:right-8 sm:top-14 sm:h-[110px] sm:w-[110px]"
+    >
+      <defs>
+        <path id="stamp-arc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
+      </defs>
+      <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" strokeWidth="3" />
+      <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <text fill="currentColor" fontSize="11" className="font-mono" fontWeight="600">
+        <textPath href="#stamp-arc" textLength="272" lengthAdjust="spacing">
+          FARENGEYT PRESS · TOSHKENT ·
+        </textPath>
+      </text>
+      <text x="60" y="67" textAnchor="middle" fill="currentColor" fontSize="20" fontWeight="700" className="font-display">
+        FP
+      </text>
+    </svg>
+  );
+}
+
+// Bogʻlanish maʼlumotlari eski kutubxona kartochkasi koʻrinishida. Maʼlumot footer bilan bitta joydan:
+// app/data/contact.ts. Server komponent, faqat «Hozir ochiqmi?» belgisi brauzerda hisoblanadi
+export default function ContactMain() {
+  return (
+    <section className="border-t border-line bg-brand-soft py-14">
       <div className="container">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="font-display text-[clamp(24px,2.6vw,30px)] font-semibold leading-[1.15] text-ink">
+          Savolingiz bormi? Bizga yozing!
+        </h2>
+        <p className="mt-3 max-w-[60ch] text-muted">
+          {"Taklif va istaklaringizni bizga yozib yuboring. Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz boʻyicha savollaringiz boʻlsa, biz doim javob berishga tayyormiz."}
+        </p>
 
-          {/* Chap tomon: Kontakt ma'lumotlari */}
-          <div className="bg-primary text-white rounded-lg p-6 space-y-4">
-            <div>
-              <h3 className="text-sm opacity-80">{"Bizga qoʻngʻiroq qiling:"}</h3>
-              <p className="text-lg font-semibold">+99890 999 18 19</p>
-            </div>
-            <div>
-              <h3 className="text-sm opacity-80">Email:</h3>
-              <p className="text-lg font-semibold">info@farengeyt.press</p>
-            </div>
-            <div>
-              <h3 className="text-sm opacity-80">Manzil:</h3>
-              <p className="text-lg font-semibold">Komolon 134 a</p>
-            </div>
-            <div className="mt-8 flex justify-center">
-              <Image
-                src="/images/Full logo anim.gif"
-                alt="Contact"
-                className="rounded-lg"
-                width={250}
-                height={250}
-              />
-            </div>
+        <CatalogCard className="mt-8 max-w-[640px]">
+          <Stamp />
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b-2 border-ember/40 pb-3">
+            <p className="font-display text-xl font-semibold">Farengeyt Press</p>
+            <p className="font-mono text-[12px] uppercase tracking-[0.09em] text-page-ink/65">Bogʻlanish kartasi</p>
           </div>
 
-          {/* O'ng tomon: Forma */}
-          <div className="md:col-span-2">
-            <h2 className="text-2xl font-bold text-primary mb-2">
-              Savolingiz bormi? Bizga yozing!
-            </h2>
-            <p className="text-gray-500 font-medium mb-6 text-sm leading-relaxed">
-              {"Taklif va istaklaringizni bizga yozib yuboring. Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz boʻyicha savollaringiz boʻlsa, biz doim javob berishga tayyormiz."}
-            </p>
-
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-1 text-gray-500 font-medium text-sm">
-                    Ismingiz*
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ismingiz"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block mb-1 text-gray-500 font-medium text-sm">
-                    Elektron pochtangiz*
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Elektron pochtangiz"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
+          <dl>
+            {rows.map((row) => (
+              <div key={row.label} className={rowClass}>
+                <dt className={labelClass}>{row.label}</dt>
+                <dd className={valueClass}>
+                  {row.href ? (
+                    <a
+                      href={row.href}
+                      {...(row.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="rounded-sm underline decoration-page-line decoration-1 underline-offset-4 hover:decoration-current focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                    >
+                      {row.value}
+                    </a>
+                  ) : (
+                    row.value
+                  )}
+                </dd>
               </div>
-
-              <div>
-                <label className="block mb-1 text-gray-500 font-medium text-sm">
-                  Xabaringizni yozing*
-                </label>
-                <textarea
-                  placeholder="Xabaringizni yozing"
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full border rounded-lg p-3 h-40 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                />
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                className="bg-primary text-white px-6 py-3 rounded-full hover:opacity-90 transition flex items-center gap-2"
-              >
-                Xabar yuborish <span>→</span>
-              </button>
+            ))}
+            <div className={rowClass}>
+              <dt className={labelClass}>Ish vaqti</dt>
+              <dd className={valueClass}>
+                {contact.hours}
+                <OpenNowBadge />
+              </dd>
             </div>
-          </div>
-
-        </div>
+          </dl>
+        </CatalogCard>
       </div>
-    </main>
+    </section>
   );
 }

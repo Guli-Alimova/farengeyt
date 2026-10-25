@@ -2,6 +2,8 @@
   {
     "id": 1,
     "image": "/images/PUL.jpg",
+    "cover": "/images/covers/pul.jpg",
+    "spineColor": "#14847E",
     "title": "Pul",
     "category": "Bolalar kitoblari",
     "status": "published",
@@ -26,6 +28,8 @@
   {
     "id": 2,
     "image": "/images/BIOLOGIYA.jpg",
+    "cover": "/images/covers/biologiya.jpg",
+    "spineColor": "#FDDA3B",
     "title": "Biologiya",
     "category": "Bolalar kitoblari",
     "status": "published",
@@ -50,6 +54,8 @@
   {
     "id": 3,
     "image": "/images/FIZIKA.jpg",
+    "cover": "/images/covers/fizika.jpg",
+    "spineColor": "#ED7AAA",
     "title": "Fizika",
     "category": "Bolalar kitoblari",
     "status": "published",
@@ -74,6 +80,7 @@
   {
     "id": 4,
     "image": "/images/IQTISODIYOT.jpg",
+    "spineColor": "#D72747",
     "title": "Iqtisodiyot",
     "category": "Bolalar kitoblari",
     "status": "coming-soon",
@@ -98,6 +105,7 @@
   {
     "id": 5,
     "image": "/images/KIMYO.jpg",
+    "spineColor": "#544D94",
     "title": "Kimyo",
     "category": "Bolalar kitoblari",
     "status": "coming-soon",
@@ -122,6 +130,7 @@
   {
     "id": 6,
     "image": "/images/MATEMATIKA.jpg",
+    "spineColor": "#E7D725",
     "title": "Matematika",
     "category": "Bolalar kitoblari",
     "status": "coming-soon",
@@ -146,6 +155,8 @@
     {
     "id": 7,
     "image": "/images/Behalovat.jpg",
+    "cover": "/images/covers/behalovat-avlod.jpg",
+    "spineColor": "#B98A2E",
     "title": "Behalovat avlod",
     "category": "Ilmiy-ommabop kitoblar",
     "status": "published",
