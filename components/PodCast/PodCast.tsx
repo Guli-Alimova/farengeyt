@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import PodCastCard from '../PodCast/PodCastCard';
 import { useReducedMotion } from '@/app/utils/useReducedMotion';
+import SectionHeading from '@/components/common/SectionHeading';
 
 const podcasts = [
    {
@@ -34,9 +35,9 @@ export default function PodCast() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="podcast" className="bg-blue-100 py-14 scroll-mt-28">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-primary mb-8 text-center">Podkastlar</h2>
+    <section id="podcast" className="scroll-mt-28 bg-brand-soft py-14">
+      <div className="container">
+        <SectionHeading eyebrow="Video" title="Podkastlar" />
 
         <Swiper
           // reduced motion: autoplay yoʻq (Swiper uni faqat ishga tushishda oʻqiydi, shuning uchun key)
@@ -55,10 +56,10 @@ export default function PodCast() {
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="!pb-10"
+          className="mt-7 pb-10!"
         >
           {podcasts.map((podcast) => (
-            <SwiperSlide key={podcast.id}>
+            <SwiperSlide key={podcast.id} className="h-auto!">
               <PodCastCard
                 subtitle={podcast.subtitle}
                 link={podcast.link}

@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { toCardData } from "@/app/data/books";
 import { SERIES_TITLE, seriesBooks } from "@/app/data/series";
 import CoverFace from "@/components/book/CoverFace";
+import SectionHeading from "@/components/common/SectionHeading";
 import { inkFor, shapeRatio } from "@/components/book/bookShape";
 
 // Bosh sahifadagi «Boshlangʻich saboqlar» boʻlimi. Server komponent: yelpigʻich faqat CSS
@@ -23,10 +24,7 @@ export default function SeriesSection() {
     <section id="seriya" className="scroll-mt-28 overflow-x-clip border-t border-line py-14">
       <div className="container grid items-center gap-10 min-[880px]:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.09em] text-brand">Seriya</p>
-          <h2 className="mt-3 font-display text-[clamp(28px,3.4vw,38px)] font-semibold leading-[1.1] tracking-[-0.01em] text-ink">
-            {SERIES_TITLE}
-          </h2>
+          <SectionHeading eyebrow="Seriya" title={SERIES_TITLE} />
           <p className="mt-3 max-w-[50ch] text-muted">
             {"Usborne nashriyotining «for Beginners» turkumi asosida. Murakkab fanlarni bolalar uchun sodda tilda, rasmlar bilan tushuntiradi."}
           </p>

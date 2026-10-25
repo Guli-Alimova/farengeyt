@@ -12,11 +12,11 @@ const page = () => {
     <div>
    
     <Intro/>
-    <SeriesSection/>
     <FeaturedBooks/>
-    <ExploreBooks/>
     <Blog/>
+    <SeriesSection/>
     <PodCast/>
+    <ExploreBooks/>
     </div>
   )
 }

@@ -22,6 +22,8 @@
   --floor: rgba(19, 26, 49, 0.22);
   --page: #FBF8F1;
   --page-line: #E2DBCA;
+  /* Swiper nuqtalari va strelkalari (standart #007aff emas) */
+  --swiper-theme-color: var(--brand);
 }
 
 /* Qorongʻi rejim hozircha oʻchiq: eski boʻlimlarda ranglar hali qattiq yozilgan.

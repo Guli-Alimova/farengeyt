@@ -2,66 +2,36 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-type Category = {
-  id: number
-  image: string
-  title: string
-}
-
 type ExploreBooksCardProps = {
   index: number
   image: string
   title: string
-  category?: Category // bu yerda optional
 }
 
-const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({
-  index,
-  image,
-  title,
-  category,
-}) => {
+// Janr kartochkasi: /books sahifasini shu janr filtri bilan ochadi
+const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, image, title }) => {
   return (
-    <div className="relative flex flex-col items-center text-center">
-      {/* Rounded image */}
-      <div className="relative w-[230px] h-[230px] flex items-center justify-center bg-white rounded-full">
-        {category ? (
-          <Link href={`/books?category=${encodeURIComponent(category.title)}`}>
-            <div className="relative z-10 flex flex-col items-center">
-              <Image
-                src={image}
-                alt={title}
-                className="w-[90px] h-[120px] object-cover rounded"
-                width={90}
-                height={120}
-              />
-              <div className="absolute -top-8 right-[-36px] bg-[#29479E] text-secondary text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center">
-                {index < 10 ? `0${index}` : index}
-              </div>
-            </div>
-          </Link>
-        ) : (
-          <div className="relative z-10 flex flex-col items-center">
-            <Image
-              src={image}
-              alt={title}
-              className="w-[90px] h-[120px] object-cover rounded"
-              width={90}
-              height={120}
-            />
-            <div className="absolute -top-8 right-[-36px] bg-[#29479E] text-secondary text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center">
-              {index < 10 ? `0${index}` : index}
-            </div>
-          </div>
-        )}
+    <Link
+      href={`/books?category=${encodeURIComponent(title)}`}
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-card focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-ember"
+    >
+      <div className="relative grid place-items-center bg-linear-to-b from-brand-soft to-transparent pb-6 pt-8">
+        <span className="absolute left-[18px] top-4 font-mono text-xs text-brand">
+          {String(index).padStart(2, "0")}
+        </span>
+        <Image
+          src={image}
+          alt=""
+          width={104}
+          height={144}
+          className="h-[144px] w-[104px] object-contain transition-transform duration-300 motion-safe:group-hover:-translate-y-1"
+        />
       </div>
-
-      {/* Kitobning nomi */}
-      <h3 className="text-primary font-semibold mt-4 text-[16px]">{title}</h3>
-    </div>
+      <h3 className="mt-auto border-t border-line px-[18px] py-4 font-display text-xl font-semibold leading-[1.2] text-ink text-balance">
+        {title}
+      </h3>
+    </Link>
   )
 }
 
 export default ExploreBooksCard
-
-

@@ -1,6 +1,7 @@
 // pages/blog.tsx
 
 import BlogCard from "./BlogCard";
+import SectionHeading from "@/components/common/SectionHeading";
 // posts.ts
 const posts = [
   {
@@ -34,21 +35,15 @@ const posts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-20 scroll-mt-28">
+    <section id="blog" className="scroll-mt-28 bg-brand-soft py-14">
       <div className="container">
-        <div className="text-center">
-        <h2 className="text-primary text-3xl md:text-4xl font-bold mb-10">
-          Yangiliklar
-        </h2>
+        <SectionHeading eyebrow="Blog" title="Yangiliklar" />
+        <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+          {posts.map((post) => (
+            <BlogCard key={post.id} {...post} />
+          ))}
+        </div>
       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {posts.map((post) => (
-        <BlogCard key={post.id} {...post} />
-      ))}
-    </div>
-      </div>
-
     </section>
-   
   );
 }
