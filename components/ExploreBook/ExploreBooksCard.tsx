@@ -21,7 +21,9 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, title, book 
       href={`/books?category=${encodeURIComponent(title)}`}
       className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-card focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-ember"
     >
-      <div className="relative grid place-items-center bg-linear-to-b from-brand-soft to-transparent pb-6 pt-8">
+      {/* Muqova maydoni qatʼiy balandlikda: nom ikki qatorga tushsa ham muqova kichraymaydi */}
+      <div className="relative grid h-[214px] shrink-0 place-items-center bg-linear-to-b from-brand-soft to-transparent">
+
         <span className="absolute left-[18px] top-4 font-mono text-xs text-brand">
           {String(index).padStart(2, "0")}
         </span>
@@ -39,7 +41,7 @@ const ExploreBooksCard: React.FC<ExploreBooksCardProps> = ({ index, title, book 
           <CoverFace title={book.title} cover={book.cover} sizes={`${width}px`} scale={0.8} />
         </span>
       </div>
-      <h3 className="mt-auto border-t border-line px-[18px] py-4 font-display text-xl font-semibold leading-[1.2] text-ink text-balance">
+      <h3 className="flex-1 border-t border-line px-[18px] py-4 font-display text-xl font-semibold leading-[1.2] text-ink text-balance">
         {title}
       </h3>
     </Link>
