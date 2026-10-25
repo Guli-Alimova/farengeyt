@@ -1,18 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
-import { FacebookBlue, InstagramBlue, TwitterBlue } from '@/public/svg'
+import { FacebookIcon, InstagramIcon, XIcon } from '@/public/svg'
 import { ALL_CATEGORIES } from '@/app/data/categories';
 import { activeCategoryTitles } from '@/app/data/books';
+import { contact, socials } from '@/app/data/contact';
 import { navLinks } from '@/app/data/navigation';
 
 // Faqat kitobi bor janrlar
 const categories = [ALL_CATEGORIES, ...activeCategoryTitles];
 
-const socials = [
-  { href: "https://facebook.com/FarengeytPress", label: "Facebook", icon: <FacebookBlue /> },
-  { href: "https://instagram.com/farengeyt_press", label: "Instagram", icon: <InstagramBlue /> },
-  { href: "https://x.com/FarengeytPress", label: "X", icon: <TwitterBlue /> },
-];
+const socialIcons = { facebook: <FacebookIcon />, instagram: <InstagramIcon />, x: <XIcon /> };
 
 export default function Footer() {
   return (
@@ -37,9 +34,9 @@ export default function Footer() {
                 aria-label={social.label}
                 target="_blank"
                 rel="noopener"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-line transition-colors hover:bg-brand-soft"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-brand transition-colors hover:bg-brand-soft"
               >
-                {social.icon}
+                {socialIcons[social.key]}
               </Link>
             ))}
           </div>
@@ -48,9 +45,9 @@ export default function Footer() {
         <div>
           <h3 className="mb-2 font-semibold text-ink">{"Bogʻlanish"}</h3>
           <ul className="space-y-1">
-            <li><a href="tel:+998909991819" className="hover:text-ink">+998 90 999 18 19</a></li>
-            <li><a href="mailto:info@farengeyt.press" className="hover:text-ink">info@farengeyt.press</a></li>
-            <li>Dushanba–Juma, 09:00–18:00</li>
+            <li><a href={contact.phone.href} className="hover:text-ink">{contact.phone.label}</a></li>
+            <li><a href={contact.email.href} className="hover:text-ink">{contact.email.label}</a></li>
+            <li>{contact.hours}</li>
           </ul>
         </div>
 

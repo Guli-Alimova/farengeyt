@@ -1,96 +1,59 @@
-'use client';
+import type { ReactNode } from "react";
+import { contact } from "@/app/data/contact";
+import { InstagramIcon } from "@/public/svg";
 
-import { useState } from "react";
+type ContactItem = { label: string; value: string; href?: string; icon?: ReactNode };
 
+const items: ContactItem[] = [
+  { label: "Bizga qoʻngʻiroq qiling", value: contact.phone.label, href: contact.phone.href },
+  { label: "Email", value: contact.email.label, href: contact.email.href },
+  { label: "Instagram", value: contact.instagram.label, href: contact.instagram.href, icon: <InstagramIcon /> },
+  { label: "Ish vaqti", value: contact.hours },
+  { label: "Manzil", value: contact.address },
+];
+
+// Bogʻlanish kartalari. Maʼlumot footer bilan bitta joydan: app/data/contact.ts
 export default function ContactMain() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleSubmit = (e: React.MouseEvent) => {
-    e.preventDefault();
-    console.log(form);
-  };
-
   return (
-    <main className="min-h-screen py-10">
+    <section className="border-t border-line bg-brand-soft py-14">
       <div className="container">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="font-display text-[clamp(24px,2.6vw,30px)] font-semibold leading-[1.15] text-ink">
+          Savolingiz bormi? Bizga yozing!
+        </h2>
+        <p className="mt-3 max-w-[60ch] text-muted">
+          {"Taklif va istaklaringizni bizga yozib yuboring. Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz boʻyicha savollaringiz boʻlsa, biz doim javob berishga tayyormiz."}
+        </p>
 
-          {/* Chap tomon: Kontakt ma'lumotlari */}
-          <div className="bg-primary text-white rounded-lg p-6 space-y-4">
-            <div>
-              <h3 className="text-sm opacity-80">{"Bizga qoʻngʻiroq qiling:"}</h3>
-              <p className="text-lg font-semibold">+99890 999 18 19</p>
-            </div>
-            <div>
-              <h3 className="text-sm opacity-80">Email:</h3>
-              <p className="text-lg font-semibold">info@farengeyt.press</p>
-            </div>
-            <div>
-              <h3 className="text-sm opacity-80">Manzil:</h3>
-              <p className="text-lg font-semibold">Komolon 134 a</p>
-            </div>
-          </div>
-
-          {/* O'ng tomon: Forma */}
-          <div className="md:col-span-2">
-            <h2 className="text-2xl font-bold text-primary mb-2">
-              Savolingiz bormi? Bizga yozing!
-            </h2>
-            <p className="text-gray-500 font-medium mb-6 text-sm leading-relaxed">
-              {"Taklif va istaklaringizni bizga yozib yuboring. Kitoblarimiz, nashrlarimiz yoki xizmatlarimiz boʻyicha savollaringiz boʻlsa, biz doim javob berishga tayyormiz."}
-            </p>
-
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-1 text-gray-500 font-medium text-sm">
-                    Ismingiz*
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ismingiz"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block mb-1 text-gray-500 font-medium text-sm">
-                    Elektron pochtangiz*
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Elektron pochtangiz"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block mb-1 text-gray-500 font-medium text-sm">
-                  Xabaringizni yozing*
-                </label>
-                <textarea
-                  placeholder="Xabaringizni yozing"
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full border rounded-lg p-3 h-40 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                />
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                className="bg-primary text-white px-6 py-3 rounded-full hover:opacity-90 transition flex items-center gap-2"
-              >
-                Xabar yuborish <span>→</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
+        <ul className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5">
+          {items.map((item) => {
+            const body = (
+              <>
+                <span className="font-mono text-xs uppercase tracking-[0.09em] text-muted">{item.label}</span>
+                <span className="mt-2 flex items-center gap-2 font-display text-lg font-semibold text-ink [overflow-wrap:anywhere]">
+                  {item.icon && <span className="text-brand">{item.icon}</span>}
+                  {item.value}
+                </span>
+              </>
+            );
+            const card = "flex h-full flex-col rounded-[14px] border border-line bg-card px-[18px] py-4";
+            return (
+              <li key={item.label}>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className={`${card} transition-colors hover:border-brand focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-ember`}
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <div className={card}>{body}</div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </div>
-    </main>
+    </section>
   );
 }
