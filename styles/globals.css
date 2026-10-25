@@ -22,6 +22,8 @@
   --floor: rgba(19, 26, 49, 0.22);
   --page: #FBF8F1;
   --page-line: #E2DBCA;
+  /* Qogʻoz (--page) ustidagi matn: qorongʻi rejimda ham qogʻoz och boʻlgani uchun alohida */
+  --page-ink: #1E2540;
   /* Swiper nuqtalari va strelkalari (standart #007aff emas) */
   --swiper-theme-color: var(--brand);
 }
@@ -47,6 +49,7 @@
   --floor: rgba(0, 0, 0, 0.55);
   --page: #D9D3C4;
   --page-line: #B5AC98;
+  --page-ink: #1E2540;
   color-scheme: dark;
 }
 
@@ -62,6 +65,9 @@
   --color-ember: var(--ember);
   --color-ember-soft: var(--ember-soft);
   --color-on-ember: var(--on-ember);
+  --color-page: var(--page);
+  --color-page-line: var(--page-line);
+  --color-page-ink: var(--page-ink);
 
   --font-display: var(--font-okina), var(--font-literata), Georgia, "Times New Roman", serif;
   --font-body: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -525,4 +531,19 @@ html {
       transition: none;
     }
   }
+}
+
+/* «Bogʻlanish» sahifasidagi kutubxona kartochkasi (app/contact/ContactMain.tsx):
+   pastki oʻrtada eski katalog kartochkalaridagi kabi teshik. Teshik rangi = orqadagi fon (--hole) */
+.catalog-card::after {
+  content: "";
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--hole, var(--paper));
+  box-shadow: inset 0 1px 2px var(--floor);
 }
