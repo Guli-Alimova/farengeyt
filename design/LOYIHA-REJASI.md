@@ -83,5 +83,5 @@ Hozircha qilinmaydi, keyin alohida hal qilinadi:
 - Muharrir ismining yozilishi (Yoʻldoshev yoki Yuldoshev).
 - Tekis muqova fayllari.
 - "O'qituvchilar uchun" bloki matni. (Telegram kanal manzili maʼlum: https://t.me/farengeyt_press, `app/data/contact.ts` da.)
-- `fizika4.jpg`, `fizika5.jpg`: «Fizika» galereyasiga kerakmi.
+- ~~`fizika4.jpg`, `fizika5.jpg`: «Fizika» galereyasiga kerakmi.~~ Yopildi: egasining ruxsati bilan galereyaga qoʻshildi.
 - Keyinroq: `farengeyt.press` domenini ulash, ruscha versiya.
