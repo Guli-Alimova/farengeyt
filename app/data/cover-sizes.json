@@ -1,4 +1,8 @@
 {
+  "/images/covers/argument.jpg": {
+    "width": 800,
+    "height": 1245
+  },
   "/images/covers/behalovat-avlod.jpg": {
     "width": 800,
     "height": 1245
@@ -10,6 +14,10 @@
   "/images/covers/fizika.jpg": {
     "width": 800,
     "height": 1129
+  },
+  "/images/covers/kitobni-qanday-oqish-kerak.jpg": {
+    "width": 800,
+    "height": 1245
   },
   "/images/covers/pul.jpg": {
     "width": 800,

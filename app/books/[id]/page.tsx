@@ -113,6 +113,11 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
         <h1 className="mt-2 text-balance font-display text-[clamp(32px,4.6vw,48px)] font-semibold leading-[1.08] tracking-[-0.015em] text-ink">
           {book.title}
         </h1>
+        {book.subtitle && !isSeriesBook(book) && (
+          <p className="mt-2 text-balance font-display text-[clamp(20px,2.4vw,24px)] leading-[1.25] text-ink">
+            {book.subtitle}
+          </p>
+        )}
         {book.author && <p className="mt-2 text-lg text-muted">{book.author}</p>}
 
         {comingSoon && (
