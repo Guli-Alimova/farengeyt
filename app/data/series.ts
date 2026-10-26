@@ -1,10 +1,9 @@
 import { books } from "./books";
-import type { Book } from "@/app/type/Book";
+import { isSeriesBook } from "./seriesTitle";
+
+export { SERIES_TITLE, isSeriesBook } from "./seriesTitle";
 
 // «Boshlangʻich saboqlar» seriyasi: kitobning subtitle maydoni orqali aniqlanadi,
-// shuning uchun roʻyxat qoʻlda yozilmaydi (yangi kitobga shu subtitle yozilsa, oʻzi qoʻshiladi)
-export const SERIES_TITLE = "Boshlangʻich saboqlar";
-
-export const isSeriesBook = (book: Pick<Book, "subtitle">) => book.subtitle === SERIES_TITLE;
-
+// shuning uchun roʻyxat qoʻlda yozilmaydi (yangi kitobga shu subtitle yozilsa, oʻzi qoʻshiladi).
+// Boshqa subtitle (masalan, «Argument»da) — oddiy kichik sarlavha, seriya emas
 export const seriesBooks = books.filter(isSeriesBook);

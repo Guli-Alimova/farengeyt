@@ -13,10 +13,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   Never use ', ‘, ’ or ` in Uzbek words. Applies to components, book.json and category names;
   not to code, comments or English text.
 - Author names (`author`, and the same people elsewhere on the site) are written in full (first name + surname)
-  in Uzbek transliteration, e.g. «Eddi Reynolds», «Minna Leysi». Exception chosen by the user: Jonathan Haidt
-  stays in English spelling. Translator/editor names are written as the user gives them.
+  in Uzbek transliteration, e.g. «Eddi Reynolds», «Minna Leysi». Exceptions chosen by the user: Jonathan Haidt
+  and Anthony Weston stay in English spelling. Translator/editor names are written as the user gives them.
 - Lists of names use the «A, B va C» form (commas, «va» before the last name), e.g.
-  «Eddi Reynolds, Metyu Oldem va Lara Brayan».
+  «Eddi Reynolds, Mettyu Oldem va Lara Brayan».
 - English titles (`originalTitle`) use title case with prepositions/articles in lowercase unless first:
   «Money for Beginners», not «Money For Beginners».
 - Don't change the spelling of personal names on your own; ask the user when something looks inconsistent.

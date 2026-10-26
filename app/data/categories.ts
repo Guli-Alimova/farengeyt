@@ -7,6 +7,7 @@ export const categories = [
   { id: 2, title: "Badiiy adabiyot" },
   { id: 3, title: "Oʻquv va amaliy qoʻllanmalar" },
   { id: 4, title: "Ilmiy-ommabop kitoblar" },
+  { id: 5, title: "Tanqidiy fikrlash va falsafa" },
 ];
 
 export const categoryTitles = categories.map((c) => c.title);

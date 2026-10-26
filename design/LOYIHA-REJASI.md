@@ -29,6 +29,7 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 - Asl inglizcha nomlarda qisqa predloglar kichik harf bilan ("Biology for Beginners").
 - Narx: `book.json` da `price` maydoni va kitob sahifasida "Narx" qatori bor, lekin maydon bo'sh (`null`) qoldiriladi, shuning uchun saytda ko'rinmaydi (Uzum'dagi narx bilan farq qilib qolmasligi uchun). Kartochkada faqat "Uzumda olish" havolasi.
 - «Behalovat avlod» muallifi inglizcha yozilishda qoladi: "Jonathan Haidt" (blogda ham shunday).
+- «Argument» muallifi ham inglizcha yozilishda qoladi: "Anthony Weston".
 - Maʼlumoti yo'q maydon saytda ko'rinmaydi.
 - «Iqtisodiyot», «Kimyo», «Matematika» hali nashr qilinmagan: holati "Tez kunda", nashr yili va sahifalar soni bo'sh.
 
@@ -79,9 +80,8 @@ Hozircha qilinmaydi, keyin alohida hal qilinadi:
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 
-- «Pul» mualliflari: Eddi Reynolds, Metyu Oldem va Lara Brayan (titul sahifasidan tasdiqlansin).
 - Muharrir ismining yozilishi (Yoʻldoshev yoki Yuldoshev).
 - Tekis muqova fayllari.
 - "O'qituvchilar uchun" bloki matni. (Telegram kanal manzili maʼlum: https://t.me/farengeyt_press, `app/data/contact.ts` da.)
-- `fizika4.jpg`, `fizika5.jpg`: «Fizika» galereyasiga kerakmi.
+- ~~`fizika4.jpg`, `fizika5.jpg`: «Fizika» galereyasiga kerakmi.~~ Yopildi: egasining ruxsati bilan galereyaga qoʻshildi.
 - Keyinroq: `farengeyt.press` domenini ulash, ruscha versiya.
