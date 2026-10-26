@@ -79,7 +79,6 @@ Hozircha qilinmaydi, keyin alohida hal qilinadi:
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 
-- «Pul» mualliflari: Eddi Reynolds, Metyu Oldem va Lara Brayan (titul sahifasidan tasdiqlansin).
 - Muharrir ismining yozilishi (Yoʻldoshev yoki Yuldoshev).
 - Tekis muqova fayllari.
 - "O'qituvchilar uchun" bloki matni. (Telegram kanal manzili maʼlum: https://t.me/farengeyt_press, `app/data/contact.ts` da.)
