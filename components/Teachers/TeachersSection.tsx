@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { contact } from "@/app/data/contact";
 import SectionHeading from "@/components/common/SectionHeading";
 
@@ -29,20 +30,21 @@ export default function TeachersSection() {
           Kitoblarimizni darsda yoki kutubxonada foydalanmoqchi boʻlsangiz, biz bilan bogʻlaning.
         </p>
 
-        <ul className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Daftar varagʻi kartalar: .teach-note, styles/globals.css. Oraliq katta: qiyshiq varaq va skotch sigʻadi */}
+        <ul className="mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {offers.map((offer, i) => (
             <li
               key={offer.title}
               // Planshetda (2 ustun) oxirgi karta yolgʻiz qolmasin: butun qatorni egallaydi
-              className={`flex flex-col rounded-[14px] border border-line bg-card px-[18px] py-4 ${
-                i === offers.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""
-              }`}
+              className={`teach-note ${i === offers.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+              style={{ "--tilt": ["-1.2deg", "0.8deg", "-0.6deg"][i] } as CSSProperties}
             >
-              <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-3 font-display text-xl font-semibold leading-[1.2] text-ink text-balance">
+              <span className="teach-tape" aria-hidden="true" />
+              <span className="font-mono text-xs text-ember">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-2 font-display text-xl font-semibold leading-[1.2] text-page-ink text-balance">
                 {offer.title}
               </h3>
-              <p className="mt-2 text-muted">{offer.text}</p>
+              <p className="mt-1 text-page-ink/75">{offer.text}</p>
             </li>
           ))}
         </ul>
