@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import type { BookCardData } from "@/app/data/books";
@@ -153,7 +154,14 @@ export default function HeroShelf({ books }: { books: BookCardData[] }) {
                   <span aria-hidden="true">{comingSoon && <span className="shelf3d-dot" />}</span>
                   <span className="shelf3d-title">{book.title}</span>
                   {comingSoon && <span className="sr-only">, tez kunda</span>}
-                  <span className="shelf3d-mark" aria-hidden="true">F°</span>
+                  <Image
+                    src="/images/logo-mark.png"
+                    width={223}
+                    height={256}
+                    alt=""
+                    aria-hidden="true"
+                    className="shelf3d-mark"
+                  />
                 </span>
                 <span className="shelf3d-face shelf3d-cover" aria-hidden="true">
                   <CoverFace title={book.title} cover={book.cover} sizes="190px" scale={SCALE} />

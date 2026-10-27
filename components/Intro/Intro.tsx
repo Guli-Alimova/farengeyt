@@ -5,8 +5,9 @@ import HeroShelf from "./HeroShelf";
 import HeroEmbers from "./HeroEmbers";
 
 const Intro = () => {
-  // Javonga faqat kartochka maydonlari uzatiladi: tavsiflar client JS'ga tushmaydi
-  const shelfBooks = books.map(toCardData);
+  // Javonda faqat sotuvdagi (published) kitoblar, «Tez kunda»lari yoʻq. Faqat kartochka maydonlari
+  // uzatiladi: tavsiflar client JS'ga tushmaydi
+  const shelfBooks = books.filter((b) => b.status === "published").map(toCardData);
 
   return (
     // relative isolate: uchqunlar canvas'i (-z-10) section boʻyicha joylashadi va kontent ortida qoladi.

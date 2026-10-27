@@ -392,10 +392,12 @@ html {
     font-weight: 700;
     letter-spacing: 0.01em;
   }
+  /* Umurtqa pastidagi nashriyot logosi (public/images/logo-mark.png).
+     Oq yupqa soya logoning koʻk qismi toʻq umurtqada ham koʻrinishi uchun */
   .shelf3d-mark {
-    font-family: var(--font-mono);
-    font-size: calc(10px * var(--s));
-    opacity: 0.85;
+    width: min(calc(15px * var(--s)), calc(var(--T) * 0.6));
+    height: auto;
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9));
   }
   /* «Tez kunda» kitoblar */
   .shelf3d-dot {
