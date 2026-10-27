@@ -547,3 +547,55 @@ html {
   background: var(--hole, var(--paper));
   box-shadow: inset 0 1px 2px var(--floor);
 }
+
+/* «Oʻqituvchilar» boʻlimi: daftar varagʻi kartalar (chiziqlar, qizil chegara, skotch, ozgina qiyshiq).
+   Qiyshiqlik --tilt orqali (components/Teachers/TeachersSection.tsx) */
+.teach-note {
+  position: relative;
+  padding: 22px 20px 22px 46px;
+  border-radius: 4px;
+  background-color: var(--page);
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 33px,
+      color-mix(in srgb, var(--ember) 55%, transparent) 33px,
+      color-mix(in srgb, var(--ember) 55%, transparent) 34px,
+      transparent 34px
+    ),
+    repeating-linear-gradient(transparent 0 27px, var(--page-line) 27px 28px);
+  background-position: 0 0, 0 14px;
+  line-height: 28px;
+  box-shadow: 0 1px 0 var(--page-line), 0 10px 24px -14px var(--floor);
+  transform: rotate(var(--tilt));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.teach-note h3,
+.teach-note p {
+  line-height: 28px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .teach-note:hover {
+    transform: rotate(0) translateY(-4px);
+    box-shadow: 0 1px 0 var(--page-line), 0 18px 30px -16px var(--floor);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teach-note {
+    transition: none;
+  }
+}
+
+.teach-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 84px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: color-mix(in srgb, var(--brand-soft) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+}
