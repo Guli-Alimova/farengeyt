@@ -72,16 +72,17 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 
 Hozircha qilinmaydi, keyin alohida hal qilinadi:
 
-- "O'qituvchilar va maktablar uchun" bloki.
+- ~~"O'qituvchilar va maktablar uchun" bloki.~~ Bajarildi: bosh sahifada, seriyadan keyin (`components/Teachers/TeachersSection.tsx`), matnni egasi tasdiqlagan.
 - Telegram obunasi.
 - Kitob sahifasida "Muallif haqida".
 - "Tez kunda" kitoblarda "Chiqqanda xabar olish".
+- «Biz haqimizda»: epigraf kerak emas, uning o'rniga CSS 3D animatsiya (kutubxonasiz, `prefers-reduced-motion` hurmat qilinadi).
 - Qorong'i rejimni yoqish (avval hech bir komponentda qattiq yozilgan rang qolmasligi kerak, CLAUDE.md'dagi tartib bo'yicha).
 
 ## 7. Ochiq masalalar (egasidan so'ralsin)
 
 - Muharrir ismining yozilishi (Yoʻldoshev yoki Yuldoshev).
 - Tekis muqova fayllari.
-- "O'qituvchilar uchun" bloki matni. (Telegram kanal manzili maʼlum: https://t.me/farengeyt_press, `app/data/contact.ts` da.)
+- ~~"O'qituvchilar uchun" bloki matni.~~ Yopildi: egasi tasdiqladi. (Telegram kanal manzili maʼlum: https://t.me/farengeyt_press, `app/data/contact.ts` da.)
 - ~~`fizika4.jpg`, `fizika5.jpg`: «Fizika» galereyasiga kerakmi.~~ Yopildi: egasining ruxsati bilan galereyaga qoʻshildi.
 - Keyinroq: `farengeyt.press` domenini ulash, ruscha versiya.

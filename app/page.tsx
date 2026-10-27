@@ -4,6 +4,7 @@ import Intro from '@/components/Intro/Intro'
 import Blog from "@/components/Blog/Blog"
 import PodCast from "@/components/PodCast/PodCast"
 import SeriesSection from "@/components/Series/SeriesSection"
+import TeachersSection from "@/components/Teachers/TeachersSection"
 import React from 'react'
 
 
@@ -15,6 +16,7 @@ const page = () => {
     <FeaturedBooks/>
     <Blog/>
     <SeriesSection/>
+    <TeachersSection/>
     <PodCast/>
     <ExploreBooks/>
     </div>
