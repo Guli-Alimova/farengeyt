@@ -5,6 +5,7 @@ export type Book = {
   id: number;
   image: string; // maket yoki fotosurat: kitob sahifasi, galereya va OG rasmi uchun
   cover?: string; // tekis old muqova (/images/covers/...): 3D kitobning old tomoni
+  spine?: string; // umurtqa rasmi (/images/spines/...): 3D kitobning yon tomoni, qalinligi shu nisbatdan
   spineColor: string; // #RRGGBB, 3D kitobning umurtqasi; scripts/cover-colors.mjs aniqlaydi
   title: string;
   category: string;

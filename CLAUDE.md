@@ -68,6 +68,12 @@ Flat front covers for the 3D book (one file per book, front only; crop spreads/p
 3. Run `node scripts/resize-images.mjs`. It writes an 800 px JPG to `public/images/covers/`, but only for covers that some book's `cover` points to. Covers of books not yet on the site (e.g. `argument.jpg`, `povarnin.jpg`) stay only in `originals/covers/`. It also rewrites `app/data/cover-sizes.json` (pixel size of each cover; commit it). `Book3D` uses that ratio so the book has the cover's shape and the cover isn't cropped. A `cover` missing from that file fails the build.
 4. Run `node scripts/cover-colors.mjs --force` (or delete just that book's `spineColor` and run it without `--force`).
 
+Spine images (optional `spine` field; one vertical, flat image per book, same print file as the cover):
+1. Put the original in `originals/covers/` as `<name>-yon.jpg` (lowercase; the `-yon` suffix marks it as a spine, so the cover step skips it).
+2. Set `"spine": "/images/spines/<name>.jpg"` (without `-yon`) for that book in `book.json`.
+3. Run `node scripts/resize-images.mjs`. It writes an 800 px tall JPG to `public/images/spines/` (only for spines some book points to) and rewrites `app/data/spine-sizes.json` (commit it). A `spine` missing from that file fails the build. Spine sizes are kept apart from `cover-sizes.json` so they don't skew the average cover ratio. `spineColor` stays: it colours the back cover and top edge.
+4. Low-resolution spines (e.g. the current Povarnin and Argument files, 595 px tall) wait in `originals/covers/` without a `spine` field until a larger file arrives.
+
 ## Dizayn tugagach qilinadigan ishlar
 
 Do these once every page and section has moved to the new design (`design/prototip.html`):
