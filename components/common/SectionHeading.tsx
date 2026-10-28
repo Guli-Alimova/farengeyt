@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-// Boʻlim va sahifa sarlavhasi: kichik mono yorliq + Literata sarlavha (prototipdagi .eyebrow + h2).
+// Boʻlim va sahifa sarlavhasi: kichik mono yorliq + Noto Sans sarlavha (prototipdagi .eyebrow + h2).
 // Sahifa boshida as="h1", yorliq oʻrnida breadcrumb (PageHeading)
 export default function SectionHeading({
   eyebrow,

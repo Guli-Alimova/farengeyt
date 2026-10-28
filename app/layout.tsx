@@ -1,34 +1,18 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Literata, Noto_Sans } from "next/font/google";
-import localFont from "next/font/local";
+import { IBM_Plex_Mono, Noto_Sans } from "next/font/google";
 import "@/styles/globals.css"
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { pageMetadata, SITE_NAME, SITE_URL } from "@/app/utils/metadata";
 
-// "latin" subseti ʻ (U+02BB) va ʼ (U+02BC) belgilarini ham oʻz ichiga oladi
-const literata = Literata({
-  variable: "--font-literata",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-});
-
-// Literata'da ʻ (U+02BB) glifining kengligi 0: belgi oldingi harf ustiga tushadi. Shu ikki belgi
-// Noto Serif'dan olinadi (OFL, Google Fonts'dan ʻʼ subseti, wght 400–700). font-display'da Literata'dan oldin
-const okina = localFont({
-  src: "./fonts/noto-serif-okina.woff2",
-  variable: "--font-okina",
-  weight: "400 700",
-  declarations: [{ prop: "unicode-range", value: "U+02BB-02BC" }],
-  adjustFontFallback: false, // aks holda Arial'dan qilingan fallback barcha harflarni Literata'dan oldin oladi
-  preload: false,
-});
-
+// Butun sayt (matn ham, sarlavhalar ham) Noto Sans'da; kichik yorliqlar IBM Plex Mono'da.
+// "latin" subseti ʻ (U+02BB) va ʼ (U+02BC) belgilarini ham oʻz ichiga oladi va Noto Sans'da ular
+// toʻgʻri kenglikda, shuning uchun alohida subset kerak emas. Italic: hero'dagi «yanada yaqin» <em>
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -51,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="uz"
-      className={`${okina.variable} ${literata.variable} ${notoSans.variable} ${plexMono.variable}`}
+      className={`${notoSans.variable} ${plexMono.variable}`}
     >
       <body>
         <Header />
