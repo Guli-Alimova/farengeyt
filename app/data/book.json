@@ -80,6 +80,7 @@
   {
     "id": 4,
     "image": "/images/IQTISODIYOT.jpg",
+    "cover": "/images/covers/iqtisodiyot.jpg",
     "spineColor": "#D72747",
     "title": "Iqtisodiyot",
     "category": "Bolalar kitoblari",
@@ -105,6 +106,7 @@
   {
     "id": 5,
     "image": "/images/KIMYO.jpg",
+    "cover": "/images/covers/kimyo.jpg",
     "spineColor": "#544D94",
     "title": "Kimyo",
     "category": "Bolalar kitoblari",
@@ -130,6 +132,7 @@
   {
     "id": 6,
     "image": "/images/MATEMATIKA.jpg",
+    "cover": "/images/covers/matematika.jpg",
     "spineColor": "#E7D725",
     "title": "Matematika",
     "category": "Bolalar kitoblari",
