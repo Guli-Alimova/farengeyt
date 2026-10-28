@@ -1,8 +1,9 @@
 'use client';
 
+import Image from "next/image";
 import { useRef, type CSSProperties, type PointerEvent } from "react";
 import CoverFace from "./CoverFace";
-import { inkFor, shapeRatio, thickness } from "./bookShape";
+import { inkFor, shapeRatio, spineThickness, thickness } from "./bookShape";
 
 // Kitob boʻyi (px): sm kartochka, lg kitob sahifasi. Eni muqova nisbatidan hisoblanadi
 const HEIGHTS = {
@@ -15,6 +16,8 @@ type Book3DProps = {
   author?: string;
   cover?: string;
   coverRatio?: number; // muqova eni / boʻyi; kitob shu shaklda chiziladi, muqova kesilmaydi
+  spine?: string; // umurtqa rasmi: boʻlsa yon tomonda rasm, qalinlik uning nisbatidan
+  spineRatio?: number; // umurtqa eni / boʻyi
   spineColor: string;
   pages?: string;
   size?: keyof typeof HEIGHTS;
@@ -29,6 +32,8 @@ export default function Book3D({
   author,
   cover,
   coverRatio,
+  spine,
+  spineRatio,
   spineColor,
   pages,
   size = "sm",
@@ -41,6 +46,9 @@ export default function Book3D({
   const h = HEIGHTS[size];
   const w = Math.round(h * shapeRatio(cover, coverRatio));
   const scale = h / HEIGHTS.sm;
+  // Umurtqa rasmi boʻlsa qalinlik uning haqiqiy nisbatidan, boʻlmasa sahifalar sonidan
+  const spineImage = spineRatio ? spine : undefined;
+  const t = spineImage && spineRatio ? spineThickness(h, spineRatio) : thickness(pages, scale);
 
   // Faqat sichqoncha bilan va reduced motion oʻchiq boʻlsa: kitob kursorga qarab biroz buriladi
   const handleMove = (e: PointerEvent<HTMLSpanElement>) => {
@@ -64,7 +72,7 @@ export default function Book3D({
   const style = {
     "--w": `${w}px`,
     "--h": `${h}px`,
-    "--t": `${thickness(pages, scale)}px`,
+    "--t": `${t}px`,
     "--spine": spineColor,
     "--spine-ink": inkFor(spineColor),
   } as CSSProperties;
@@ -80,7 +88,14 @@ export default function Book3D({
       <span className="book3d-floor" />
       <span ref={bookRef} className="book3d">
         <span className="book3d-back" />
-        <span className="book3d-spine"><b>{title}</b></span>
+        {spineImage ? (
+          // Rasmda nom va logo bor; butun kitob aria-hidden, nomi kartochka/sahifada yozilgan
+          <span className="book3d-spine book3d-spine-img">
+            <Image src={spineImage} alt="" fill sizes={`${t}px`} className="object-cover" />
+          </span>
+        ) : (
+          <span className="book3d-spine"><b>{title}</b></span>
+        )}
         <span className="book3d-pages" />
         <span className="book3d-top" />
         <span className="book3d-inner">

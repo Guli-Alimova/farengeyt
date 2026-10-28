@@ -1,0 +1,30 @@
+{
+  "/images/spines/behalovat-avlod.jpg": {
+    "width": 103,
+    "height": 800
+  },
+  "/images/spines/biologiya.jpg": {
+    "width": 50,
+    "height": 800
+  },
+  "/images/spines/fizika.jpg": {
+    "width": 49,
+    "height": 800
+  },
+  "/images/spines/iqtisodiyot.jpg": {
+    "width": 50,
+    "height": 800
+  },
+  "/images/spines/kimyo.jpg": {
+    "width": 51,
+    "height": 800
+  },
+  "/images/spines/matematika.jpg": {
+    "width": 51,
+    "height": 800
+  },
+  "/images/spines/pul.jpg": {
+    "width": 51,
+    "height": 800
+  }
+}

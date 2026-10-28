@@ -2,8 +2,10 @@ import data from "./book.json";
 import { BOOK_STATUSES, type Book, type BookStatus } from "@/app/type/Book";
 import { categories, categoryTitles } from "./categories";
 import sizes from "./cover-sizes.json"; // scripts/resize-images.mjs yozadi
+import spineSizesJson from "./spine-sizes.json"; // scripts/resize-images.mjs yozadi
 
 const coverSizes: Record<string, { width: number; height: number } | undefined> = sizes;
+const spineSizes: Record<string, { width: number; height: number } | undefined> = spineSizesJson;
 
 // JSON importida status oddiy string bo'lib keladi; quyida tekshirilgach BookStatus'ga o'tkaziladi
 type BookJson = Omit<Book, "status"> & { status: string };
@@ -35,6 +37,12 @@ for (const book of raw) {
   if (book.cover && !coverSizes[book.cover]) {
     throw new Error(`${where} muqovasi cover-sizes.json'da yoʻq: "${book.cover}". node scripts/resize-images.mjs ni ishga tushiring`);
   }
+  if (book.spine && !book.spine.startsWith("/images/spines/")) {
+    throw new Error(`${where} spine /images/spines/ bilan boshlanishi kerak: "${book.spine}"`);
+  }
+  if (book.spine && !spineSizes[book.spine]) {
+    throw new Error(`${where} umurtqasi spine-sizes.json'da yoʻq: "${book.spine}". node scripts/resize-images.mjs ni ishga tushiring`);
+  }
   if (book.isbn && !/^(\d{13}|\d{9}[\dX])$/.test(book.isbn.replace(/-/g, ""))) {
     throw new Error(`${where} ISBN'i 10 yoki 13 xonali emas: "${book.isbn}"`);
   }
@@ -45,16 +53,22 @@ export const books: Book[] = raw.map((book) => ({ ...book, status: book.status a
 // Kartochka uchun kerakli maydonlar. Client komponentlarga butun book.json emas, shu uzatiladi
 export type BookCardData = Pick<
   Book,
-  "id" | "title" | "category" | "subtitle" | "author" | "status" | "uzumUrl" | "cover" | "spineColor" | "totalPage" | "originalTitle"
+  "id" | "title" | "category" | "subtitle" | "author" | "status" | "uzumUrl" | "cover" | "spine" | "spineColor" | "totalPage" | "originalTitle"
 > & {
   coverRatio?: number; // muqova eni / boʻyi: 3D kitob shu nisbatda chiziladi
+  spineRatio?: number; // umurtqa eni / boʻyi: 3D kitob qalinligi shundan
 };
 
 export function toCardData(book: Book): BookCardData {
-  const { id, title, category, subtitle, author, status, uzumUrl, cover, spineColor, totalPage, originalTitle } = book;
+  const { id, title, category, subtitle, author, status, uzumUrl, cover, spine, spineColor, totalPage, originalTitle } = book;
   const size = cover ? coverSizes[cover] : undefined;
   const coverRatio = size ? size.width / size.height : undefined;
-  return { id, title, category, subtitle, author, status, uzumUrl, cover, coverRatio, spineColor, totalPage, originalTitle };
+  const spineSize = spine ? spineSizes[spine] : undefined;
+  const spineRatio = spineSize ? spineSize.width / spineSize.height : undefined;
+  return {
+    id, title, category, subtitle, author, status, uzumUrl,
+    cover, coverRatio, spine, spineRatio, spineColor, totalPage, originalTitle,
+  };
 }
 
 // Kitobi bor janrlar (categories.ts tartibida): bosh sahifa, footer va /books filtri shundan oladi.

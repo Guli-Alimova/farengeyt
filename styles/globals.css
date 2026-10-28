@@ -184,6 +184,10 @@ html {
     font-size: clamp(9px, calc(var(--t) * 0.5), 13px);
     font-weight: 700;
   }
+  /* Umurtqa rasmi (Book3D, spine): rasm butun yuzni egallaydi, brightness soyasi qoladi */
+  .book3d-spine-img {
+    display: block;
+  }
   .book3d-pages {
     top: 3px;
     height: calc(var(--h) - 6px);
@@ -409,6 +413,21 @@ html {
     width: min(calc(15px * var(--s)), calc(var(--T) * 0.6));
     height: auto;
     filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9));
+  }
+  /* Umurtqa rasmi (HeroShelf, spine): rasm butun yuzni egallaydi; chekkalardagi yorugʻlik va
+     soya rasm ustida ham koʻrinishi uchun ::after qatlamida */
+  .shelf3d-spine-img {
+    display: block;
+    padding: 0;
+  }
+  .shelf3d-spine-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow:
+      inset calc(3px * var(--s)) 0 0 rgba(255, 255, 255, 0.14),
+      inset calc(-4px * var(--s)) 0 0 rgba(0, 0, 0, 0.18);
+    pointer-events: none;
   }
   /* «Tez kunda» kitoblar */
   .shelf3d-dot {

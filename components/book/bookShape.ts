@@ -29,6 +29,11 @@ export function thickness(pages: string | undefined, scale: number) {
   return Math.round(t * scale);
 }
 
+// Umurtqa rasmi bor kitob qalinligi: rasmning haqiqiy nisbatidan (kitob boʻyi × eni/boʻyi)
+export function spineThickness(height: number, spineRatio: number) {
+  return Math.round(height * spineRatio);
+}
+
 // Umurtqa rangiga qarab matn oq yoki toʻq boʻladi
 export function inkFor(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16) / 255);
