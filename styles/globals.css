@@ -80,7 +80,7 @@
   --color-page-line: var(--page-line);
   --color-page-ink: var(--page-ink);
 
-  --font-display: var(--font-okina), var(--font-literata), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, Menlo, Consolas, monospace;
 }

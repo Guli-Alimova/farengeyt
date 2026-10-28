@@ -41,7 +41,7 @@ Bu fayl claude.ai suhbatida kelishilgan barcha qarorlarni jamlaydi. Claude Code 
 
 ## 5. Dizayn qarorlari
 
-- Ranglar va shriftlar: prototipdagidek. Brend ko'ki #29479E. Shriftlar: Literata (sarlavhalar), Noto Sans (matn), IBM Plex Mono (kichik yorliqlar, ISBN).
+- Ranglar va shriftlar: prototipdagidek. Brend ko'ki #29479E. Shriftlar: hammasi sans-serif (egasining qarori, muharrirlar taklifi bilan): Noto Sans (matn ham, sarlavhalar ham), IBM Plex Mono (kichik yorliqlar, ISBN). Literata olib tashlandi.
 - Logo matni: "Farengeyt Press". "451" logoda ham, footer'da ham yo'q.
 - Qorong'i rejim: ranglari yozilgan, lekin dizayn tugaguncha o'chiq. Yoqish "Keyinroq qilinadigan ishlar"da.
 - 3D: faqat CSS 3D, kutubxonasiz. Three.js, GSAP, janrlar uchun alohida 3D javon ishlatilmaydi.
