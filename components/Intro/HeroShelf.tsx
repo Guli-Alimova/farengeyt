@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import type { BookCardData } from "@/app/data/books";
 import CoverFace from "@/components/book/CoverFace";
-import { hasPages, inkFor, shapeRatio, thickness } from "@/components/book/bookShape";
+import { hasPages, inkFor, shapeRatio, spineThickness, thickness } from "@/components/book/bookShape";
 
 // Javondagi kitob boʻyi (px) globals.css dagi --H0 bilan bir xil. Qalinlik shu boʻyga moslab olinadi
 const SHELF_HEIGHT = 232;
@@ -26,9 +26,12 @@ export default function HeroShelf({ books }: { books: BookCardData[] }) {
   const avgThickness = known.length
     ? Math.round(known.reduce((sum, t) => sum + t, 0) / known.length)
     : thickness(undefined, SCALE);
+  // Umurtqa rasmi bor kitob qalinligi rasmning haqiqiy nisbatidan
   const shelf = books.map((book) => ({
     book,
-    t: hasPages(book.totalPage) ? thickness(book.totalPage, SCALE) : avgThickness,
+    t: book.spine && book.spineRatio
+      ? spineThickness(SHELF_HEIGHT, book.spineRatio)
+      : hasPages(book.totalPage) ? thickness(book.totalPage, SCALE) : avgThickness,
     r: shapeRatio(book.cover, book.coverRatio),
   }));
   const rmax = Math.max(...shelf.map((s) => s.r));
@@ -150,19 +153,28 @@ export default function HeroShelf({ books }: { books: BookCardData[] }) {
                 aria-pressed={openId === book.id}
                 onClick={(e) => toggle(e.currentTarget, book.id, r)}
               >
-                <span className="shelf3d-face shelf3d-spine">
-                  <span aria-hidden="true">{comingSoon && <span className="shelf3d-dot" />}</span>
-                  <span className="shelf3d-title">{book.title}</span>
-                  {comingSoon && <span className="sr-only">, tez kunda</span>}
-                  <Image
-                    src="/images/logo-mark.png"
-                    width={223}
-                    height={256}
-                    alt=""
-                    aria-hidden="true"
-                    className="shelf3d-mark"
-                  />
-                </span>
+                {book.spine && book.spineRatio ? (
+                  // Rasmda nom va logo bor: yozuv va logo chiqmaydi, nom ekran oʻquvchilar uchun qoladi
+                  <span className="shelf3d-face shelf3d-spine shelf3d-spine-img">
+                    <Image src={book.spine} alt="" fill sizes="40px" className="object-cover" />
+                    <span className="sr-only">{book.title}</span>
+                    {comingSoon && <span className="sr-only">, tez kunda</span>}
+                  </span>
+                ) : (
+                  <span className="shelf3d-face shelf3d-spine">
+                    <span aria-hidden="true">{comingSoon && <span className="shelf3d-dot" />}</span>
+                    <span className="shelf3d-title">{book.title}</span>
+                    {comingSoon && <span className="sr-only">, tez kunda</span>}
+                    <Image
+                      src="/images/logo-mark.png"
+                      width={223}
+                      height={256}
+                      alt=""
+                      aria-hidden="true"
+                      className="shelf3d-mark"
+                    />
+                  </span>
+                )}
                 <span className="shelf3d-face shelf3d-cover" aria-hidden="true">
                   <CoverFace title={book.title} cover={book.cover} sizes="190px" scale={SCALE} />
                 </span>

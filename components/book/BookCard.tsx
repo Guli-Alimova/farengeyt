@@ -20,6 +20,8 @@ export default function BookCard({ book }: { book: BookCardData }) {
           author={book.author}
           cover={book.cover}
           coverRatio={book.coverRatio}
+          spine={book.spine}
+          spineRatio={book.spineRatio}
           spineColor={book.spineColor}
           pages={book.totalPage}
           className="pb-2"

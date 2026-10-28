@@ -64,7 +64,7 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
     );
   }
 
-  const { coverRatio } = toCardData(book);
+  const { coverRatio, spineRatio } = toCardData(book);
   const comingSoon = book.status === "coming-soon";
   const canBuy = book.status === "published" && Boolean(book.uzumUrl?.trim());
 
@@ -100,6 +100,8 @@ export default async function BookDetails({ params }: BookDetailsPageProps) {
           author={book.author}
           cover={book.cover}
           coverRatio={coverRatio}
+          spine={book.spine}
+          spineRatio={spineRatio}
           spineColor={book.spineColor}
           pages={book.totalPage}
           className="container pb-10 pt-12"

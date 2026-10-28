@@ -53,16 +53,22 @@ export const books: Book[] = raw.map((book) => ({ ...book, status: book.status a
 // Kartochka uchun kerakli maydonlar. Client komponentlarga butun book.json emas, shu uzatiladi
 export type BookCardData = Pick<
   Book,
-  "id" | "title" | "category" | "subtitle" | "author" | "status" | "uzumUrl" | "cover" | "spineColor" | "totalPage" | "originalTitle"
+  "id" | "title" | "category" | "subtitle" | "author" | "status" | "uzumUrl" | "cover" | "spine" | "spineColor" | "totalPage" | "originalTitle"
 > & {
   coverRatio?: number; // muqova eni / boʻyi: 3D kitob shu nisbatda chiziladi
+  spineRatio?: number; // umurtqa eni / boʻyi: 3D kitob qalinligi shundan
 };
 
 export function toCardData(book: Book): BookCardData {
-  const { id, title, category, subtitle, author, status, uzumUrl, cover, spineColor, totalPage, originalTitle } = book;
+  const { id, title, category, subtitle, author, status, uzumUrl, cover, spine, spineColor, totalPage, originalTitle } = book;
   const size = cover ? coverSizes[cover] : undefined;
   const coverRatio = size ? size.width / size.height : undefined;
-  return { id, title, category, subtitle, author, status, uzumUrl, cover, coverRatio, spineColor, totalPage, originalTitle };
+  const spineSize = spine ? spineSizes[spine] : undefined;
+  const spineRatio = spineSize ? spineSize.width / spineSize.height : undefined;
+  return {
+    id, title, category, subtitle, author, status, uzumUrl,
+    cover, coverRatio, spine, spineRatio, spineColor, totalPage, originalTitle,
+  };
 }
 
 // Kitobi bor janrlar (categories.ts tartibida): bosh sahifa, footer va /books filtri shundan oladi.
